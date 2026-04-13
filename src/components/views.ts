@@ -26,7 +26,7 @@ import './surround.js';
 // something goes wrong.
 import './diagnostics.js';
 
-@customElement('advanced-camera-card-views')
+@customElement('advanced-camera-card-mini-views')
 export class AdvancedCameraCardViews extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -226,7 +226,7 @@ export class AdvancedCameraCardViews extends LitElement {
         // order to always render the live view for live.preload mode.
         this._shouldLivePreload() || (!this.hide && view?.is('live'))
           ? html`
-              <advanced-camera-card-live
+              <advanced-camera-card-mini-live
                 .hass=${this.hass}
                 .viewManagerEpoch=${this.viewManagerEpoch}
                 .liveConfig=${this.config.live}
@@ -236,7 +236,7 @@ export class AdvancedCameraCardViews extends LitElement {
                 .triggeredCameraIDs=${this.triggeredCameraIDs}
                 class="${classMap(liveClasses)}"
               >
-              </advanced-camera-card-live>
+              </advanced-camera-card-mini-live>
             `
           : ``
       }
@@ -250,6 +250,6 @@ export class AdvancedCameraCardViews extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-views': AdvancedCameraCardViews;
+    'advanced-camera-card-mini-views': AdvancedCameraCardViews;
   }
 }

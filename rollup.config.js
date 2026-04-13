@@ -6,6 +6,7 @@ import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { execSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import gitInfo from 'rollup-plugin-git-info';
 import serve from 'rollup-plugin-serve';
 import styles from 'rollup-plugin-styler';
@@ -14,6 +15,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 const watch = process.env.ROLLUP_WATCH === 'true' || process.env.ROLLUP_WATCH === '1';
 const dev = watch || process.env.DEV === 'true' || process.env.DEV === '1';
+const packageInfo = JSON.parse(readFileSync('./package.json', 'utf8'));
 
 /**
  * @type {import('rollup-plugin-serve').ServeOptions}
@@ -36,6 +38,14 @@ const hasGitHead = (() => {
     return false;
   }
 })();
+
+const gitAbbrevHash = hasGitHead
+  ? execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim()
+  : '';
+const gitDate = hasGitHead
+  ? execSync('git show -s --format=%cI HEAD', { encoding: 'utf8' }).trim()
+  : '';
+const buildDate = hasGitHead ? new Date().toISOString() : '';
 
 /**
  * @type {import('rollup').RollupOptions['plugins']}
@@ -74,6 +84,10 @@ const plugins = [
       'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
       __ADVANCED_CAMERA_CARD_RELEASE_VERSION__:
         process.env.RELEASE_VERSION ?? (dev ? 'dev' : 'pkg'),
+      __ADVANCED_CAMERA_CARD_PACKAGE_VERSION__: JSON.stringify(packageInfo.version),
+      __ADVANCED_CAMERA_CARD_GIT_ABBREV_HASH__: JSON.stringify(gitAbbrevHash),
+      __ADVANCED_CAMERA_CARD_BUILD_DATE__: JSON.stringify(buildDate),
+      __ADVANCED_CAMERA_CARD_GIT_DATE__: JSON.stringify(gitDate),
     },
   }),
   watch && serve(serveopts),
@@ -108,9 +122,8 @@ const CIRCULAR_DEPENDENCY_IGNORE_REGEXP = /(ha-nunjucks|ts-py-datetime)/;
  */
 const config = {
   input: {
-    'advanced-camera-card': 'src/card.ts',
-    'advanced-camera-card-ultra': 'src/card-ultra.ts',
-    'frigate-hass-card': 'src/card.ts',
+    'advanced-camera-card-mini': 'src/card.ts',
+    'advanced-camera-card-mini-ultra': 'src/card-ultra.ts',
   },
   // Specifically want a facade created as HACS will attach a hacstag
   // queryparameter to the resource. Without a facade when chunks re-import the

@@ -98,7 +98,7 @@ export class QueryStringManager {
     const actions: AdvancedCameraCardCustomActionConfig[] = [];
     const configuredCardID = this._api.getConfigManager().getConfig()?.card_id;
     const actionRE = new RegExp(
-      /^(advanced-camera-card|frigate-card)-action([.:](?<cardID>\w+))?[.:](?<action>\w+)/,
+      /^(advanced-camera-card-mini(?:-ultra)?|advanced-camera-card|frigate-card)-action([.:](?<cardID>\w+))?[.:](?<action>\w+)/,
     );
     for (const [key, value] of params.entries()) {
       const match = key.match(actionRE);

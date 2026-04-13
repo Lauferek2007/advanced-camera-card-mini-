@@ -178,7 +178,7 @@ export class CardController
 
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
     await import('../editor.js');
-    return document.createElement('advanced-camera-card-editor');
+    return document.createElement('advanced-camera-card-mini-editor');
   }
 
   public getConfigManager(): ConfigManager {

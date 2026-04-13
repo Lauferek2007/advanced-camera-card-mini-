@@ -47,7 +47,7 @@ interface CameraNeighbors {
   next?: CameraNeighbor;
 }
 
-@customElement('advanced-camera-card-live-carousel')
+@customElement('advanced-camera-card-mini-live-carousel')
 export class AdvancedCameraCardLiveCarousel extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -433,6 +433,6 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-carousel': AdvancedCameraCardLiveCarousel;
+    'advanced-camera-card-mini-live-carousel': AdvancedCameraCardLiveCarousel;
   }
 }

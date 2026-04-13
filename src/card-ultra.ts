@@ -2,6 +2,7 @@ import { CSSResultGroup, LitElement, TemplateResult, html, unsafeCSS } from 'lit
 import { customElement } from 'lit/decorators.js';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
 import { styleMap } from 'lit/directives/style-map.js';
+import './utils/install-safe-custom-elements.js';
 import { actionHandler } from './action-handler-directive.js';
 import { CardController } from './card-controller/controller';
 import './components/live/index.js';
@@ -80,14 +81,14 @@ console.info(
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).customCards.push({
-  type: 'advanced-camera-card-ultra',
-  name: 'Advanced Camera Card Ultra',
+  type: 'advanced-camera-card-mini-ultra',
+  name: 'Advanced Camera Card Mini Ultra',
   description: 'Live-only variant with a much smaller feature surface',
   preview: true,
   documentationURL: REPO_URL,
 });
 
-@customElement('advanced-camera-card-ultra')
+@customElement('advanced-camera-card-mini-ultra')
 class AdvancedCameraCardUltra extends LitElement {
   protected _controller = new CardController(
     this,
@@ -259,7 +260,7 @@ class AdvancedCameraCardUltra extends LitElement {
         <div class="main">
           ${this._controller.getMessageManager().hasMessage()
             ? renderMessage(this._controller.getMessageManager().getMessage())
-            : html`<advanced-camera-card-live
+            : html`<advanced-camera-card-mini-live
                 .hass=${this._hass}
                 .viewManagerEpoch=${this._controller.getViewManager().getEpoch()}
                 .liveConfig=${this._config.live}
@@ -268,7 +269,7 @@ class AdvancedCameraCardUltra extends LitElement {
                   .getConfigManager()
                   .getCardWideConfig()}
                 .microphoneState=${this._controller.getMicrophoneManager().getState()}
-              ></advanced-camera-card-live>`}
+              ></advanced-camera-card-mini-live>`}
         </div>
       </ha-card>
     `;
@@ -285,6 +286,6 @@ class AdvancedCameraCardUltra extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-ultra': AdvancedCameraCardUltra;
+    'advanced-camera-card-mini-ultra': AdvancedCameraCardUltra;
   }
 }

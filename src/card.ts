@@ -4,6 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
 import { styleMap } from 'lit/directives/style-map.js';
+import './utils/install-safe-custom-elements.js';
 import 'web-dialog';
 import { actionHandler } from './action-handler-directive.js';
 import { CardController } from './card-controller/controller';
@@ -61,7 +62,7 @@ import { getReleaseVersion } from './utils/diagnostics';
 // ***************************************************************************
 
 console.info(
-  `%c 📷 Advanced Camera Card %c ${getReleaseVersion()} `,
+  `%c ðŸ“· Advanced Camera Card %c ${getReleaseVersion()} `,
   'padding: 3px; color: black; background: pink;',
   'padding: 3px; color: black; background: white;',
 );
@@ -71,7 +72,7 @@ console.info(
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).customCards.push({
-  type: 'advanced-camera-card',
+  type: 'advanced-camera-card-mini',
   name: 'Advanced Camera Card Mini',
   description: 'Lightweight fork optimized for weaker devices',
   preview: true,
@@ -85,7 +86,7 @@ console.info(
 // CardController instead of this file.
 // ***************************************************************************
 
-@customElement('advanced-camera-card')
+@customElement('advanced-camera-card-mini')
 class AdvancedCameraCard extends LitElement {
   protected _controller = new CardController(
     this,
@@ -388,7 +389,7 @@ class AdvancedCameraCard extends LitElement {
           ${this._renderMenuStatusContainer('top')}
           ${this._renderMenuStatusContainer('overlay')}
           <div ${ref(this._refMain)} class="${classMap(mainClasses)}">
-            <advanced-camera-card-views
+            <advanced-camera-card-mini-views
               ${ref(this._refViews)}
               .hass=${this._hass}
               .viewManagerEpoch=${this._controller.getViewManager().getEpoch()}
@@ -407,7 +408,7 @@ class AdvancedCameraCard extends LitElement {
                 ? this._controller.getTriggersManager().getTriggeredCameraIDs()
                 : undefined}
               .deviceRegistryManager=${this._controller.getDeviceRegistryManager()}
-            ></advanced-camera-card-views>
+            ></advanced-camera-card-mini-views>
             ${this._controller.getMessageManager().hasMessage()
               ? // Keep message rendering to last to show messages that may have been
                 // generated during the render.
@@ -474,13 +475,8 @@ class AdvancedCameraCard extends LitElement {
   }
 }
 
-// Keep the old name around for backwards compatibility.
-@customElement('frigate-card')
-class FrigateCard extends AdvancedCameraCard {}
-
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card': AdvancedCameraCard;
-    'frigate-card': FrigateCard;
+    'advanced-camera-card-mini': AdvancedCameraCard;
   }
 }

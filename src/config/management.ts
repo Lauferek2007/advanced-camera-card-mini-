@@ -688,7 +688,17 @@ const frigateCardToAdvancedCameraCardTransform = (
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card',
-      newValue: 'custom:advanced-camera-card',
+      newValue: 'custom:advanced-camera-card-mini',
+    },
+    {
+      oldKey: 'type',
+      oldValue: 'custom:advanced-camera-card',
+      newValue: 'custom:advanced-camera-card-mini',
+    },
+    {
+      oldKey: 'type',
+      oldValue: 'custom:advanced-camera-card-ultra',
+      newValue: 'custom:advanced-camera-card-mini-ultra',
     },
     {
       oldKey: 'action',

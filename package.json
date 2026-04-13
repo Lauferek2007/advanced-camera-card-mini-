@@ -13,7 +13,7 @@
     "lovelace"
   ],
   "type": "module",
-  "module": "advanced-camera-card.js",
+  "module": "advanced-camera-card-mini.js",
   "repository": "github:Lauferek2007/advanced-camera-card-mini-",
   "author": "Dermot Duffy <dermot.duffy@gmail.com>",
   "license": "MIT",

@@ -12,9 +12,9 @@
 
 # Advanced Camera Card Mini
 
-A lightweight, drop-in fork of `advanced-camera-card` tuned for weaker tablets and other lower-end devices.
+A lightweight fork of `advanced-camera-card` tuned for weaker tablets and other lower-end devices.
 
-This fork keeps the same Lovelace card type, but changes the defaults to favor lower CPU, lower memory use and fewer background requests.
+This fork now uses its own Lovelace card types and its own top-level components, so it can coexist with the upstream card without namespace collisions.
 
 ## Mini defaults
 
@@ -41,24 +41,26 @@ HACS will use:
 /hacsfiles/advanced-camera-card-mini-/advanced-camera-card-mini-.js
 ```
 
-### `advanced-camera-card.js`
+That single resource exposes both variants below.
+
+### `advanced-camera-card-mini.js`
 
 The default `mini` fork.
 
 Use with:
 
 ```yaml
-type: custom:advanced-camera-card
+type: custom:advanced-camera-card-mini
 ```
 
-### `advanced-camera-card-ultra.js`
+### `advanced-camera-card-mini-ultra.js`
 
 A more aggressively cut live-only variant. It forces the card into a single live pane, disables non-live capability paths, hides most UI and keeps only the bare minimum menu for camera switching and fullscreen.
 
 Use with:
 
 ```yaml
-type: custom:advanced-camera-card-ultra
+type: custom:advanced-camera-card-mini-ultra
 ```
 
 ## Goal

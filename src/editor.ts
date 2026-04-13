@@ -402,7 +402,7 @@ const options: EditorOptions = {
   },
 };
 
-@customElement('advanced-camera-card-editor')
+@customElement('advanced-camera-card-mini-editor')
 export class AdvancedCameraCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() protected _config?: RawAdvancedCameraCardConfig;
@@ -3372,6 +3372,6 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-editor': AdvancedCameraCardEditor;
+    'advanced-camera-card-mini-editor': AdvancedCameraCardEditor;
   }
 }

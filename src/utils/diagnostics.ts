@@ -1,4 +1,3 @@
-import pkg from '../../package.json';
 import { RawAdvancedCameraCardConfig } from '../config/types';
 import { getIntegrationManifest } from '../ha/integration';
 import { IntegrationManifest } from '../ha/integration/types';
@@ -6,6 +5,14 @@ import { DeviceRegistryManager } from '../ha/registry/device';
 import { HomeAssistant } from '../ha/types';
 import { HASS_WEB_PROXY_DOMAIN } from '../ha/web-proxy';
 import { getLanguage } from '../localize/localize';
+
+const PACKAGE_VERSION = '__ADVANCED_CAMERA_CARD_PACKAGE_VERSION__';
+const GIT_ABBREV_HASH = '__ADVANCED_CAMERA_CARD_GIT_ABBREV_HASH__';
+const BUILD_DATE = '__ADVANCED_CAMERA_CARD_BUILD_DATE__';
+const GIT_DATE = '__ADVANCED_CAMERA_CARD_GIT_DATE__';
+
+const getBuildInfoValue = (value: string): string | undefined =>
+  value.startsWith('__ADVANCED_CAMERA_CARD_') || !value ? undefined : value;
 
 type FrigateDevices = Record<string, string>;
 
@@ -25,12 +32,12 @@ export const getReleaseVersion = (): string => {
 
   /* istanbul ignore if: depends on rollup substitution -- @preserve */
   if (releaseVersion === 'pkg') {
-    return pkg.version;
+    return PACKAGE_VERSION;
   }
 
   /* istanbul ignore if: depends on rollup substitution -- @preserve */
   if (releaseVersion === 'dev') {
-    return `dev+${pkg['gitAbbrevHash']}`;
+    return `dev+${getBuildInfoValue(GIT_ABBREV_HASH) ?? 'unknown'}`;
   }
 
   return releaseVersion;
@@ -107,9 +114,15 @@ export const getDiagnostics = async (
     lang: getLanguage(),
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     git: {
-      ...(pkg['gitAbbrevHash'] && { hash: pkg['gitAbbrevHash'] }),
-      ...(pkg['buildDate'] && { build_date: pkg['buildDate'] }),
-      ...(pkg['gitDate'] && { commit_date: pkg['gitDate'] }),
+      ...(getBuildInfoValue(GIT_ABBREV_HASH) && {
+        hash: getBuildInfoValue(GIT_ABBREV_HASH),
+      }),
+      ...(getBuildInfoValue(BUILD_DATE) && {
+        build_date: getBuildInfoValue(BUILD_DATE),
+      }),
+      ...(getBuildInfoValue(GIT_DATE) && {
+        commit_date: getBuildInfoValue(GIT_DATE),
+      }),
     },
     ...(hass && { ha_version: hass.config.version }),
     custom_integrations: {

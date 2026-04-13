@@ -18,7 +18,7 @@ import { HomeAssistant } from '../../ha/types.js';
 import liveGridStyle from '../../scss/live-grid.scss';
 import './carousel.js';
 
-@customElement('advanced-camera-card-live-grid')
+@customElement('advanced-camera-card-mini-live-grid')
 export class AdvancedCameraCardLiveGrid extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -52,7 +52,7 @@ export class AdvancedCameraCardLiveGrid extends LitElement {
       : undefined;
 
     return html`
-      <advanced-camera-card-live-carousel
+      <advanced-camera-card-mini-live-carousel
         grid-id=${ifDefined(cameraID)}
         grid-width-factor=${ifDefined(gridWidthFactor)}
         .hass=${this.hass}
@@ -65,7 +65,7 @@ export class AdvancedCameraCardLiveGrid extends LitElement {
         ?triggered=${triggeredCameraID &&
         !!this.triggeredCameraIDs?.has(triggeredCameraID)}
       >
-      </advanced-camera-card-live-carousel>
+      </advanced-camera-card-mini-live-carousel>
     `;
   }
 
@@ -120,6 +120,6 @@ export class AdvancedCameraCardLiveGrid extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-grid': AdvancedCameraCardLiveGrid;
+    'advanced-camera-card-mini-live-grid': AdvancedCameraCardLiveGrid;
   }
 }

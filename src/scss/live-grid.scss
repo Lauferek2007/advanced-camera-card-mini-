@@ -12,7 +12,7 @@
   }
 }
 
-advanced-camera-card-live-carousel {
+advanced-camera-card-mini-live-carousel {
   --trigger-border-color: var(--advanced-camera-card-trigger-border-color);
   --trigger-border-color-base: var(
     --advanced-camera-card-trigger-border-color-base,
@@ -20,10 +20,10 @@ advanced-camera-card-live-carousel {
   );
 }
 
-advanced-camera-card-live-carousel[triggered] {
+advanced-camera-card-mini-live-carousel[triggered] {
   animation: warning-pulse 5s infinite;
 }
-advanced-camera-card-live-carousel[selected] {
+advanced-camera-card-mini-live-carousel[selected] {
   --trigger-border-color-base: var(
     --advanced-camera-card-trigger-border-color-base,
     var(--advanced-camera-card-foreground-primary)
