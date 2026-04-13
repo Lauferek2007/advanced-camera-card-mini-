@@ -1,0 +1,13 @@
+@use 'provider.scss';
+
+.hidden {
+  display: none;
+}
+
+advanced-camera-card-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--primary-color);
+  cursor: help;
+}

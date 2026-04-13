@@ -1,0 +1,134 @@
+// Inspired by:
+// https://github.com/AlexxIT/WebRTC/blob/master/custom_components/webrtc/www/webrtc-camera.js
+:host {
+  position: absolute;
+
+  width: fit-content;
+  height: fit-content;
+
+  --advanced-camera-card-ptz-icon-size: 24px;
+}
+
+:host([data-position$='-left']) {
+  left: 5%;
+}
+:host([data-position$='-right']) {
+  right: 5%;
+}
+:host([data-position^='top-']) {
+  top: 5%;
+}
+:host([data-position^='bottom-']) {
+  bottom: 5%;
+}
+
+/*****************
+ * Main Containers
+ *****************/
+.ptz {
+  display: flex;
+  gap: 10px;
+}
+
+:host([data-orientation='vertical']) .ptz {
+  flex-direction: column;
+}
+:host([data-orientation='horizontal']) .ptz {
+  flex-direction: row;
+}
+
+:host([data-orientation='vertical']) .ptz div {
+  width: calc(var(--advanced-camera-card-ptz-icon-size) * 3);
+}
+:host([data-orientation='horizontal']) .ptz div {
+  height: calc(var(--advanced-camera-card-ptz-icon-size) * 3);
+}
+
+.ptz-move,
+.ptz-zoom,
+.ptz-presets {
+  position: relative;
+
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+
+  color: var(--advanced-camera-card-ptz-color-inactive);
+  background-color: var(--advanced-camera-card-ptz-background-inactive);
+
+  &:hover {
+    color: var(--advanced-camera-card-ptz-color-active);
+    background-color: var(--advanced-camera-card-ptz-background-active);
+  }
+}
+
+.ptz-move {
+  height: calc(var(--advanced-camera-card-ptz-icon-size) * 3);
+  width: calc(var(--advanced-camera-card-ptz-icon-size) * 3);
+
+  border-radius: 50%;
+}
+
+:host([data-orientation='horizontal']) .ptz .ptz-zoom,
+:host([data-orientation='horizontal']) .ptz .ptz-presets {
+  width: calc(var(--advanced-camera-card-ptz-icon-size) * 1.5);
+}
+:host([data-orientation='vertical']) .ptz .ptz-zoom,
+:host([data-orientation='vertical']) .ptz .ptz-presets {
+  height: calc(var(--advanced-camera-card-ptz-icon-size) * 1.5);
+}
+
+.ptz-zoom,
+.ptz-presets {
+  border-radius: var(--advanced-camera-card-border-radius-final);
+}
+
+/***********
+ * PTZ Icons
+ ***********/
+.ptz-move advanced-camera-card-icon {
+  position: absolute;
+  --mdc-icon-size: var(--advanced-camera-card-ptz-icon-size);
+}
+advanced-camera-card-icon:not(.disabled),
+advanced-camera-card-submenu:not(.disabled) {
+  cursor: pointer;
+}
+.disabled {
+  color: var(--disabled-text-color);
+}
+.up {
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.down {
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.left {
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.right {
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ptz-presets,
+.ptz-zoom {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+:host([data-orientation='vertical']) .ptz-presets,
+:host([data-orientation='vertical']) .ptz-zoom {
+  flex-direction: row;
+}
+:host([data-orientation='horizontal']) .ptz-presets,
+:host([data-orientation='horizontal']) .ptz-zoom {
+  flex-direction: column;
+}

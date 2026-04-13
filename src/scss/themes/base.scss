@@ -1,0 +1,248 @@
+@use 'dark.scss';
+@use 'light.scss';
+@use 'traditional.scss';
+
+:host {
+  /*********
+   * General
+   *********/
+
+  --advanced-camera-card-exterior: var(--secondary-background-color, black);
+  --advanced-camera-card-background: var(--card-background-color, white);
+
+  --advanced-camera-card-foreground-primary: var(--primary-color, black);
+
+  --advanced-camera-card-active-color: var(--accent-color, orange);
+  --advanced-camera-card-warning-color: var(--error-color, red);
+
+  --advanced-camera-card-text-color: var(--primary-text-color);
+  --advanced-camera-card-divider-color: var(--divider-color);
+
+  // Border radius variable cascade:
+  // 1. --advanced-camera-card-border-radius-override (set by JS for performance config)
+  // 2. --advanced-camera-card-border-radius (user theme override)
+  // 3. --ha-card-border-radius (Home Assistant theme)
+  // 4. 4px (default)
+  --advanced-camera-card-border-radius-final: var(
+    --advanced-camera-card-border-radius-override,
+    var(--advanced-camera-card-border-radius, var(--ha-card-border-radius, 4px))
+  );
+
+  --advanced-camera-card-control-background: var(--app-header-background-color);
+  --advanced-camera-card-control-background-opacity: 60%;
+
+  --advanced-camera-card-control-background-transparent: color-mix(
+    in oklab,
+    var(--advanced-camera-card-control-background),
+    transparent var(--advanced-camera-card-control-background-opacity)
+  );
+  --advanced-camera-card-control-foreground: var(--app-header-text-color);
+
+  /*********
+   * Buttons
+   *********/
+
+  // The color of buttons (in general, menu or otherwise).
+  --advanced-camera-card-button-color: var(--advanced-camera-card-control-foreground);
+
+  // The color of button background "circles".
+  --advanced-camera-card-button-background: var(
+    --advanced-camera-card-control-background-transparent
+  );
+
+  // The border radius of buttons.
+  --advanced-camera-card-button-border-radius: 50%;
+
+  /******
+   * Menu
+   ******/
+
+  // The color of an active icon in the menu.
+  --advanced-camera-card-menu-button-active-color: var(
+    --advanced-camera-card-active-color
+  );
+
+  // The color of an inactive icon in the menu.
+  --advanced-camera-card-menu-button-inactive-color: var(
+    --advanced-camera-card-button-color
+  );
+
+  // The color of a critical icon in the menu.
+  --advanced-camera-card-menu-button-critical-color: var(
+    --error-color,
+    var(--advanced-camera-card-warning-color)
+  );
+
+  // The background color of the button "circles" in the menu.
+  --advanced-camera-card-menu-button-background: color-mix(
+    in oklab,
+    var(--advanced-camera-card-menu-button-inactive-color),
+    transparent var(--advanced-camera-card-control-background-opacity)
+  );
+
+  // The menu background color.
+  --advanced-camera-card-menu-background: var(
+    --advanced-camera-card-control-background-transparent
+  );
+  --advanced-camera-card-menu-style-outside-background: var(
+    --advanced-camera-card-control-background
+  );
+
+  // May be overridden by the user to force a particular color.
+  --advanced-camera-card-menu-override-background: unset;
+  --advanced-camera-card-menu-override-button-inactive-color: unset;
+  --advanced-camera-card-menu-override-button-background: unset;
+
+  // Examples of precise theming for the menu:
+  // --advanced-camera-card-menu-position-left-alignment-left-style-overlay-background: pink;
+  // --advanced-camera-card-menu-position-left-background: purple;
+  // --advanced-camera-card-menu-style-overlay-background: pink;
+
+  /*********
+   * Submenu
+   *********/
+  --advanced-camera-card-submenu-color: var(--advanced-camera-card-text-color);
+  --advanced-camera-card-submenu-background-color: var(
+    --advanced-camera-card-background
+  );
+  --advanced-camera-card-submenu-hover-color: var(--advanced-camera-card-text-color);
+  --advanced-camera-card-submenu-hover-background-color: var(
+    --ha-color-fill-neutral-normal-resting
+  );
+  --advanced-camera-card-submenu-selected-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+  --advanced-camera-card-submenu-selected-background-color: var(
+    --ha-color-fill-primary-quiet-resting
+  );
+
+  /************
+   * Status bar
+   ************/
+
+  // May be overridden by the user to force a particular color.
+  --advanced-camera-card-status-bar-override-background: unset;
+  --advanced-camera-card-status-bar-override-color: unset;
+
+  // The color of items on the status bar.
+  --advanced-camera-card-status-bar-color: var(
+    --advanced-camera-card-control-foreground
+  );
+
+  // The background color of the outerlay above/below the card.
+  --advanced-camera-card-status-bar-background: var(
+    --advanced-camera-card-control-background-transparent
+  );
+  --advanced-camera-card-status-bar-style-outside-background: var(
+    --advanced-camera-card-control-background
+  );
+
+  /************
+   * Thumbnails
+   ************/
+
+  --advanced-camera-card-thumbnail-icon-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+  --advanced-camera-card-thumbnail-border-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+  --advanced-camera-card-thumbnail-background: var(--advanced-camera-card-background);
+  --advanced-camera-card-thumbnail-icon-favorite-color: color-mix(
+    in oklab,
+    gold,
+    transparent 25%
+  );
+  --advanced-camera-card-thumbnail-text-color: var(--advanced-camera-card-text-color);
+
+  /**********
+   * Timeline
+   **********/
+
+  --advanced-camera-card-timeline-text-color: var(--advanced-camera-card-text-color);
+  --advanced-camera-card-timeline-item-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+  --advanced-camera-card-timeline-tool-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+  --advanced-camera-card-timeline-background: var(--advanced-camera-card-background);
+
+  // style for the 'background' style of item (i.e. recordings).
+  --advanced-camera-card-timeline-background-item-color: color-mix(
+    in oklab,
+    var(--advanced-camera-card-timeline-item-color),
+    transparent 90%
+  );
+
+  --advanced-camera-card-timeline-divider-color: var(
+    --advanced-camera-card-divider-color
+  );
+  --advanced-camera-card-timeline-target-bar-color: var(
+    --advanced-camera-card-active-color
+  );
+
+  /*******************
+   * Loading Indicator
+   *******************/
+
+  --advanced-camera-card-loading-background-color: var(
+    --advanced-camera-card-control-background-transparent
+  );
+  --advanced-camera-card-loading-foreground-color: var(
+    --advanced-camera-card-control-foreground
+  );
+
+  /*********
+   * Message
+   *********/
+  --advanced-camera-card-message-color: var(--advanced-camera-card-text-color);
+  --advanced-camera-card-message-background: var(--advanced-camera-card-background);
+
+  --advanced-camera-card-message-overlay-background: var(
+    --advanced-camera-card-control-background-transparent
+  );
+  --advanced-camera-card-message-overlay-color: var(
+    --advanced-camera-card-control-foreground
+  );
+
+  /*********
+  * Trigger
+  *********/
+  --advanced-camera-card-trigger-border-color: var(--advanced-camera-card-warning-color);
+  --advanced-camera-card-trigger-border-color-base: unset;
+
+  /*****
+  * Grid
+  ******/
+  --advanced-camera-card-grid-selected-border-color: var(
+    --advanced-camera-card-foreground-primary
+  );
+
+  /****
+  * PTZ
+  *****/
+  --advanced-camera-card-ptz-color: var(--advanced-camera-card-control-foreground);
+  --advanced-camera-card-ptz-background: var(--advanced-camera-card-control-background);
+
+  --advanced-camera-card-ptz-color-active: color-mix(
+    in oklab,
+    var(--advanced-camera-card-ptz-color),
+    transparent 20%
+  );
+  --advanced-camera-card-ptz-background-active: color-mix(
+    in oklab,
+    var(--advanced-camera-card-ptz-background),
+    transparent 20%
+  );
+  --advanced-camera-card-ptz-color-inactive: color-mix(
+    in oklab,
+    var(--advanced-camera-card-ptz-color),
+    transparent var(--advanced-camera-card-control-background-opacity)
+  );
+  --advanced-camera-card-ptz-background-inactive: color-mix(
+    in oklab,
+    var(--advanced-camera-card-ptz-background),
+    transparent var(--advanced-camera-card-control-background-opacity)
+  );
+}

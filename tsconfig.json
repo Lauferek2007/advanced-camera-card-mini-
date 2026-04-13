@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "lib": ["es2021", "dom", "dom.iterable"],
+    "noEmit": true,
+    "noErrorTruncation": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": false,
+        // These tags are provided by the HA frontend and [almost all] cannot be
+        // imported by a custom card directly.
+        "globalTags": [
+          "ha-button",
+          "ha-camera-stream",
+          "ha-card",
+          "ha-combo-box",
+          "ha-dropdown-item",
+          "ha-dropdown",
+          "ha-hls-player",
+          "ha-icon-button",
+          "ha-icon",
+          "ha-menu-button",
+          "ha-selector",
+          "ha-spinner",
+          "ha-state-icon",
+          "ha-web-rtc-player",
+          "mwc-button",
+          "mwc-list-item",
+          "state-badge"
+        ],
+        "rules": {
+          "no-unknown-tag-name": "error",
+          "no-missing-import": "error",
+          "no-unclosed-tag": "error",
+          "no-incompatible-type-binding": "warning",
+          "no-invalid-css": "warning",
+          "no-missing-element-type-definition": "warning",
+          "no-property-visibility-mismatch": "error"
+        }
+      }
+    ]
+  }
+}

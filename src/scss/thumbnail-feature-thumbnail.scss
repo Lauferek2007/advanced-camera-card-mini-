@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  overflow: hidden;
+
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  display: block;
+}
+
+img {
+  // Safari will occasionally not load thumbnails correctly with display block.
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+
+  // Ensure no whitespace around img with inline-block display.
+  vertical-align: top;
+  margin: 0;
+
+  border-radius: var(--advanced-camera-card-border-radius-final);
+
+  // Not 'contain' as some thumbnails may vary in aspect-ratio slightly and
+  // should be clipped to fill the thumbnail div whilst maintaining
+  // aspect-ratio.
+  object-fit: cover;
+}
+
+advanced-camera-card-icon {
+  display: flex;
+  width: 50%;
+
+  --mdc-icon-size: 100%;
+  color: var(--primary-text-color);
+
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  opacity: 0.2;
+}

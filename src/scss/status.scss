@@ -1,0 +1,84 @@
+@use './button.scss';
+
+:host {
+  --mdc-icon-size: calc(var(--advanced-camera-card-status-bar-height) / 2);
+
+  display: block;
+  width: 100%;
+
+  pointer-events: auto;
+
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+/*******************************************************
+ * Non-hover styles should not interact with the pointer
+ *******************************************************/
+
+:host(:not([data-style*='hover'])) {
+  pointer-events: none;
+}
+
+/**********************
+ * Popup style behavior
+ **********************/
+
+:host([data-style='popup'][hide]) {
+  opacity: 0;
+}
+
+/*********************
+ * Status bar contents
+ *********************/
+
+.status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+
+  width: 100%;
+  height: var(--advanced-camera-card-status-bar-height);
+}
+
+.item {
+  display: inline-block;
+
+  margin: 3px 5px;
+
+  align-content: center;
+}
+.item:first-child {
+  margin-left: 10px;
+}
+.item:last-child {
+  margin-right: 10px;
+}
+
+.item.expand {
+  flex: 1;
+}
+
+.item.action {
+  cursor: pointer;
+}
+
+img.item,
+advanced-camera-card-icon.item {
+  display: block;
+
+  // To ensure images render somewhat reasonably looking their height is kept to
+  // the same height as icons.
+  height: var(--mdc-icon-size, 24px);
+  width: auto;
+}
+
+/************************
+ * Status bar theme hooks
+ ************************/
+
+// Further theme related styling is dynamically applied by `status-bar.ts`, see
+// `_renderPerInstanceStyle`.

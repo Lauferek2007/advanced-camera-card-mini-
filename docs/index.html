@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Advanced Camera Card</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Advanced Camera Card Documentation" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" />
+
+    <!-- Themes (light + dark) -->
+    <link rel="stylesheet" href="./css/core.min.css" />
+    <link
+      rel="stylesheet"
+      href="./css/addons/core-dark.min.css"
+      media="(prefers-color-scheme: dark)"
+    />
+    <style>
+      :root {
+        --content-max-width: 95vw;
+        --cover-heading-font-size-max: 48;
+      }
+      .svg-icon {
+        background-color: rgb(255, 255, 255);
+        vertical-align: middle;
+        background: repeating-conic-gradient(#80808091 0% 25%, transparent 0% 50%) 50% /
+          4px 4px;
+      }
+      #__sidebar img {
+        max-width: 48px;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+      .app-name-link {
+        display: flex;
+        justify-content: center;
+      }
+      .app-name img,
+      .spin {
+        animation: spin 15s infinite linear;
+        transform-origin: center;
+      }
+      @media not (prefers-color-scheme: dark) {
+        .app-name img,
+        .spin {
+          filter: invert(1);
+        }
+      }
+    </style>
+  </head>
+  <body class="sidebar-chevron-left sidebar-group-box sidebar-toggle-chevron">
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        // Full reference: https://docsify.js.org/#/configuration
+
+        // The repo to link to.
+        repo: 'dermotduffy/advanced-camera-card',
+
+        // The overall documentation name.
+        name: 'Advanced Camera Card',
+
+        // The logo to show on the top of the sidebar.
+        logo: 'images/icons/iris.svg',
+
+        // Automatically go to the top of a page on route change.
+        auto2top: true,
+
+        // Use a sidebar.
+        loadSidebar: true,
+
+        // Automatically use headings up to H2 for sider.
+        subMaxLevel: 2,
+
+        // Show the Advanced Camera Card cover page.
+        coverpage: true,
+
+        // Use relative links (this way both vscode and docsify work on clicking
+        // a link).
+        relativePath: true,
+
+        // Skip the link to the main content.
+        skipLink: false,
+
+        // Google tag (Google Analytics 4).
+        gtag: 'G-ZFD19QWCJP',
+
+        search: {
+          // Place search box after spinning logo.
+          insertAfter: '.app-name',
+        },
+      };
+    </script>
+
+    <!-- Docsify core -->
+    <script src="./js/docsify.min.js"></script>
+
+    <!-- Google tag (gtag.js) - Google Analytics 4 -->
+    <script src="./js/gtag.min.js"></script>
+
+    <!-- Prism Syntax Highlighting for YAML -->
+    <script src="./js/prism-yaml.min.js"></script>
+
+    <!-- Search plugin -->
+    <script src="./js/search.min.js"></script>
+
+    <!-- Zoom in on images on click -->
+    <script src="./js/zoom-image.min.js"></script>
+
+    <!-- Copy samples can copy to clipboard -->
+    <script src="./js/docsify-copy-code.min.js"></script>
+  </body>
+</html>

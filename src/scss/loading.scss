@@ -1,0 +1,41 @@
+:host {
+  width: intrinsic;
+  height: intrinsic;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+
+  background-color: var(--advanced-camera-card-loading-background-color);
+  color: var(--advanced-camera-card-loading-foreground-color);
+
+  transition: opacity 1.5s ease-in;
+  opacity: 1;
+}
+
+:host([loaded]) {
+  opacity: 0;
+}
+
+advanced-camera-card-icon {
+  margin-bottom: 20px;
+  height: 25%;
+  width: auto;
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+span {
+  font-size: x-large;
+}

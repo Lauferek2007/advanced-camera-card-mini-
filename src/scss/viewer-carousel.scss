@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  --video-max-height: none;
+
+  transition: max-height 0.1s ease-in-out;
+
+  // Keep carousel controls relative to the media carousel itself.
+  position: relative;
+
+  // See: https://github.com/dermotduffy/advanced-camera-card/issues/2107
+  border-radius: var(--advanced-camera-card-border-radius-final);
+  overflow: hidden;
+}
+
+// When the carousel is not part of a grid ensure its height matches its
+// container.
+:host(:not([grid-id])) {
+  height: 100%;
+}
+
+// If the carousel has an unselected attribute set on it, do not let the
+// pointer interact (e.g. hover, scroll) with underlying elements. This is used
+// when the carousel is part of a media-grid. Without this next/prev controls
+// will enlarge on hover, and the wheel-gestures plugin may block scrolling.
+// See matching in live-carousel.scss .
+:host([unselected]) advanced-camera-card-carousel,
+:host([unselected]) .seek-warning {
+  pointer-events: none;
+}
+
+:host([unseekable]) advanced-camera-card-carousel {
+  filter: brightness(50%);
+}
+:host([unseekable]) .seek-warning {
+  display: block;
+}
+
+.seek-warning {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
+}
+
+.embla__slide {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+
+  flex: 0 0 100%;
+}

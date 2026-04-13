@@ -1,0 +1,58 @@
+$drawer-icon-size: 20px;
+$drawer-padding-extend: 20px;
+
+side-drawer {
+  background-color: var(--card-background-color);
+}
+
+div.control-surround {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  padding-top: $drawer-padding-extend;
+  padding-bottom: $drawer-padding-extend;
+}
+:host([location='left']) div.control-surround {
+  @if $drawer-icon-size < 32 {
+    // Ensure the clickable area is at least 32px wide.
+    padding-right: calc(32px - $drawer-icon-size);
+  }
+  left: 100%;
+}
+:host([location='right']) div.control-surround {
+  @if $drawer-icon-size < 32 {
+    // See note above.
+    padding-left: calc(32px - $drawer-icon-size);
+  }
+  right: 100%;
+}
+:host([empty]),
+:host([empty]) > * {
+  visibility: hidden;
+}
+:host(:not([empty])),
+:host(:not([empty])) > * {
+  visibility: visible;
+}
+
+advanced-camera-card-icon.control {
+  color: var(--advanced-camera-card-button-color);
+  background-color: var(--advanced-camera-card-button-background);
+  pointer-events: all;
+
+  --mdc-icon-size: #{$drawer-icon-size};
+  padding-top: $drawer-padding-extend;
+  padding-bottom: $drawer-padding-extend;
+
+  transition: opacity 0.5s ease;
+}
+
+:host([location='left']) advanced-camera-card-icon.control {
+  border-top-right-radius: $drawer-icon-size;
+  border-bottom-right-radius: $drawer-icon-size;
+}
+
+:host([location='right']) advanced-camera-card-icon.control {
+  border-top-left-radius: $drawer-icon-size;
+  border-bottom-left-radius: $drawer-icon-size;
+}
