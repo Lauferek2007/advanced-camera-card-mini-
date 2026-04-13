@@ -29,6 +29,18 @@ This fork keeps the same Lovelace card type, but changes the defaults to favor l
 
 ## Variants
 
+## HACS
+
+Add this repository in HACS as:
+
+- Type: `Dashboard`
+
+HACS will use:
+
+```text
+/hacsfiles/advanced-camera-card-mini-/advanced-camera-card-mini-.js
+```
+
 ### `advanced-camera-card.js`
 
 The default `mini` fork.
