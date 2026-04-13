@@ -15,7 +15,7 @@ export function fireAdvancedCameraCardEvent<T>(
   },
 ): void {
   target.dispatchEvent(
-    new CustomEvent<T>(`advanced-camera-card:${type}`, {
+    new CustomEvent<T>(`advanced-camera-card-mini:${type}`, {
       bubbles: options?.bubbles ?? true,
       composed: options?.composed ?? true,
       cancelable: options?.cancelable ?? false,

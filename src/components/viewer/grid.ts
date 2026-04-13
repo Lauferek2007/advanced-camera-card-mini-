@@ -19,7 +19,7 @@ import '../../patches/ha-hls-player.js';
 import basicBlockStyle from '../../scss/basic-block.scss';
 import './carousel';
 
-@customElement('advanced-camera-card-viewer-grid')
+@customElement('advanced-camera-card-mini-viewer-grid')
 export class AdvancedCameraCardViewerGrid extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -49,7 +49,7 @@ export class AdvancedCameraCardViewerGrid extends LitElement {
       : undefined;
 
     return html`
-      <advanced-camera-card-viewer-carousel
+      <advanced-camera-card-mini-viewer-carousel
         grid-id=${ifDefined(filterCamera)}
         grid-width-factor=${ifDefined(gridWidthFactor)}
         .hass=${this.hass}
@@ -61,7 +61,7 @@ export class AdvancedCameraCardViewerGrid extends LitElement {
         .cardWideConfig=${this.cardWideConfig}
         .showControls=${!filterCamera || selectedCameraID === filterCamera}
       >
-      </advanced-camera-card-viewer-carousel>
+      </advanced-camera-card-mini-viewer-carousel>
     `;
   }
 
@@ -101,15 +101,15 @@ export class AdvancedCameraCardViewerGrid extends LitElement {
     }
 
     return html`
-      <advanced-camera-card-media-grid
+      <advanced-camera-card-mini-media-grid
         .selected=${view?.camera}
         .displayConfig=${this.viewerConfig?.display}
-        @advanced-camera-card:media-grid:selected=${(
+        @advanced-camera-card-mini:media-grid:selected=${(
           ev: CustomEvent<MediaGridSelected>,
         ) => this._gridSelectCamera(ev.detail.selected)}
       >
         ${[...cameraIDs].map((cameraID) => this._renderCarousel(cameraID))}
-      </advanced-camera-card-media-grid>
+      </advanced-camera-card-mini-media-grid>
     `;
   }
 
@@ -120,6 +120,6 @@ export class AdvancedCameraCardViewerGrid extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-viewer-grid': AdvancedCameraCardViewerGrid;
+    'advanced-camera-card-mini-viewer-grid': AdvancedCameraCardViewerGrid;
   }
 }

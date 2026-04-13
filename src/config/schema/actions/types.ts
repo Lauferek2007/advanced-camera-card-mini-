@@ -110,19 +110,19 @@ const statusBarItemElementsBaseSchema = statusBarItemBaseSchema.extend({
 });
 
 export const statusBarIconItemSchema = statusBarItemElementsBaseSchema.extend({
-  type: z.literal('custom:advanced-camera-card-status-bar-icon'),
+  type: z.literal('custom:advanced-camera-card-mini-status-bar-icon'),
   icon: z.string(),
 });
 export type StatusBarIcon = z.infer<typeof statusBarIconItemSchema>;
 
 export const statusBarImageItemSchema = statusBarItemElementsBaseSchema.extend({
-  type: z.literal('custom:advanced-camera-card-status-bar-image'),
+  type: z.literal('custom:advanced-camera-card-mini-status-bar-image'),
   image: z.string(),
 });
 export type StatusBarImage = z.infer<typeof statusBarImageItemSchema>;
 
 export const statusBarStringItemSchema = statusBarItemElementsBaseSchema.extend({
-  type: z.literal('custom:advanced-camera-card-status-bar-string'),
+  type: z.literal('custom:advanced-camera-card-mini-status-bar-string'),
   string: z.string(),
 });
 export type StatusBarString = z.infer<typeof statusBarStringItemSchema>;

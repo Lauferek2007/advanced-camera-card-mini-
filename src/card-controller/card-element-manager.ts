@@ -78,7 +78,7 @@ export class CardElementManager {
         ...(this._api.getConfigManager().getConfig()?.view.render_entities ?? []),
 
         // Refresh the card if media player state changes:
-        // https://github.com/dermotduffy/advanced-camera-card/issues/881
+        // https://github.com/dermotduffy/advanced-camera-card-mini/issues/881
         ...(this._api.getMediaPlayerManager().getMediaPlayers() ?? []),
       ]);
 
@@ -117,7 +117,7 @@ export class CardElementManager {
       this._api.getInteractionManager().reportInteraction,
     );
     this._element.addEventListener(
-      'advanced-camera-card:action:execution-request',
+      'advanced-camera-card-mini:action:execution-request',
       this._api.getActionsManager().handleActionExecutionRequestEvent,
     );
 
@@ -195,7 +195,7 @@ export class CardElementManager {
       this._api.getInteractionManager().reportInteraction,
     );
     this._element.removeEventListener(
-      'advanced-camera-card:action:execution-request',
+      'advanced-camera-card-mini:action:execution-request',
       this._api.getActionsManager().handleActionExecutionRequestEvent,
     );
 

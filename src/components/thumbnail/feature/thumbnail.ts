@@ -17,7 +17,7 @@ import {
   createFetchThumbnailTask,
 } from '../../../utils/thumbnail';
 
-@customElement('advanced-camera-card-thumbnail-feature-thumbnail')
+@customElement('advanced-camera-card-mini-thumbnail-feature-thumbnail')
 export class AdvancedCameraCardThumbnailFeatureThumbnail extends LitElement {
   @property({ attribute: false })
   public thumbnail?: string;
@@ -67,10 +67,10 @@ export class AdvancedCameraCardThumbnailFeatureThumbnail extends LitElement {
   }
 
   protected render(): TemplateResult | void {
-    const imageOff = html`<advanced-camera-card-icon
+    const imageOff = html`<advanced-camera-card-mini-icon
       .icon=${{ icon: 'mdi:image-off' }}
       title=${localize('thumbnail.no_thumbnail')}
-    ></advanced-camera-card-icon> `;
+    ></advanced-camera-card-mini-icon> `;
 
     if (!this._embedThumbnailTask) {
       return imageOff;
@@ -83,10 +83,10 @@ export class AdvancedCameraCardThumbnailFeatureThumbnail extends LitElement {
             embeddedThumbnail ? html`<img src="${embeddedThumbnail}" />` : html``,
           {
             inProgressFunc: () =>
-              html`<advanced-camera-card-icon
+              html`<advanced-camera-card-mini-icon
                 .icon=${{ icon: 'mdi:image-refresh' }}
                 title=${localize('thumbnail.no_thumbnail')}
-              ></advanced-camera-card-icon> `,
+              ></advanced-camera-card-mini-icon> `,
             errorFunc: () => imageOff,
           },
         )
@@ -100,6 +100,6 @@ export class AdvancedCameraCardThumbnailFeatureThumbnail extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-thumbnail-feature-thumbnail': AdvancedCameraCardThumbnailFeatureThumbnail;
+    'advanced-camera-card-mini-thumbnail-feature-thumbnail': AdvancedCameraCardThumbnailFeatureThumbnail;
   }
 }

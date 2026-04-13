@@ -26,7 +26,7 @@ interface HeartConfig {
   startY: string;
 }
 
-@customElement('advanced-camera-card-effect-hearts')
+@customElement('advanced-camera-card-mini-effect-hearts')
 export class AdvancedCameraCardEffectHearts extends BaseEffectComponent {
   private _hearts: HeartConfig[];
 
@@ -58,7 +58,7 @@ export class AdvancedCameraCardEffectHearts extends BaseEffectComponent {
         this._hearts,
         (heart) => heart.id,
         (heart) => html`
-          <advanced-camera-card-heart
+          <advanced-camera-card-mini-heart
             .char=${heart.char}
             .size=${heart.size}
             .hue=${heart.hue}
@@ -69,7 +69,7 @@ export class AdvancedCameraCardEffectHearts extends BaseEffectComponent {
             .pulseDelay=${heart.pulseDelay}
             .startX=${heart.startX}
             .startY=${heart.startY}
-          ></advanced-camera-card-heart>
+          ></advanced-camera-card-mini-heart>
         `,
       )}
     `;
@@ -78,6 +78,6 @@ export class AdvancedCameraCardEffectHearts extends BaseEffectComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effect-hearts': AdvancedCameraCardEffectHearts;
+    'advanced-camera-card-mini-effect-hearts': AdvancedCameraCardEffectHearts;
   }
 }

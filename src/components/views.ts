@@ -145,7 +145,7 @@ export class AdvancedCameraCardViews extends LitElement {
       ? this.cameraManager?.getStore().getCameraConfig(view.camera) ?? null
       : null;
 
-    return html` <advanced-camera-card-surround
+    return html` <advanced-camera-card-mini-surround
       class="${classMap(overallClasses)}"
       .hass=${this.hass}
       .viewManagerEpoch=${this.viewManagerEpoch}
@@ -158,17 +158,17 @@ export class AdvancedCameraCardViews extends LitElement {
       .cardWideConfig=${this.cardWideConfig}
     >
       ${!this.hide && view?.is('image') && cameraConfig
-        ? html` <advanced-camera-card-image
+        ? html` <advanced-camera-card-mini-image
             .imageConfig=${this.config.image}
             .viewManagerEpoch=${this.viewManagerEpoch}
             .hass=${this.hass}
             .cameraConfig=${cameraConfig}
             .cameraManager=${this.cameraManager}
           >
-          </advanced-camera-card-image>`
+          </advanced-camera-card-mini-image>`
         : ``}
       ${!this.hide && view?.isMediaGalleryView() && !view.is('folders')
-        ? html` <advanced-camera-card-media-gallery
+        ? html` <advanced-camera-card-mini-media-gallery
             .hass=${this.hass}
             .viewManagerEpoch=${this.viewManagerEpoch}
             .galleryConfig=${this.config.media_gallery}
@@ -176,11 +176,11 @@ export class AdvancedCameraCardViews extends LitElement {
             .viewItemManager=${this.viewItemManager}
             .cardWideConfig=${this.cardWideConfig}
           >
-          </advanced-camera-card-media-gallery>`
+          </advanced-camera-card-mini-media-gallery>`
         : ``}
       ${!this.hide && view?.isViewerView()
         ? html`
-            <advanced-camera-card-viewer
+            <advanced-camera-card-mini-viewer
               .hass=${this.hass}
               .viewManagerEpoch=${this.viewManagerEpoch}
               .viewerConfig=${this.config.media_viewer}
@@ -188,11 +188,11 @@ export class AdvancedCameraCardViews extends LitElement {
               .cameraManager=${this.cameraManager}
               .cardWideConfig=${this.cardWideConfig}
             >
-            </advanced-camera-card-viewer>
+            </advanced-camera-card-mini-viewer>
           `
         : ``}
       ${!this.hide && view?.is('timeline')
-        ? html` <advanced-camera-card-timeline
+        ? html` <advanced-camera-card-mini-timeline
             .hass=${this.hass}
             .viewManagerEpoch=${this.viewManagerEpoch}
             .timelineConfig=${this.config.timeline}
@@ -202,24 +202,24 @@ export class AdvancedCameraCardViews extends LitElement {
             .viewItemManager=${this.viewItemManager}
             .cardWideConfig=${this.cardWideConfig}
           >
-          </advanced-camera-card-timeline>`
+          </advanced-camera-card-mini-timeline>`
         : ``}
       ${!this.hide && view?.is('diagnostics')
-        ? html` <advanced-camera-card-diagnostics
+        ? html` <advanced-camera-card-mini-diagnostics
             .hass=${this.hass}
             .rawConfig=${this.rawConfig}
             .deviceRegistryManager=${this.deviceRegistryManager}
           >
-          </advanced-camera-card-diagnostics>`
+          </advanced-camera-card-mini-diagnostics>`
         : ``}
       ${!this.hide && view?.is('folders')
-        ? html` <advanced-camera-card-folder-gallery
+        ? html` <advanced-camera-card-mini-folder-gallery
             .hass=${this.hass}
             .viewManagerEpoch=${this.viewManagerEpoch}
             .viewItemManager=${this.viewItemManager}
             .galleryConfig=${this.config.media_gallery}
             .foldersManager=${this.foldersManager}
-          ></advanced-camera-card-folder-gallery>`
+          ></advanced-camera-card-mini-folder-gallery>`
         : ``}
       ${
         // Note: Subtle difference in condition below vs the other views in
@@ -240,7 +240,7 @@ export class AdvancedCameraCardViews extends LitElement {
             `
           : ``
       }
-    </advanced-camera-card-surround>`;
+    </advanced-camera-card-mini-surround>`;
   }
 
   static get styles(): CSSResultGroup {

@@ -6,7 +6,7 @@ import { AdvancedCameraCardError } from '../../../src/types';
 it('should ignore non-error', () => {
   const element = document.createElement('div');
   const handler = vi.fn();
-  element.addEventListener('advanced-camera-card:message', handler);
+  element.addEventListener('advanced-camera-card-mini:message', handler);
 
   dispatchAdvancedCameraCardErrorEvent(element, 'NOT_ADVANCED_CAMERA_CARD_EVENT');
 
@@ -16,7 +16,7 @@ it('should ignore non-error', () => {
 it('should dispatch error', () => {
   const element = document.createElement('div');
   const handler = vi.fn();
-  element.addEventListener('advanced-camera-card:message', handler);
+  element.addEventListener('advanced-camera-card-mini:message', handler);
 
   dispatchAdvancedCameraCardErrorEvent(element, new Error('ERROR'));
 
@@ -32,7 +32,7 @@ it('should dispatch error', () => {
 it('should dispatch error with context', () => {
   const element = document.createElement('div');
   const handler = vi.fn();
-  element.addEventListener('advanced-camera-card:message', handler);
+  element.addEventListener('advanced-camera-card-mini:message', handler);
 
   dispatchAdvancedCameraCardErrorEvent(
     element,

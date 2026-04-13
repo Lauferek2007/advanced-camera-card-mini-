@@ -12,7 +12,7 @@ import {
 import '../icon.js';
 import { SubmenuInteraction, SubmenuItem } from './types.js';
 
-@customElement('advanced-camera-card-submenu')
+@customElement('advanced-camera-card-mini-submenu')
 export class AdvancedCameraCardSubmenu extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -50,7 +50,7 @@ export class AdvancedCameraCardSubmenu extends LitElement {
         ${item.subtitle
           ? html`<span slot="details" style="${style}">${item.subtitle}</span>`
           : ''}
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           slot="icon"
           .hass=${this.hass}
           .icon=${{
@@ -58,7 +58,7 @@ export class AdvancedCameraCardSubmenu extends LitElement {
             entity: item.entity,
           }}
           style="${style}"
-        ></advanced-camera-card-icon>
+        ></advanced-camera-card-mini-icon>
       </ha-dropdown-item>
     `;
   }
@@ -79,6 +79,6 @@ export class AdvancedCameraCardSubmenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-submenu': AdvancedCameraCardSubmenu;
+    'advanced-camera-card-mini-submenu': AdvancedCameraCardSubmenu;
   }
 }

@@ -12,7 +12,7 @@ import { MediaGridController } from '../components-lib/media-grid-controller.js'
 import { ViewDisplayConfig } from '../config/schema/common/display.js';
 import mediaGridStyle from '../scss/media-grid.scss';
 
-@customElement('advanced-camera-card-media-grid')
+@customElement('advanced-camera-card-mini-media-grid')
 export class AdvancedCameraCardMediaGrid extends LitElement {
   @property({ attribute: false })
   public selected?: string;
@@ -68,6 +68,6 @@ export class AdvancedCameraCardMediaGrid extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-media-grid': AdvancedCameraCardMediaGrid;
+    'advanced-camera-card-mini-media-grid': AdvancedCameraCardMediaGrid;
   }
 }

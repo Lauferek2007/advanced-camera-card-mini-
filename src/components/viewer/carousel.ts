@@ -47,9 +47,9 @@ interface MediaNeighbors {
   next?: MediaNeighbor;
 }
 
-const ADVANCED_CAMERA_CARD_VIEWER_PROVIDER = 'advanced-camera-card-viewer-provider';
+const ADVANCED_CAMERA_CARD_VIEWER_PROVIDER = 'advanced-camera-card-mini-viewer-provider';
 
-@customElement('advanced-camera-card-viewer-carousel')
+@customElement('advanced-camera-card-mini-viewer-carousel')
 export class AdvancedCameraCardViewerCarousel extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -296,7 +296,7 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
         ? 'previous'
         : 'next';
 
-    return html` <advanced-camera-card-next-previous-control
+    return html` <advanced-camera-card-mini-next-previous-control
       slot=${side}
       .hass=${this.hass}
       .side=${side}
@@ -308,7 +308,7 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
         scroll(scrollDirection);
         stopEventFromActivatingCardWideActions(ev);
       }}
-    ></advanced-camera-card-next-previous-control>`;
+    ></advanced-camera-card-mini-next-previous-control>`;
   }
 
   protected render(): TemplateResult | void {
@@ -334,43 +334,43 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
     const view = this.viewManagerEpoch?.manager.getView();
 
     return html`
-      <advanced-camera-card-carousel
+      <advanced-camera-card-mini-carousel
         ${ref(this._refCarousel)}
         .dragEnabled=${this.viewerConfig?.draggable ?? true}
         .plugins=${guard([this.viewerConfig, this._media], this._getPlugins.bind(this))}
         .selected=${this._selected}
         .wheelScrolling=${this.viewerConfig?.controls.wheel}
         transitionEffect=${this._getTransitionEffect()}
-        @advanced-camera-card:carousel:select=${(ev: CustomEvent<CarouselSelected>) => {
+        @advanced-camera-card-mini:carousel:select=${(ev: CustomEvent<CarouselSelected>) => {
           this._setViewSelectedIndex(ev.detail.index);
         }}
-        @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+        @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
           this._loadedMediaPlayerController = ev.detail.mediaPlayerController ?? null;
           this._mediaHeightController.recalculate();
           this._seekHandler();
         }}
-        @advanced-camera-card:media:unloaded=${() => {
+        @advanced-camera-card-mini:media:unloaded=${() => {
           this._loadedMediaPlayerController = null;
         }}
       >
         ${this.showControls ? this._renderNextPrevious('left', neighbors) : ''}
         ${guard([this._media, view], () => this._getSlides())}
         ${this.showControls ? this._renderNextPrevious('right', neighbors) : ''}
-      </advanced-camera-card-carousel>
+      </advanced-camera-card-mini-carousel>
       ${view
-        ? html` <advanced-camera-card-ptz
+        ? html` <advanced-camera-card-mini-ptz
             .hass=${this.hass}
             .config=${this.viewerConfig?.controls.ptz}
             .forceVisibility=${view?.context?.ptzControls?.enabled}
           >
-          </advanced-camera-card-ptz>`
+          </advanced-camera-card-mini-ptz>`
         : ''}
       <div class="seek-warning">
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           title="${localize('media_viewer.unseekable')}"
           .icon=${{ icon: 'mdi:clock-remove' }}
         >
-        </advanced-camera-card-icon>
+        </advanced-camera-card-mini-icon>
       </div>
     `;
   }
@@ -384,7 +384,7 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
 
     // If the view has changed, or if the media actions controller has just been
     // initialized, then call the necessary media action.
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/1626
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1626
     if (rootChanged || changedProperties.has('viewManagerEpoch')) {
       this._setMediaTarget();
     }
@@ -461,7 +461,7 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
     }
 
     return html` <div class="embla__slide">
-      <advanced-camera-card-viewer-provider
+      <advanced-camera-card-mini-viewer-provider
         .hass=${this.hass}
         .viewManagerEpoch=${this.viewManagerEpoch}
         .media=${media}
@@ -469,7 +469,7 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
         .resolvedMediaCache=${this.resolvedMediaCache}
         .cameraManager=${this.cameraManager}
         .cardWideConfig=${this.cardWideConfig}
-      ></advanced-camera-card-viewer-provider>
+      ></advanced-camera-card-mini-viewer-provider>
     </div>`;
   }
 
@@ -480,6 +480,6 @@ export class AdvancedCameraCardViewerCarousel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-viewer-carousel': AdvancedCameraCardViewerCarousel;
+    'advanced-camera-card-mini-viewer-carousel': AdvancedCameraCardViewerCarousel;
   }
 }

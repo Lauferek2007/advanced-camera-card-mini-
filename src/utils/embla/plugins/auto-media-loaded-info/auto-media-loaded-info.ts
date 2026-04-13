@@ -50,11 +50,11 @@ function AutoMediaLoadedInfo(): AutoMediaLoadedInfoType {
 
     for (const slide of slides) {
       slide.addEventListener(
-        'advanced-camera-card:media:loaded',
+        'advanced-camera-card-mini:media:loaded',
         mediaLoadedInfoHandler,
       );
       slide.addEventListener(
-        'advanced-camera-card:media:unloaded',
+        'advanced-camera-card-mini:media:unloaded',
         mediaUnloadedInfoHandler,
       );
     }
@@ -63,7 +63,7 @@ function AutoMediaLoadedInfo(): AutoMediaLoadedInfoType {
     emblaApi
       .containerNode()
       .addEventListener(
-        'advanced-camera-card:carousel:force-select',
+        'advanced-camera-card-mini:carousel:force-select',
         slideSelectHandler,
       );
   }
@@ -71,11 +71,11 @@ function AutoMediaLoadedInfo(): AutoMediaLoadedInfoType {
   function destroy(): void {
     for (const slide of slides) {
       slide.removeEventListener(
-        'advanced-camera-card:media:loaded',
+        'advanced-camera-card-mini:media:loaded',
         mediaLoadedInfoHandler,
       );
       slide.removeEventListener(
-        'advanced-camera-card:media:unloaded',
+        'advanced-camera-card-mini:media:unloaded',
         mediaUnloadedInfoHandler,
       );
     }
@@ -84,7 +84,7 @@ function AutoMediaLoadedInfo(): AutoMediaLoadedInfoType {
     emblaApi
       .containerNode()
       .removeEventListener(
-        'advanced-camera-card:carousel:force-select',
+        'advanced-camera-card-mini:carousel:force-select',
         slideSelectHandler,
       );
   }

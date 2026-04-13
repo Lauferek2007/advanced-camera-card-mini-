@@ -14,7 +14,7 @@ import './icon.js';
 import './submenu/select-button.js';
 import './submenu/submenu-button';
 
-@customElement('advanced-camera-card-menu')
+@customElement('advanced-camera-card-mini-menu')
 export class AdvancedCameraCardMenu extends LitElement {
   protected _controller = new MenuController(this);
 
@@ -45,26 +45,26 @@ export class AdvancedCameraCardMenu extends LitElement {
       return;
     }
 
-    if (button.type === 'custom:advanced-camera-card-menu-submenu') {
-      return html` <advanced-camera-card-submenu-button
+    if (button.type === 'custom:advanced-camera-card-mini-menu-submenu') {
+      return html` <advanced-camera-card-mini-submenu-button
         .hass=${this.hass}
         .submenu=${button}
         @action=${(ev) => this._controller.handleAction(ev)}
       >
-      </advanced-camera-card-submenu-button>`;
-    } else if (button.type === 'custom:advanced-camera-card-menu-submenu-select') {
-      return html` <advanced-camera-card-submenu-select-button
+      </advanced-camera-card-mini-submenu-button>`;
+    } else if (button.type === 'custom:advanced-camera-card-mini-menu-submenu-select') {
+      return html` <advanced-camera-card-mini-submenu-select-button
         .hass=${this.hass}
         .submenuSelect=${button}
         .entityRegistryManager=${this.entityRegistryManager}
         @action=${(ev) => this._controller.handleAction(ev)}
       >
-      </advanced-camera-card-submenu-select-button>`;
+      </advanced-camera-card-mini-submenu-select-button>`;
     }
 
     const title =
       this.hass &&
-      button.type === 'custom:advanced-camera-card-menu-state-icon' &&
+      button.type === 'custom:advanced-camera-card-mini-menu-state-icon' &&
       !button.title
         ? getEntityTitle(this.hass, button.entity)
         : button.title;
@@ -77,7 +77,7 @@ export class AdvancedCameraCardMenu extends LitElement {
       .label=${title ?? ''}
       @action=${(ev) => this._controller.handleAction(ev, button)}
     >
-      <advanced-camera-card-icon
+      <advanced-camera-card-mini-icon
         ?allow-override-non-active-styles=${true}
         style="${styleMap(button.style || {})}"
         .hass=${this.hass}
@@ -87,7 +87,7 @@ export class AdvancedCameraCardMenu extends LitElement {
           stateColor: button.state_color,
           fallback: 'mdi:gesture-tap-button',
         }}
-      ></advanced-camera-card-icon>
+      ></advanced-camera-card-mini-icon>
     </ha-icon-button>`;
   }
 
@@ -112,13 +112,13 @@ export class AdvancedCameraCardMenu extends LitElement {
 
     const generateValue = (suffix: string): string => {
       return `
-        var(--advanced-camera-card-menu-override-${suffix},
-        var(--advanced-camera-card-menu-position-${position}-alignment-${alignment}-style-${style}-${suffix},
-        var(--advanced-camera-card-menu-position-${position}-alignment-${alignment}-${suffix},
-        var(--advanced-camera-card-menu-position-${position}-${suffix},
-        var(--advanced-camera-card-menu-style-${style}-${suffix},
-        var(--advanced-camera-card-menu-alignment-${alignment}-${suffix},
-        var(--advanced-camera-card-menu-${suffix})))))))`;
+        var(--advanced-camera-card-mini-menu-override-${suffix},
+        var(--advanced-camera-card-mini-menu-position-${position}-alignment-${alignment}-style-${style}-${suffix},
+        var(--advanced-camera-card-mini-menu-position-${position}-alignment-${alignment}-${suffix},
+        var(--advanced-camera-card-mini-menu-position-${position}-${suffix},
+        var(--advanced-camera-card-mini-menu-style-${style}-${suffix},
+        var(--advanced-camera-card-mini-menu-alignment-${alignment}-${suffix},
+        var(--advanced-camera-card-mini-menu-${suffix})))))))`;
     };
 
     // By definition `rule` will match the current configuration, the choice is
@@ -173,6 +173,6 @@ export class AdvancedCameraCardMenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-menu': AdvancedCameraCardMenu;
+    'advanced-camera-card-mini-menu': AdvancedCameraCardMenu;
   }
 }

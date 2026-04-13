@@ -63,7 +63,7 @@ export class StatusBarItemManager {
       ...(title
         ? [
             {
-              type: 'custom:advanced-camera-card-status-bar-string' as const,
+              type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
               string: title,
               expand: true,
               sufficient: true,
@@ -75,7 +75,7 @@ export class StatusBarItemManager {
       ...(resolution
         ? [
             {
-              type: 'custom:advanced-camera-card-status-bar-string' as const,
+              type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
               string: resolution,
               ...options?.statusConfig?.items.resolution,
             },
@@ -85,7 +85,7 @@ export class StatusBarItemManager {
       ...(technology && technology === 'webrtc'
         ? [
             {
-              type: 'custom:advanced-camera-card-status-bar-icon' as const,
+              type: 'custom:advanced-camera-card-mini-status-bar-icon' as const,
               icon: 'mdi:webrtc',
               ...options?.statusConfig?.items.technology,
             },
@@ -93,7 +93,7 @@ export class StatusBarItemManager {
         : !!technology
           ? [
               {
-                type: 'custom:advanced-camera-card-status-bar-string' as const,
+                type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
                 string: technology.toUpperCase(),
                 ...options?.statusConfig?.items.technology,
               },
@@ -103,7 +103,7 @@ export class StatusBarItemManager {
       ...(engineIcon
         ? [
             {
-              type: 'custom:advanced-camera-card-status-bar-icon' as const,
+              type: 'custom:advanced-camera-card-mini-status-bar-icon' as const,
               icon: engineIcon,
               ...options?.statusConfig?.items.engine,
             },

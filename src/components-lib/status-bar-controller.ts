@@ -48,7 +48,7 @@ export class StatusBarController {
   public setConfig(config: StatusBarConfig): void {
     this._config = config;
     this._host.style.setProperty(
-      '--advanced-camera-card-status-bar-height',
+      '--advanced-camera-card-mini-status-bar-height',
       `${config.height}px`,
     );
 
@@ -92,11 +92,11 @@ export class StatusBarController {
 
   protected _getSufficientValue(item: StatusBarItem): string | null {
     /* istanbul ignore else: cannot happen -- @preserve */
-    if (item.type === 'custom:advanced-camera-card-status-bar-icon') {
+    if (item.type === 'custom:advanced-camera-card-mini-status-bar-icon') {
       return item.icon;
-    } else if (item.type === 'custom:advanced-camera-card-status-bar-string') {
+    } else if (item.type === 'custom:advanced-camera-card-mini-status-bar-string') {
       return item.string;
-    } else if (item.type === 'custom:advanced-camera-card-status-bar-image') {
+    } else if (item.type === 'custom:advanced-camera-card-mini-status-bar-image') {
       return item.image;
     } else {
       return null;

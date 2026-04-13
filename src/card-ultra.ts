@@ -172,7 +172,7 @@ class AdvancedCameraCardUltra extends LitElement {
 
     if (cameraIDs.size > 1) {
       buttons.push({
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         enabled: true,
         icon: 'mdi:video-switch',
         title: 'Cameras',
@@ -193,7 +193,7 @@ class AdvancedCameraCardUltra extends LitElement {
 
     if (this._controller.getFullscreenManager().isSupported()) {
       buttons.push({
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         enabled: true,
         icon: this._controller.getFullscreenManager().isInFullscreen()
           ? 'mdi:fullscreen-exit'
@@ -226,26 +226,26 @@ class AdvancedCameraCardUltra extends LitElement {
           hasDoubleClick: hasAction(actions.double_tap_action),
         })}
         style="${styleMap(this._controller.getStyleManager().getAspectRatioStyle())}"
-        @advanced-camera-card:message=${(ev: CustomEvent<Message>) =>
+        @advanced-camera-card-mini:message=${(ev: CustomEvent<Message>) =>
           this._controller.getMessageManager().setMessageIfHigherPriority(ev.detail)}
-        @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) =>
+        @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) =>
           this._controller.getMediaLoadedInfoManager().set(ev.detail)}
-        @advanced-camera-card:media:unloaded=${() =>
+        @advanced-camera-card-mini:media:unloaded=${() =>
           this._controller.getMediaLoadedInfoManager().clear()}
-        @advanced-camera-card:media:volumechange=${() => this.requestUpdate()}
-        @advanced-camera-card:media:play=${() => this.requestUpdate()}
-        @advanced-camera-card:media:pause=${() => this.requestUpdate()}
-        @advanced-camera-card:focus=${() => this.focus()}
+        @advanced-camera-card-mini:media:volumechange=${() => this.requestUpdate()}
+        @advanced-camera-card-mini:media:play=${() => this.requestUpdate()}
+        @advanced-camera-card-mini:media:pause=${() => this.requestUpdate()}
+        @advanced-camera-card-mini:focus=${() => this.focus()}
       >
         ${showLoading
-          ? html`<advanced-camera-card-loading
+          ? html`<advanced-camera-card-mini-loading
               .loaded=${this._controller
                 .getInitializationManager()
                 .wasEverInitialized()}
-            ></advanced-camera-card-loading>`
+            ></advanced-camera-card-mini-loading>`
           : ''}
         ${buttons.length
-          ? html`<advanced-camera-card-menu
+          ? html`<advanced-camera-card-mini-menu
               ${ref(this._refMenu)}
               .hass=${this._hass}
               .menuConfig=${{
@@ -255,7 +255,7 @@ class AdvancedCameraCardUltra extends LitElement {
                 alignment: 'left',
               }}
               .buttons=${buttons}
-            ></advanced-camera-card-menu>`
+            ></advanced-camera-card-mini-menu>`
           : ''}
         <div class="main">
           ${this._controller.getMessageManager().hasMessage()

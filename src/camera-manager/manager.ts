@@ -237,7 +237,7 @@ export class CameraManager {
     }
 
     // Engines are created sequentially, to avoid duplicate creation of the same
-    // engine. See: https://github.com/dermotduffy/advanced-camera-card/issues/941
+    // engine. See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/941
     const engineByConfig = await this._getEnginesForCameras(camerasConfig);
 
     // Configuration is initialized in parallel.

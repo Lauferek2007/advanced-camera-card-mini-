@@ -6,7 +6,7 @@ import { BrowseMediaMetadata, RichBrowseMedia } from './types';
 // cutoff from the most recent (this differs from how items may be sorted prior
 // to presentation).
 //
-// See: https://github.com/dermotduffy/advanced-camera-card/issues/2078
+// See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2078
 
 export const sortMostRecentFirst = (
   media: RichBrowseMedia<BrowseMediaMetadata>[],

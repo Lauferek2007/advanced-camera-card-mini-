@@ -263,7 +263,7 @@ describe('MediaActionsController', () => {
     controller.unsetTarget();
 
     getPlayer(children[0], 'video')?.dispatchEvent(
-      new Event('advanced-camera-card:media:loaded'),
+      new Event('advanced-camera-card-mini:media:loaded'),
     );
     await flushPromises();
 
@@ -294,7 +294,7 @@ describe('MediaActionsController', () => {
       ).toBeCalledTimes(1);
 
       getPlayer(children[0], 'video')?.dispatchEvent(
-        new Event('advanced-camera-card:media:loaded'),
+        new Event('advanced-camera-card-mini:media:loaded'),
       );
 
       await flushPromises();
@@ -320,7 +320,7 @@ describe('MediaActionsController', () => {
       ).toBeCalledTimes(1);
 
       getPlayer(children[0], 'video')?.dispatchEvent(
-        new Event('advanced-camera-card:media:loaded'),
+        new Event('advanced-camera-card-mini:media:loaded'),
       );
 
       await flushPromises();
@@ -344,7 +344,7 @@ describe('MediaActionsController', () => {
       await controller.setTarget(0, true);
 
       getPlayer(children[9], 'video')?.dispatchEvent(
-        new Event('advanced-camera-card:media:loaded'),
+        new Event('advanced-camera-card-mini:media:loaded'),
       );
 
       await flushPromises();
@@ -378,7 +378,7 @@ describe('MediaActionsController', () => {
       ).toBeCalledTimes(1);
 
       getPlayer(children[0], 'video')?.dispatchEvent(
-        new Event('advanced-camera-card:media:loaded'),
+        new Event('advanced-camera-card-mini:media:loaded'),
       );
 
       await flushPromises();

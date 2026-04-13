@@ -11,7 +11,7 @@ interface AdvancedCameraCardDrawerOpen {
   drawer: 'left' | 'right';
 }
 
-@customElement('advanced-camera-card-surround-basic')
+@customElement('advanced-camera-card-mini-surround-basic')
 export class AdvancedCameraCardSurroundBasic extends LitElement {
   @property({ attribute: false })
   public drawerIcons?: {
@@ -25,17 +25,17 @@ export class AdvancedCameraCardSurroundBasic extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener('advanced-camera-card:drawer:open', this._boundDrawerHandler);
-    this.addEventListener('advanced-camera-card:drawer:close', this._boundDrawerHandler);
+    this.addEventListener('advanced-camera-card-mini:drawer:open', this._boundDrawerHandler);
+    this.addEventListener('advanced-camera-card-mini:drawer:close', this._boundDrawerHandler);
   }
 
   disconnectedCallback(): void {
     this.removeEventListener(
-      'advanced-camera-card:drawer:open',
+      'advanced-camera-card-mini:drawer:open',
       this._boundDrawerHandler,
     );
     this.removeEventListener(
-      'advanced-camera-card:drawer:close',
+      'advanced-camera-card-mini:drawer:close',
       this._boundDrawerHandler,
     );
     super.disconnectedCallback();
@@ -54,20 +54,20 @@ export class AdvancedCameraCardSurroundBasic extends LitElement {
   protected render(): TemplateResult | void {
     return html` <slot name="above"></slot>
       <slot></slot>
-      <advanced-camera-card-drawer
+      <advanced-camera-card-mini-drawer
         ${ref(this._refDrawerLeft)}
         location="left"
         .icons=${this.drawerIcons?.left}
       >
         <slot name="left"></slot>
-      </advanced-camera-card-drawer>
-      <advanced-camera-card-drawer
+      </advanced-camera-card-mini-drawer>
+      <advanced-camera-card-mini-drawer
         ${ref(this._refDrawerRight)}
         location="right"
         .icons=${this.drawerIcons?.right}
       >
         <slot name="right"></slot>
-      </advanced-camera-card-drawer>
+      </advanced-camera-card-mini-drawer>
       <slot name="below"></slot>`;
   }
 
@@ -78,6 +78,6 @@ export class AdvancedCameraCardSurroundBasic extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-surround-basic': AdvancedCameraCardSurroundBasic;
+    'advanced-camera-card-mini-surround-basic': AdvancedCameraCardSurroundBasic;
   }
 }

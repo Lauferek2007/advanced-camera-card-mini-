@@ -100,7 +100,7 @@ export class MediaHeightController {
       // This ensures that the host (the carousel) expands to fit the media, but
       // does not shrink smaller than itself (which would cause a "flash" or
       // jump).
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/2109
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2109
       this._host.style.maxHeight = `${Math.max(selectedHeight, hostHeight)}px`;
     }
   }

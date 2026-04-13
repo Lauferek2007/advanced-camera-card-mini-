@@ -14,7 +14,7 @@ export const menuSubmenuItemSchema = elementsBaseSchema.extend({
 export type MenuSubmenuItem = z.infer<typeof menuSubmenuItemSchema>;
 
 export const menuSubmenuSchema = menuBaseSchema.merge(iconSchema).extend({
-  type: z.literal('custom:advanced-camera-card-menu-submenu'),
+  type: z.literal('custom:advanced-camera-card-mini-menu-submenu'),
   items: menuSubmenuItemSchema.array(),
 });
 export type MenuSubmenu = z.infer<typeof menuSubmenuSchema>;

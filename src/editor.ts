@@ -1023,9 +1023,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
         .key=${optionSetName}
       >
         <div class="row">
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             .icon=${{ icon: `mdi:${optionSet.icon}` }}
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
           <div class="title ${titleClass ?? ''}">${optionSet.name}</div>
         </div>
         <div class="secondary">${optionSet.secondary}</div>
@@ -1342,13 +1342,13 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
     configPath: string,
     defaultValue: KeyboardShortcut,
   ): TemplateResult {
-    return html` <advanced-camera-card-key-assigner
+    return html` <advanced-camera-card-mini-key-assigner
       .label=${localize(`config.${configPath}`)}
       .value=${this._config
         ? getConfigValue(this._config, configPath, defaultValue)
         : null}
       @value-changed=${(ev) => this._valueChangedHandler(configPath, ev)}
-    ></advanced-camera-card-key-assigner>`;
+    ></advanced-camera-card-mini-key-assigner>`;
   }
 
   protected _renderViewKeyboardShortcutMenu(): TemplateResult {
@@ -1499,7 +1499,7 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
         .domain=${domain}
         .key=${key}
       >
-        <advanced-camera-card-icon .icon=${{ icon: icon }}></advanced-camera-card-icon>
+        <advanced-camera-card-mini-icon .icon=${{ icon: icon }}></advanced-camera-card-mini-icon>
         <span>${localize(labelPath)}</span>
       </div>
       ${selected ? html`<div class="values">${template}</div>` : ''}
@@ -1981,9 +1981,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
               return false;
             })}
         >
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             .icon=${{ icon: 'mdi:arrow-up' }}
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
         </ha-icon-button>
         <ha-icon-button
           .label=${localize('editor.move_down')}
@@ -2003,9 +2003,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
               return false;
             })}
         >
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             .icon=${{ icon: 'mdi:arrow-down' }}
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
         </ha-icon-button>
         <ha-icon-button
           .label=${localize('editor.delete')}
@@ -2022,9 +2022,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
             });
           }}
         >
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             .icon=${{ icon: 'mdi:delete' }}
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
         </ha-icon-button>
       </div>
     `;
@@ -2052,9 +2052,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
         .domain=${MENU_FOLDERS}
         .key=${folderIndex}
       >
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           .icon=${{ icon: addNewFolder ? 'mdi:folder-plus' : 'mdi:folder' }}
-        ></advanced-camera-card-icon>
+        ></advanced-camera-card-mini-icon>
         <span>
           ${addNewFolder
             ? html` <span class="new"> [${localize('editor.add_new_folder')}...] </span>`
@@ -2172,9 +2172,9 @@ export class AdvancedCameraCardEditor extends LitElement implements LovelaceCard
           .domain=${MENU_CAMERAS}
           .key=${cameraIndex}
         >
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             .icon=${{ icon: addNewCamera ? 'mdi:video-plus' : 'mdi:video' }}
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
           <span>
             ${addNewCamera
               ? html` <span class="new">

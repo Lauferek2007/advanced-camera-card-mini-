@@ -16,7 +16,7 @@ import statusStyle from '../scss/status.scss';
 import { hasAction } from '../utils/action';
 import './icon.js';
 
-@customElement('advanced-camera-card-status-bar')
+@customElement('advanced-camera-card-mini-status-bar')
 export class AdvancedCameraCardStatusBar extends LitElement {
   protected _controller = new StatusBarController(this);
 
@@ -55,11 +55,11 @@ export class AdvancedCameraCardStatusBar extends LitElement {
 
     const generateValue = (suffix: string): string => {
       return `
-        var(--advanced-camera-card-status-bar-override-${suffix},
-        var(--advanced-camera-card-status-bar-position-${position}-style-${style}-${suffix},
-        var(--advanced-camera-card-status-bar-position-${position}-${suffix},
-        var(--advanced-camera-card-status-bar-style-${style}-${suffix},
-        var(--advanced-camera-card-status-bar-${suffix})))))`;
+        var(--advanced-camera-card-mini-status-bar-override-${suffix},
+        var(--advanced-camera-card-mini-status-bar-position-${position}-style-${style}-${suffix},
+        var(--advanced-camera-card-mini-status-bar-position-${position}-${suffix},
+        var(--advanced-camera-card-mini-status-bar-style-${style}-${suffix},
+        var(--advanced-camera-card-mini-status-bar-${suffix})))))`;
     };
 
     const rule = `[data-position='${position}']` + `[data-style='${style}']`;
@@ -96,7 +96,7 @@ export class AdvancedCameraCardStatusBar extends LitElement {
             hasDoubleClick: hasAction(item.actions?.double_tap_action),
           });
 
-          if (item.type === 'custom:advanced-camera-card-status-bar-string') {
+          if (item.type === 'custom:advanced-camera-card-mini-status-bar-string') {
             return html`<div
               .actionHandler=${handler}
               class="${classes}"
@@ -104,14 +104,14 @@ export class AdvancedCameraCardStatusBar extends LitElement {
             >
               ${item.string}
             </div>`;
-          } else if (item.type === 'custom:advanced-camera-card-status-bar-icon') {
-            return html`<advanced-camera-card-icon
+          } else if (item.type === 'custom:advanced-camera-card-mini-status-bar-icon') {
+            return html`<advanced-camera-card-mini-icon
               .actionHandler=${handler}
               .icon=${{ icon: item.icon }}
               class="${classes}"
               @action=${(ev) => this._controller.actionHandler(ev, item.actions)}
-            ></advanced-camera-card-icon>`;
-          } else if (item.type === 'custom:advanced-camera-card-status-bar-image') {
+            ></advanced-camera-card-mini-icon>`;
+          } else if (item.type === 'custom:advanced-camera-card-mini-status-bar-image') {
             return html`<img
               .actionHandler=${handler}
               class="${classes}"
@@ -131,6 +131,6 @@ export class AdvancedCameraCardStatusBar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-status-bar': AdvancedCameraCardStatusBar;
+    'advanced-camera-card-mini-status-bar': AdvancedCameraCardStatusBar;
   }
 }

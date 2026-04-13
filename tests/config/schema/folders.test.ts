@@ -95,7 +95,7 @@ describe('should lazy evaluate schemas', () => {
   });
 });
 
-// See: https://github.com/dermotduffy/advanced-camera-card/issues/2196
+// See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2196
 describe('should be able to re-parse a folder', () => {
   it('should be able to re-parse a folder', () => {
     const inputFolder = {

@@ -7,7 +7,7 @@ import {
   setOrRemoveAttribute,
   setOrRemoveStyleProperty,
 } from '../utils/basic';
-import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-mini-event';
 import {
   AdvancedCameraCardMediaLoadedEventTarget,
   dispatchExistingMediaLoadedInfoAsEvent,
@@ -293,7 +293,7 @@ export class MediaGridController {
     });
 
     child.addEventListener(
-      'advanced-camera-card:media:loaded',
+      'advanced-camera-card-mini:media:loaded',
       this._handleMediaLoadedInfoEvent,
     );
   }
@@ -304,7 +304,7 @@ export class MediaGridController {
     });
 
     child.removeEventListener(
-      'advanced-camera-card:media:loaded',
+      'advanced-camera-card-mini:media:loaded',
       this._handleMediaLoadedInfoEvent,
     );
   }
@@ -357,7 +357,7 @@ export class MediaGridController {
       setOrRemoveStyleProperty(
         element,
         !!widthFactor,
-        '--advanced-camera-card-grid-width-factor',
+        '--advanced-camera-card-mini-grid-width-factor',
         widthFactor ?? undefined,
       );
     }
@@ -399,12 +399,12 @@ export class MediaGridController {
 
   protected _setColumnSizeStyles(): void {
     this._host.style.setProperty(
-      '--advanced-camera-card-grid-column-size',
+      '--advanced-camera-card-mini-grid-column-size',
       `${this._getColumnSize()}px`,
     );
 
     this._host.style.setProperty(
-      '--advanced-camera-card-grid-selected-width-factor',
+      '--advanced-camera-card-mini-grid-selected-width-factor',
       `${
         this._displayConfig?.grid_selected_width_factor ??
         MEDIA_GRID_DEFAULT_SELECTED_WIDTH_FACTOR

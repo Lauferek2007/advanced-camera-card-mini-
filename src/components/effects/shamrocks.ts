@@ -20,7 +20,7 @@ interface ShamrockConfig {
   startY: string;
 }
 
-@customElement('advanced-camera-card-effect-shamrocks')
+@customElement('advanced-camera-card-mini-effect-shamrocks')
 export class AdvancedCameraCardEffectShamrocks extends BaseEffectComponent {
   private _shamrocks: ShamrockConfig[];
 
@@ -48,14 +48,14 @@ export class AdvancedCameraCardEffectShamrocks extends BaseEffectComponent {
         this._shamrocks,
         (shamrock) => shamrock.id,
         (shamrock) => html`
-          <advanced-camera-card-shamrock
+          <advanced-camera-card-mini-shamrock
             .size=${shamrock.size}
             .maxOpacity=${shamrock.maxOpacity}
             .pulseDuration=${shamrock.pulseDuration}
             .pulseDelay=${shamrock.pulseDelay}
             .startX=${shamrock.startX}
             .startY=${shamrock.startY}
-          ></advanced-camera-card-shamrock>
+          ></advanced-camera-card-mini-shamrock>
         `,
       )}
     `;
@@ -64,6 +64,6 @@ export class AdvancedCameraCardEffectShamrocks extends BaseEffectComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effect-shamrocks': AdvancedCameraCardEffectShamrocks;
+    'advanced-camera-card-mini-effect-shamrocks': AdvancedCameraCardEffectShamrocks;
   }
 }

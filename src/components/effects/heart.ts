@@ -2,7 +2,7 @@ import { CSSResultGroup, html, LitElement, TemplateResult, unsafeCSS } from 'lit
 import { customElement, property } from 'lit/decorators.js';
 import heartStyle from '../../scss/heart.scss';
 
-@customElement('advanced-camera-card-heart')
+@customElement('advanced-camera-card-mini-heart')
 export class AdvancedCameraCardHeart extends LitElement {
   @property({ type: String })
   public char = '❤️';
@@ -74,6 +74,6 @@ export class AdvancedCameraCardHeart extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-heart': AdvancedCameraCardHeart;
+    'advanced-camera-card-mini-heart': AdvancedCameraCardHeart;
   }
 }

@@ -8,7 +8,7 @@ import { Icon } from '../types.js';
 import { renderTask } from '../utils/task.js';
 import { createFetchThumbnailTask } from '../utils/thumbnail.js';
 
-@customElement('advanced-camera-card-next-previous-control')
+@customElement('advanced-camera-card-mini-next-previous-control')
 export class AdvancedCameraCardNextPreviousControl extends LitElement {
   @property({ attribute: false })
   public side?: 'left' | 'right';
@@ -16,7 +16,7 @@ export class AdvancedCameraCardNextPreviousControl extends LitElement {
   set controlConfig(controlConfig: NextPreviousControlConfig | undefined) {
     if (controlConfig?.size) {
       this.style.setProperty(
-        '--advanced-camera-card-next-prev-size',
+        '--advanced-camera-card-mini-next-prev-size',
         `${controlConfig.size}px`,
       );
     }
@@ -75,10 +75,10 @@ export class AdvancedCameraCardNextPreviousControl extends LitElement {
       };
 
       return html` <ha-icon-button class="${classMap(classes)}" .label=${this.label}>
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           .hass=${this.hass}
           .icon=${icon}
-        ></advanced-camera-card-icon>
+        ></advanced-camera-card-mini-icon>
       </ha-icon-button>`;
     };
 
@@ -117,6 +117,6 @@ export class AdvancedCameraCardNextPreviousControl extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-next-previous-control': AdvancedCameraCardNextPreviousControl;
+    'advanced-camera-card-mini-next-previous-control': AdvancedCameraCardNextPreviousControl;
   }
 }

@@ -21,7 +21,7 @@ describe('FolderGalleryController', () => {
 
       controller.setThumbnailSize(100);
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-thumbnail-size')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-thumbnail-size')).toBe(
         '100px',
       );
     });
@@ -32,7 +32,7 @@ describe('FolderGalleryController', () => {
 
       controller.setThumbnailSize();
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-thumbnail-size')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-thumbnail-size')).toBe(
         `${THUMBNAIL_WIDTH_DEFAULT}px`,
       );
     });

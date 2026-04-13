@@ -2,7 +2,7 @@ import { CSSResultGroup, LitElement, TemplateResult, html, unsafeCSS } from 'lit
 import { customElement } from 'lit/decorators.js';
 import overlayStyle from '../scss/overlay.scss';
 
-@customElement('advanced-camera-card-overlay')
+@customElement('advanced-camera-card-mini-overlay')
 export class AdvancedCameraCardOverlay extends LitElement {
   protected render(): TemplateResult | void {
     return html`
@@ -20,6 +20,6 @@ export class AdvancedCameraCardOverlay extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-overlay': AdvancedCameraCardOverlay;
+    'advanced-camera-card-mini-overlay': AdvancedCameraCardOverlay;
   }
 }

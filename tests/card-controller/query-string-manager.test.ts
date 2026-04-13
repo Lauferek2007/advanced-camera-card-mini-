@@ -52,7 +52,7 @@ describe('QueryStringManager', () => {
       ['snapshots' as const],
       ['timeline' as const],
     ])('%s', async (viewName: string) => {
-      setQueryString(`?advanced-camera-card-action.id.${viewName}=`);
+      setQueryString(`?advanced-camera-card-mini-action.id.${viewName}=`);
       const api = createCardAPI();
       setCardID(api, 'id');
 
@@ -79,7 +79,7 @@ describe('QueryStringManager', () => {
       ['expand' as const],
       ['menu_toggle' as const],
     ])('%s', async (action: string) => {
-      setQueryString(`?advanced-camera-card-action.id.${action}=`);
+      setQueryString(`?advanced-camera-card-mini-action.id.${action}=`);
       const api = createCardAPI();
       setCardID(api, 'id');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -101,7 +101,7 @@ describe('QueryStringManager', () => {
   });
 
   it('should execute view default action', async () => {
-    setQueryString('?advanced-camera-card-action.id.default=');
+    setQueryString('?advanced-camera-card-mini-action.id.default=');
     const api = createCardAPI();
     setCardID(api, 'id');
     // View actions do not need the card to have been updated.
@@ -119,7 +119,7 @@ describe('QueryStringManager', () => {
   });
 
   it('should execute camera_select action', async () => {
-    setQueryString('?advanced-camera-card-action.id.camera_select=camera.office');
+    setQueryString('?advanced-camera-card-mini-action.id.camera_select=camera.office');
     const api = createCardAPI();
     setCardID(api, 'id');
     vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -140,7 +140,7 @@ describe('QueryStringManager', () => {
 
   it('should execute live_substream_select action', async () => {
     setQueryString(
-      '?advanced-camera-card-action.id.live_substream_select=camera.office_hd',
+      '?advanced-camera-card-mini-action.id.live_substream_select=camera.office_hd',
     );
     const api = createCardAPI();
     setCardID(api, 'id');
@@ -164,7 +164,7 @@ describe('QueryStringManager', () => {
     it.each([['camera_select' as const], ['live_substream_select' as const]])(
       '%s',
       async (action: string) => {
-        setQueryString(`?advanced-camera-card-action.id.${action}=`);
+        setQueryString(`?advanced-camera-card-mini-action.id.${action}=`);
         const api = createCardAPI();
         setCardID(api, 'id');
         vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -183,7 +183,7 @@ describe('QueryStringManager', () => {
   it('should handle unknown action', async () => {
     const consoleSpy = vi.spyOn(global.console, 'warn').mockReturnValue(undefined);
 
-    setQueryString('?advanced-camera-card-action.id.not_an_action=value');
+    setQueryString('?advanced-camera-card-mini-action.id.not_an_action=value');
     const api = createCardAPI();
     setCardID(api, 'id');
     vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -211,7 +211,7 @@ describe('QueryStringManager', () => {
       ['snapshots' as const],
       ['timeline' as const],
     ])('%s', async (viewName: string) => {
-      setQueryString(`?advanced-camera-card-action.id.${viewName}=`);
+      setQueryString(`?advanced-camera-card-mini-action.id.${viewName}=`);
       const api = createCardAPI();
       setCardID(api, 'id');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -232,10 +232,10 @@ describe('QueryStringManager', () => {
   describe('should handle conflicting but valid actions', () => {
     it('view and default with camera and substream specified', async () => {
       setQueryString(
-        '?advanced-camera-card-action.id.clips=' +
-          '&advanced-camera-card-action.id.live_substream_select=camera.kitchen_hd' +
-          '&advanced-camera-card-action.id.default=' +
-          '&advanced-camera-card-action.id.camera_select=camera.kitchen',
+        '?advanced-camera-card-mini-action.id.clips=' +
+          '&advanced-camera-card-mini-action.id.live_substream_select=camera.kitchen_hd' +
+          '&advanced-camera-card-mini-action.id.default=' +
+          '&advanced-camera-card-mini-action.id.camera_select=camera.kitchen',
       );
       const api = createCardAPI();
       setCardID(api, 'id');
@@ -255,8 +255,8 @@ describe('QueryStringManager', () => {
 
     it('multiple cameras specified', async () => {
       setQueryString(
-        '?advanced-camera-card-action.id.camera_select=camera.kitchen' +
-          '&advanced-camera-card-action.id.camera_select=camera.office',
+        '?advanced-camera-card-mini-action.id.camera_select=camera.kitchen' +
+          '&advanced-camera-card-mini-action.id.camera_select=camera.office',
       );
       const api = createCardAPI();
       setCardID(api, 'id');
@@ -275,7 +275,7 @@ describe('QueryStringManager', () => {
 
   it('should only execute when needed', async () => {
     setQueryString(
-      '?advanced-camera-card-action.id.live_substream_select=camera.office_hd',
+      '?advanced-camera-card-mini-action.id.live_substream_select=camera.office_hd',
     );
     const api = createCardAPI();
     setCardID(api, 'id');
@@ -321,7 +321,7 @@ describe('QueryStringManager', () => {
 
   describe('should filter by card_id', () => {
     it('should execute view action when card_id matches', async () => {
-      setQueryString('?advanced-camera-card-action.my_card.clips=');
+      setQueryString('?advanced-camera-card-mini-action.my_card.clips=');
       const api = createCardAPI();
       setCardID(api, 'my_card');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(false);
@@ -338,7 +338,7 @@ describe('QueryStringManager', () => {
     });
 
     it('should NOT execute view action when card_id does not match', async () => {
-      setQueryString('?advanced-camera-card-action.other_card.clips=');
+      setQueryString('?advanced-camera-card-mini-action.other_card.clips=');
       const api = createCardAPI();
       setCardID(api, 'my_card');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(false);
@@ -352,7 +352,7 @@ describe('QueryStringManager', () => {
     });
 
     it('should execute action without card_id on any card', async () => {
-      setQueryString('?advanced-camera-card-action.clips=');
+      setQueryString('?advanced-camera-card-mini-action.clips=');
       const api = createCardAPI();
       setCardID(api, 'my_card');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(false);
@@ -369,7 +369,7 @@ describe('QueryStringManager', () => {
     });
 
     it('should NOT execute non-view action when card_id does not match', async () => {
-      setQueryString('?advanced-camera-card-action.other_card.menu_toggle=');
+      setQueryString('?advanced-camera-card-mini-action.other_card.menu_toggle=');
       const api = createCardAPI();
       setCardID(api, 'my_card');
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(true);
@@ -382,7 +382,7 @@ describe('QueryStringManager', () => {
     });
 
     it('should execute action when card has no card_id and URL has card_id', async () => {
-      setQueryString('?advanced-camera-card-action.some_card.clips=');
+      setQueryString('?advanced-camera-card-mini-action.some_card.clips=');
       const api = createCardAPI();
       vi.mocked(api.getCardElementManager().hasUpdated).mockReturnValue(false);
       const manager = new QueryStringManager(api);

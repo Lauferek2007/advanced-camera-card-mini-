@@ -64,7 +64,7 @@ export class MediaDimensionsContainerController implements ReactiveController {
     }
     this._innerContainer.removeEventListener('slotchange', this.resize);
     this._innerContainer.removeEventListener(
-      'advanced-camera-card:media:loaded',
+      'advanced-camera-card-mini:media:loaded',
       this._mediaLoadedHandler,
     );
   }
@@ -76,7 +76,7 @@ export class MediaDimensionsContainerController implements ReactiveController {
 
     this._innerContainer.addEventListener('slotchange', this.resize);
     this._innerContainer.addEventListener(
-      'advanced-camera-card:media:loaded',
+      'advanced-camera-card-mini:media:loaded',
       this._mediaLoadedHandler,
     );
   }
@@ -152,7 +152,7 @@ export class MediaDimensionsContainerController implements ReactiveController {
     setOrRemoveStyleProperty(
       this._innerContainer,
       this._requiresRotation(),
-      '--advanced-camera-card-media-rotation',
+      '--advanced-camera-card-mini-media-rotation',
       `${this._dimensionsConfig?.rotation}deg`,
     );
 

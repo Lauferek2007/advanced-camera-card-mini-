@@ -168,7 +168,7 @@ describe('GalleryCoreController', () => {
 
       controller.setOptions({ columnWidth: 250 });
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-gallery-columns')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-gallery-columns')).toBe(
         '1',
       );
     });
@@ -181,7 +181,7 @@ describe('GalleryCoreController', () => {
 
       controller.setOptions({ columnWidth: 200 });
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-gallery-columns')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-gallery-columns')).toBe(
         '1',
       );
     });
@@ -204,7 +204,7 @@ describe('GalleryCoreController', () => {
           controller.setOptions({ columnWidth: 51, columnCountRoundMethod });
 
           expect(
-            host.style.getPropertyValue('--advanced-camera-card-gallery-columns'),
+            host.style.getPropertyValue('--advanced-camera-card-mini-gallery-columns'),
           ).toBe(String(expectedColumns));
         },
       );
@@ -218,7 +218,7 @@ describe('GalleryCoreController', () => {
 
       controller.setOptions({});
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-gallery-columns')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-gallery-columns')).toBe(
         '',
       );
     });
@@ -232,7 +232,7 @@ describe('GalleryCoreController', () => {
       Object.defineProperty(host, 'clientWidth', { value: width });
       callResizeHandler([{ target: host, width, height: 200 }]);
 
-      expect(host.style.getPropertyValue('--advanced-camera-card-gallery-columns')).toBe(
+      expect(host.style.getPropertyValue('--advanced-camera-card-mini-gallery-columns')).toBe(
         '4',
       );
     });
@@ -261,7 +261,7 @@ describe('GalleryCoreController', () => {
               ev.detail.resolve();
             });
           host.addEventListener(
-            'advanced-camera-card:gallery:extend:up',
+            'advanced-camera-card-mini:gallery:extend:up',
             extendUpCallback,
           );
 
@@ -327,7 +327,7 @@ describe('GalleryCoreController', () => {
             });
 
           host.addEventListener(
-            'advanced-camera-card:gallery:extend:up',
+            'advanced-camera-card-mini:gallery:extend:up',
             extendUpCallback,
           );
 
@@ -462,7 +462,7 @@ describe('GalleryCoreController', () => {
           });
 
         host.addEventListener(
-          'advanced-camera-card:gallery:extend:up',
+          'advanced-camera-card-mini:gallery:extend:up',
           extendUpCallback,
         );
 
@@ -493,7 +493,7 @@ describe('GalleryCoreController', () => {
             ev.detail.resolve();
           });
         host.addEventListener(
-          'advanced-camera-card:gallery:extend:down',
+          'advanced-camera-card-mini:gallery:extend:down',
           extendDownCallback,
         );
 

@@ -60,7 +60,7 @@ describe('generateViewContextForZoom', () => {
 describe('handleZoomSettingsObservedEvent', () => {
   it('should reject observed zoom settings without viewManager ', () => {
     handleZoomSettingsObservedEvent(
-      new CustomEvent('advanced-camera-card:zoom:change', {
+      new CustomEvent('advanced-camera-card-mini:zoom:change', {
         detail: {
           pan: { x: 1, y: 2 },
           zoom: 3,
@@ -77,7 +77,7 @@ describe('handleZoomSettingsObservedEvent', () => {
     const viewManager = mock<ViewManager>();
 
     handleZoomSettingsObservedEvent(
-      new CustomEvent('advanced-camera-card:zoom:change', {
+      new CustomEvent('advanced-camera-card-mini:zoom:change', {
         detail: {
           pan: { x: 1, y: 2 },
           zoom: 3,
@@ -95,7 +95,7 @@ describe('handleZoomSettingsObservedEvent', () => {
     const viewManager = mock<ViewManager>();
 
     handleZoomSettingsObservedEvent(
-      new CustomEvent('advanced-camera-card:zoom:change', {
+      new CustomEvent('advanced-camera-card-mini:zoom:change', {
         detail: {
           pan: { x: 1, y: 2 },
           zoom: 3,

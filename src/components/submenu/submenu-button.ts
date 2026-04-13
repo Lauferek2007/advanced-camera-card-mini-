@@ -9,7 +9,7 @@ import { hasAction } from '../../utils/action.js';
 import '../icon.js';
 import './index.js';
 
-@customElement('advanced-camera-card-submenu-button')
+@customElement('advanced-camera-card-mini-submenu-button')
 export class AdvancedCameraCardSubmenuButton extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -23,12 +23,12 @@ export class AdvancedCameraCardSubmenuButton extends LitElement {
     }
 
     const style = styleMap(this.submenu.style || {});
-    return html` <advanced-camera-card-submenu
+    return html` <advanced-camera-card-mini-submenu
       .hass=${this.hass}
       .items=${this.submenu?.items}
     >
       <ha-icon-button style="${style}" .label=${this.submenu.title || ''}>
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           ?allow-override-non-active-styles=${true}
           style="${style}"
           title=${this.submenu.title || ''}
@@ -39,9 +39,9 @@ export class AdvancedCameraCardSubmenuButton extends LitElement {
             hasHold: hasAction(this.submenu.hold_action),
             hasDoubleClick: hasAction(this.submenu.double_tap_action),
           })}
-        ></advanced-camera-card-icon>
+        ></advanced-camera-card-mini-icon>
       </ha-icon-button>
-    </advanced-camera-card-submenu>`;
+    </advanced-camera-card-mini-submenu>`;
   }
 
   static get styles(): CSSResultGroup {
@@ -51,6 +51,6 @@ export class AdvancedCameraCardSubmenuButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-submenu-button': AdvancedCameraCardSubmenuButton;
+    'advanced-camera-card-mini-submenu-button': AdvancedCameraCardSubmenuButton;
   }
 }

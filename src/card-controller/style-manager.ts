@@ -25,7 +25,7 @@ export class StyleManager {
     // as dimension configuration does not apply in fullscreen or expanded mode.
     const lastKnown = this._api.getMediaLoadedInfoManager().getLastKnown();
     card.style.setProperty(
-      '--advanced-camera-card-expand-aspect-ratio',
+      '--advanced-camera-card-mini-expand-aspect-ratio',
       view?.isAnyMediaView() && lastKnown
         ? `${lastKnown.width} / ${lastKnown.height}`
         : 'unset',
@@ -35,16 +35,16 @@ export class StyleManager {
     // space.
     const isGrid = view?.isGrid();
     card.style.setProperty(
-      '--advanced-camera-card-expand-width',
+      '--advanced-camera-card-mini-expand-width',
       !isGrid && view?.isAnyMediaView()
         ? 'none'
-        : 'var(--advanced-camera-card-expand-max-width)',
+        : 'var(--advanced-camera-card-mini-expand-max-width)',
     );
     card.style.setProperty(
-      '--advanced-camera-card-expand-height',
+      '--advanced-camera-card-mini-expand-height',
       !isGrid && view?.isAnyMediaView()
         ? 'none'
-        : 'var(--advanced-camera-card-expand-max-height)',
+        : 'var(--advanced-camera-card-mini-expand-max-height)',
     );
   }
 
@@ -92,18 +92,18 @@ export class StyleManager {
     const config = this._api.getConfigManager().getConfig();
     if (config) {
       const card = this._api.getCardElementManager().getElement();
-      card.style.setProperty('--advanced-camera-card-height', config.dimensions.height);
+      card.style.setProperty('--advanced-camera-card-mini-height', config.dimensions.height);
     }
   }
 
   protected _setPerformance(): void {
     const STYLE_DISABLE_MAP = {
       box_shadow: {
-        cssKey: '--advanced-camera-card-box-shadow-override',
+        cssKey: '--advanced-camera-card-mini-box-shadow-override',
         value: 'none',
       },
       border_radius: {
-        cssKey: '--advanced-camera-card-border-radius-override',
+        cssKey: '--advanced-camera-card-mini-border-radius-override',
         value: '0px',
       },
     };

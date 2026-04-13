@@ -8,7 +8,7 @@ import { EntityRegistryManagerMock } from '../../ha/registry/entity/mock';
 import { createCameraConfig, createHASS, createRegistryEntity } from '../../test-utils';
 
 describe('TPLinkCamera', () => {
-  // Entity patterns from: https://github.com/dermotduffy/advanced-camera-card/issues/2183
+  // Entity patterns from: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2183
   const cameraEntity = createRegistryEntity({
     entity_id: 'camera.tapo_c520ws_39d3_live_view',
     unique_id: '80115E1CF270233D6FC2FCD4028181A7206CDB30-live_view',

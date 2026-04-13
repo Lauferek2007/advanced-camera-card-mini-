@@ -20,7 +20,7 @@ import '../message.js';
 import '../progress-indicator.js';
 import { renderProgressIndicator } from '../progress-indicator.js';
 
-@customElement('advanced-camera-card-gallery-core')
+@customElement('advanced-camera-card-mini-gallery-core')
 export class AdvancedCameraCardGalleryCore extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -114,6 +114,6 @@ export class AdvancedCameraCardGalleryCore extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-gallery-core': AdvancedCameraCardGalleryCore;
+    'advanced-camera-card-mini-gallery-core': AdvancedCameraCardGalleryCore;
   }
 }

@@ -12,12 +12,12 @@ export function renderMessage(
     overlay?: boolean;
   },
 ): TemplateResult {
-  return html` <advanced-camera-card-message
+  return html` <advanced-camera-card-mini-message
     .message=${message}
     ?overlay=${!!renderOptions?.overlay}
-  ></advanced-camera-card-message>`;
+  ></advanced-camera-card-mini-message>`;
 }
-@customElement('advanced-camera-card-message')
+@customElement('advanced-camera-card-mini-message')
 export class AdvancedCameraCardMessage extends LitElement {
   @property({ attribute: false })
   public message?: Message;
@@ -46,10 +46,10 @@ export class AdvancedCameraCardMessage extends LitElement {
     return html` <div class="wrapper">
       <div class="message padded">
         <div class="icon">
-          <advanced-camera-card-icon
+          <advanced-camera-card-mini-icon
             part="icon"
             .icon="${{ icon: icon }}"
-          ></advanced-camera-card-icon>
+          ></advanced-camera-card-mini-icon>
         </div>
         <div class="contents">
           <span class="${classMap(classes)}">${messageTemplate}</span>
@@ -68,6 +68,6 @@ export class AdvancedCameraCardMessage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-message': AdvancedCameraCardMessage;
+    'advanced-camera-card-mini-message': AdvancedCameraCardMessage;
   }
 }

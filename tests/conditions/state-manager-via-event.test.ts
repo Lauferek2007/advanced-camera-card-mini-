@@ -16,7 +16,7 @@ describe('getConditionStateManagerViaEvent', () => {
       ev.conditionStateManager = stateManager;
     });
     element.addEventListener(
-      'advanced-camera-card:condition-state-manager:get',
+      'advanced-camera-card-mini:condition-state-manager:get',
       handler,
     );
 
@@ -28,7 +28,7 @@ describe('getConditionStateManagerViaEvent', () => {
 
     const handler = vi.fn();
     element.addEventListener(
-      'advanced-camera-card:condition-state-manager:get',
+      'advanced-camera-card-mini:condition-state-manager:get',
       handler,
     );
 

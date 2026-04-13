@@ -157,15 +157,15 @@ class ActionHandler extends HTMLElement implements ActionHandlerInterface {
   }
 }
 
-customElements.define('action-handler-advanced-camera-card', ActionHandler);
+customElements.define('action-handler-advanced-camera-card-mini', ActionHandler);
 
 const getActionHandler = (): ActionHandler => {
   const body = document.body;
-  if (body.querySelector('action-handler-advanced-camera-card')) {
-    return body.querySelector('action-handler-advanced-camera-card') as ActionHandler;
+  if (body.querySelector('action-handler-advanced-camera-card-mini')) {
+    return body.querySelector('action-handler-advanced-camera-card-mini') as ActionHandler;
   }
 
-  const actionhandler = document.createElement('action-handler-advanced-camera-card');
+  const actionhandler = document.createElement('action-handler-advanced-camera-card-mini');
   body.appendChild(actionhandler);
 
   return actionhandler as ActionHandler;
@@ -219,7 +219,7 @@ export interface ActionEventTarget extends EventTarget {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'action-handler-advanced-camera-card': ActionHandler;
+    'action-handler-advanced-camera-card-mini': ActionHandler;
   }
   interface HASSDomEvents {
     action: ActionHandlerDetail;

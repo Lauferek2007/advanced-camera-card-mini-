@@ -239,7 +239,7 @@ export class ViewManager implements ViewManagerInterface {
     // target media of the gallery (e.g. clips, snapshots or recordings) is
     // equal to the queries that are currently used in the viewer.
     //
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/885
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/885
 
     const switchingFromViewerToGallery =
       this._view?.isViewerView() && newView?.isMediaGalleryView();
@@ -284,7 +284,7 @@ export class ViewManager implements ViewManagerInterface {
     // If the query string contains a view related action, we don't set any view
     // here and allow that action to be triggered by the next call of to execute
     // query actions (called at least once per render cycle).
-    // Related: https://github.com/dermotduffy/advanced-camera-card/issues/1200
+    // Related: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1200
     if (!this._api.getQueryStringManager().hasViewRelatedActionsToRun()) {
       // This is not awaited to allow the initialization to complete before the
       // query is answered.

@@ -99,7 +99,7 @@ export class PTZAction extends AdvancedCameraCardAction<PTZActionConfig> {
         if (!this._stopped) {
           // Only start the timer for the next step after this step returns, and
           // only if this action has not been stopped.
-          // See: https://github.com/dermotduffy/advanced-camera-card/issues/1967
+          // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1967
           this._timer.start(
             ptzConfiguration.r2c_delay_between_calls_seconds,
             singleStep,

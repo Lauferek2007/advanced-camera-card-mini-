@@ -178,7 +178,7 @@ describe('MediaGridController', () => {
     const controller = createController(slot);
 
     const mediaLoadedInfoHandler = vi.fn();
-    host.addEventListener('advanced-camera-card:media:loaded', mediaLoadedInfoHandler);
+    host.addEventListener('advanced-camera-card-mini:media:loaded', mediaLoadedInfoHandler);
     dispatchExistingMediaLoadedInfoAsEvent(children[0], mediaLoadedInfo);
 
     controller.selectCell('0');
@@ -198,7 +198,7 @@ describe('MediaGridController', () => {
     controller.selectCell('0');
 
     const mediaLoadedInfoHandler = vi.fn();
-    host.addEventListener('advanced-camera-card:media:loaded', mediaLoadedInfoHandler);
+    host.addEventListener('advanced-camera-card-mini:media:loaded', mediaLoadedInfoHandler);
     dispatchExistingMediaLoadedInfoAsEvent(children[0], mediaLoadedInfo);
 
     expect(mediaLoadedInfoHandler).toBeCalledWith(
@@ -217,7 +217,7 @@ describe('MediaGridController', () => {
     controller.selectCell('1');
 
     const mediaLoadedInfoHandler = vi.fn();
-    host.addEventListener('advanced-camera-card:media:loaded', mediaLoadedInfoHandler);
+    host.addEventListener('advanced-camera-card-mini:media:loaded', mediaLoadedInfoHandler);
     dispatchExistingMediaLoadedInfoAsEvent(children[0], mediaLoadedInfo);
 
     // Another element is selected, so the event should not have propagated.
@@ -233,10 +233,10 @@ describe('MediaGridController', () => {
     const unselectedHandler = vi.fn();
     const unloadMediaHandler = vi.fn();
     host.addEventListener(
-      'advanced-camera-card:media-grid:unselected',
+      'advanced-camera-card-mini:media-grid:unselected',
       unselectedHandler,
     );
-    host.addEventListener('advanced-camera-card:media:unloaded', unloadMediaHandler);
+    host.addEventListener('advanced-camera-card-mini:media:unloaded', unloadMediaHandler);
 
     controller.selectCell('0');
     expect(controller.getSelected()).toBe('0');
@@ -409,7 +409,7 @@ describe('MediaGridController', () => {
       }),
     );
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-column-size'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-column-size'),
     ).toBe('245px');
   });
 
@@ -428,7 +428,7 @@ describe('MediaGridController', () => {
       }),
     );
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-column-size'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-column-size'),
     ).toBe('1499px');
   });
 
@@ -437,13 +437,13 @@ describe('MediaGridController', () => {
     const controller = createController(parent);
     controller.setDisplayConfig({ mode: 'grid', grid_selected_width_factor: 3 });
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-selected-width-factor'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-selected-width-factor'),
     ).toBe('3');
 
     // Setting the same config again should do nothing.
     controller.setDisplayConfig({ mode: 'grid', grid_selected_width_factor: 3 });
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-selected-width-factor'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-selected-width-factor'),
     ).toBe('3');
   });
 
@@ -498,7 +498,7 @@ describe('MediaGridController', () => {
       }),
     );
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-column-size'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-column-size'),
     ).toBe('245px');
 
     // Clear mock state.
@@ -517,7 +517,7 @@ describe('MediaGridController', () => {
       }),
     );
     expect(
-      parent.style.getPropertyValue('--advanced-camera-card-grid-column-size'),
+      parent.style.getPropertyValue('--advanced-camera-card-mini-grid-column-size'),
     ).toBe('599px');
     expect(masonry.layout).toBeCalled();
 
@@ -599,13 +599,13 @@ describe('MediaGridController', () => {
       createController(parent);
 
       expect(
-        children[0].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[0].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('2');
       expect(
-        children[1].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[1].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('3');
       expect(
-        children[2].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[2].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('');
     });
 
@@ -616,7 +616,7 @@ describe('MediaGridController', () => {
 
       // Initially no width factor.
       expect(
-        children[0].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[0].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('');
 
       // Set the attribute.
@@ -624,7 +624,7 @@ describe('MediaGridController', () => {
       triggerMutationObserver('cell');
 
       expect(
-        children[0].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[0].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('4');
     });
 
@@ -635,7 +635,7 @@ describe('MediaGridController', () => {
       createController(parent);
 
       expect(
-        children[0].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[0].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('2');
 
       // Remove the attribute.
@@ -643,7 +643,7 @@ describe('MediaGridController', () => {
       triggerMutationObserver('cell');
 
       expect(
-        children[0].style.getPropertyValue('--advanced-camera-card-grid-width-factor'),
+        children[0].style.getPropertyValue('--advanced-camera-card-mini-grid-width-factor'),
       ).toBe('');
     });
   });

@@ -44,7 +44,7 @@ import { VideoRTC } from './go2rtc/video-rtc.js';
 
 // Create a wrapper for AlexxIT's WebRTC card
 //  - https://github.com/AlexxIT/WebRTC
-@customElement('advanced-camera-card-live-webrtc-card')
+@customElement('advanced-camera-card-mini-live-webrtc-card')
 export class AdvancedCameraCardLiveWebRTCCard extends LitElement implements MediaPlayer {
   @property({ attribute: false })
   public cameraConfig?: CameraConfig;
@@ -80,7 +80,7 @@ export class AdvancedCameraCardLiveWebRTCCard extends LitElement implements Medi
     super.connectedCallback();
 
     // Reset the player when reconnected to the DOM.
-    // https://github.com/dermotduffy/advanced-camera-card/issues/996
+    // https://github.com/dermotduffy/advanced-camera-card-mini/issues/996
     this.requestUpdate();
   }
 
@@ -131,11 +131,11 @@ export class AdvancedCameraCardLiveWebRTCCard extends LitElement implements Medi
         // hidden. This is incompatible with the card zoom support, since the
         // video will easily stop if the user zooms in too much. Disable this
         // feature by default.
-        // See: https://github.com/dermotduffy/advanced-camera-card/issues/1614
+        // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1614
         intersection: 0,
 
         // Advanced Camera Card always starts muted (unlike webrtc-card).
-        // See: https://github.com/dermotduffy/advanced-camera-card/issues/1654
+        // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1654
         muted: true,
 
         ...this.cameraConfig.webrtc_card,
@@ -229,6 +229,6 @@ export class AdvancedCameraCardLiveWebRTCCard extends LitElement implements Medi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-webrtc-card': AdvancedCameraCardLiveWebRTCCard;
+    'advanced-camera-card-mini-live-webrtc-card': AdvancedCameraCardLiveWebRTCCard;
   }
 }

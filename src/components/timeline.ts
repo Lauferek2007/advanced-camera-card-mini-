@@ -14,7 +14,7 @@ import { QueryClassifier } from '../view/query-classifier';
 import './surround.js';
 import './timeline-core.js';
 
-@customElement('advanced-camera-card-timeline')
+@customElement('advanced-camera-card-mini-timeline')
 export class AdvancedCameraCardTimeline extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -87,7 +87,7 @@ export class AdvancedCameraCardTimeline extends LitElement {
     }
 
     return html`
-      <advanced-camera-card-timeline-core
+      <advanced-camera-card-mini-timeline-core
         .hass=${this.hass}
         .viewManagerEpoch=${this.viewManagerEpoch}
         .timelineConfig=${this.timelineConfig}
@@ -102,7 +102,7 @@ export class AdvancedCameraCardTimeline extends LitElement {
           ? 'play'
           : 'select'}
       >
-      </advanced-camera-card-timeline-core>
+      </advanced-camera-card-mini-timeline-core>
     `;
   }
 
@@ -113,6 +113,6 @@ export class AdvancedCameraCardTimeline extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-timeline': AdvancedCameraCardTimeline;
+    'advanced-camera-card-mini-timeline': AdvancedCameraCardTimeline;
   }
 }

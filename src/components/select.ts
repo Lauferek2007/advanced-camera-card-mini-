@@ -10,7 +10,7 @@ import { property } from 'lit/decorators.js';
 import { createRef, ref, Ref } from 'lit/directives/ref.js';
 import selectStyle from '../scss/select.scss';
 import { contentsChanged } from '../utils/basic';
-import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-mini-event';
 import { ScopedRegistryHost } from '@lit-labs/scoped-registry-mixin';
 import { grSelectElements } from '../scoped-elements/gr-select';
 import { isEqual } from 'lodash-es';
@@ -112,6 +112,6 @@ export class AdvancedCameraCardSelect extends ScopedRegistryHost(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-select': AdvancedCameraCardSelect;
+    'advanced-camera-card-mini-select': AdvancedCameraCardSelect;
   }
 }

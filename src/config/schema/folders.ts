@@ -122,7 +122,7 @@ const haFolderConfigSchema = z.object({
   url: z
     .string()
     .transform(transformPathURLToPathArray)
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/2196
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2196
     .or(haFolderPathComponentSchema.array().min(1))
     .optional(),
   path: haFolderPathComponentSchema.array().nonempty().optional(),

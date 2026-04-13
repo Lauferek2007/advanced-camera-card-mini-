@@ -1,10 +1,10 @@
 import { AdvancedCameraCardError, Message } from '../../types';
-import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-mini-event';
 
 // Facilitates correct typing of event handlers.
 export interface AdvancedCameraCardMessageEventTarget extends EventTarget {
   addEventListener(
-    event: 'advanced-camera-card:message',
+    event: 'advanced-camera-card-mini:message',
     listener: (
       this: AdvancedCameraCardMessageEventTarget,
       ev: CustomEvent<Message>,
@@ -17,7 +17,7 @@ export interface AdvancedCameraCardMessageEventTarget extends EventTarget {
     options?: AddEventListenerOptions | boolean,
   ): void;
   removeEventListener(
-    event: 'advanced-camera-card:message',
+    event: 'advanced-camera-card-mini:message',
     listener: (
       this: AdvancedCameraCardMessageEventTarget,
       ev: CustomEvent<Message>,

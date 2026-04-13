@@ -34,7 +34,7 @@ import { ConstructableLitElement } from './types.js';
 customElements.whenDefined('ha-hls-player').then(() => {
   const HaHlsPlayer = customElements.get('ha-hls-player') as ConstructableLitElement;
 
-  @customElement('advanced-camera-card-ha-hls-player')
+  @customElement('advanced-camera-card-mini-ha-hls-player')
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   class AdvancedCameraCardHaHlsPlayer extends HaHlsPlayer implements MediaPlayer {
     // Due to an obscure behavior when this card is casted, this element needs
@@ -128,6 +128,6 @@ customElements.whenDefined('ha-hls-player').then(() => {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-ha-hls-player': AdvancedCameraCardHaHlsPlayer;
+    'advanced-camera-card-mini-ha-hls-player': AdvancedCameraCardHaHlsPlayer;
   }
 }

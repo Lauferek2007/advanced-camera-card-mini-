@@ -62,7 +62,7 @@ import { getReleaseVersion } from './utils/diagnostics';
 // ***************************************************************************
 
 console.info(
-  `%c ðŸ“· Advanced Camera Card %c ${getReleaseVersion()} `,
+  `%c ðŸ“· Advanced Camera Card Mini (Twoje Imie) %c ${getReleaseVersion()} `,
   'padding: 3px; color: black; background: pink;',
   'padding: 3px; color: black; background: white;',
 );
@@ -73,7 +73,7 @@ console.info(
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).customCards.push({
   type: 'advanced-camera-card-mini',
-  name: 'Advanced Camera Card Mini',
+  name: 'Advanced Camera Card Mini (Twoje Imie) Mini',
   description: 'Lightweight fork optimized for weaker devices',
   preview: true,
   documentationURL: REPO_URL,
@@ -235,8 +235,8 @@ class AdvancedCameraCard extends LitElement {
 
     return html`
       ${position === 'overlay'
-        ? html`<advanced-camera-card-overlay
-            >${getContents('overlay')}</advanced-camera-card-overlay
+        ? html`<advanced-camera-card-mini-overlay
+            >${getContents('overlay')}</advanced-camera-card-mini-overlay
           >`
         : html`<div class="outerlay" data-position="${position}">
             ${getContents('outerlay')}
@@ -250,7 +250,7 @@ class AdvancedCameraCard extends LitElement {
       return;
     }
     return html`
-      <advanced-camera-card-menu
+      <advanced-camera-card-mini-menu
         ${ref(this._refMenu)}
         slot=${ifDefined(slot)}
         .hass=${this._hass}
@@ -272,7 +272,7 @@ class AdvancedCameraCard extends LitElement {
           },
         )}
         .entityRegistryManager=${this._controller.getEntityRegistryManager()}
-      ></advanced-camera-card-menu>
+      ></advanced-camera-card-mini-menu>
     `;
   }
 
@@ -282,7 +282,7 @@ class AdvancedCameraCard extends LitElement {
     }
 
     return html`
-      <advanced-camera-card-status-bar
+      <advanced-camera-card-mini-status-bar
         slot=${ifDefined(slot)}
         .items=${this._controller.getStatusBarItemManager().calculateItems({
           statusConfig: this._config.status_bar,
@@ -291,7 +291,7 @@ class AdvancedCameraCard extends LitElement {
           mediaLoadedInfo: this._controller.getMediaLoadedInfoManager().get(),
         })}
         .config=${this._config.status_bar}
-      ></advanced-camera-card-status-bar>
+      ></advanced-camera-card-mini-status-bar>
     `;
   }
 
@@ -348,9 +348,9 @@ class AdvancedCameraCard extends LitElement {
     // Caution: Keep the main div and the menu next to one another in order to
     // ensure the hover menu styling continues to work.
     return this._renderInDialogIfNecessary(
-      html` <advanced-camera-card-effects
+      html` <advanced-camera-card-mini-effects
           ${ref(this._refEffects)}
-        ></advanced-camera-card-effects>
+        ></advanced-camera-card-mini-effects>
         <ha-card
           id="ha-card"
           .actionHandler=${actionHandler({
@@ -358,25 +358,25 @@ class AdvancedCameraCard extends LitElement {
             hasDoubleClick: hasAction(actions.double_tap_action),
           })}
           style="${styleMap(this._controller.getStyleManager().getAspectRatioStyle())}"
-          @advanced-camera-card:message=${(ev: CustomEvent<Message>) =>
+          @advanced-camera-card-mini:message=${(ev: CustomEvent<Message>) =>
             this._controller.getMessageManager().setMessageIfHigherPriority(ev.detail)}
-          @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) =>
+          @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) =>
             this._controller.getMediaLoadedInfoManager().set(ev.detail)}
-          @advanced-camera-card:media:unloaded=${() =>
+          @advanced-camera-card-mini:media:unloaded=${() =>
             this._controller.getMediaLoadedInfoManager().clear()}
-          @advanced-camera-card:media:volumechange=${
+          @advanced-camera-card-mini:media:volumechange=${
             () => this.requestUpdate() /* Refresh mute menu button */
           }
-          @advanced-camera-card:media:play=${
+          @advanced-camera-card-mini:media:play=${
             () => this.requestUpdate() /* Refresh play/pause menu button */
           }
-          @advanced-camera-card:media:pause=${
+          @advanced-camera-card-mini:media:pause=${
             () => this.requestUpdate() /* Refresh play/pause menu button */
           }
-          @advanced-camera-card:focus=${() => this.focus()}
+          @advanced-camera-card-mini:focus=${() => this.focus()}
         >
           ${showLoading
-            ? html`<advanced-camera-card-loading
+            ? html`<advanced-camera-card-mini-loading
                 .loaded=${this._controller
                   .getInitializationManager()
                   .wasEverInitialized()}
@@ -384,7 +384,7 @@ class AdvancedCameraCard extends LitElement {
                   .card_loading_effects !== false
                   ? this._controller.getEffectsControllerAPI()
                   : undefined}
-              ></advanced-camera-card-loading>`
+              ></advanced-camera-card-mini-loading>`
             : ''}
           ${this._renderMenuStatusContainer('top')}
           ${this._renderMenuStatusContainer('overlay')}
@@ -419,40 +419,40 @@ class AdvancedCameraCard extends LitElement {
           ${this._config?.elements
             ? // Elements need to render after the main views so it can render 'on
               // top'.
-              html` <advanced-camera-card-elements
+              html` <advanced-camera-card-mini-elements
                 ${ref(this._refElements)}
                 .hass=${this._hass}
                 .elements=${this._config?.elements}
                 .conditionStateManager=${this._controller.getConditionStateManager()}
-                @advanced-camera-card:menu:add=${(ev: CustomEvent<MenuItem>) => {
+                @advanced-camera-card-mini:menu:add=${(ev: CustomEvent<MenuItem>) => {
                   this._menuButtonController.addDynamicMenuButton(ev.detail);
                   this.requestUpdate();
                 }}
-                @advanced-camera-card:menu:remove=${(ev: CustomEvent<MenuItem>) => {
+                @advanced-camera-card-mini:menu:remove=${(ev: CustomEvent<MenuItem>) => {
                   this._menuButtonController.removeDynamicMenuButton(ev.detail);
                   this.requestUpdate();
                 }}
-                @advanced-camera-card:status-bar:add=${(
+                @advanced-camera-card-mini:status-bar:add=${(
                   ev: CustomEvent<StatusBarItem>,
                 ) => {
                   this._controller
                     .getStatusBarItemManager()
                     .addDynamicStatusBarItem(ev.detail);
                 }}
-                @advanced-camera-card:status-bar:remove=${(
+                @advanced-camera-card-mini:status-bar:remove=${(
                   ev: CustomEvent<StatusBarItem>,
                 ) => {
                   this._controller
                     .getStatusBarItemManager()
                     .removeDynamicStatusBarItem(ev.detail);
                 }}
-                @advanced-camera-card:condition-state-manager:get=${(
+                @advanced-camera-card-mini:condition-state-manager:get=${(
                   ev: ConditionStateManagerGetEvent,
                 ) => {
                   ev.conditionStateManager = this._controller.getConditionStateManager();
                 }}
               >
-              </advanced-camera-card-elements>`
+              </advanced-camera-card-mini-elements>`
             : ``}
         </ha-card>`,
     );

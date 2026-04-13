@@ -12,7 +12,7 @@ import {
 
 describe('StatusBarItemManager', () => {
   const testItem: StatusBarString = {
-    type: 'custom:advanced-camera-card-status-bar-string' as const,
+    type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
     string: 'test',
   };
 
@@ -67,7 +67,7 @@ describe('StatusBarItemManager', () => {
               view: createView({ view: 'live', camera: 'camera-1' }),
             }),
           ).toContainEqual({
-            type: 'custom:advanced-camera-card-status-bar-string' as const,
+            type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
             string: 'Camera Title',
             expand: true,
             sufficient: true,
@@ -107,7 +107,7 @@ describe('StatusBarItemManager', () => {
               view: view,
             }),
           ).toContainEqual({
-            type: 'custom:advanced-camera-card-status-bar-string' as const,
+            type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
             string: 'Media Title',
             expand: true,
             sufficient: true,
@@ -179,7 +179,7 @@ describe('StatusBarItemManager', () => {
               mediaLoadedInfo: { width, height },
             }),
           ).toContainEqual({
-            type: 'custom:advanced-camera-card-status-bar-string' as const,
+            type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
             string: expectedName,
           });
         },
@@ -195,7 +195,7 @@ describe('StatusBarItemManager', () => {
             mediaLoadedInfo: { width: 640, height: 480, technology: ['webrtc'] },
           }),
         ).toContainEqual({
-          type: 'custom:advanced-camera-card-status-bar-icon' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-icon' as const,
           icon: 'mdi:webrtc',
         });
       });
@@ -208,7 +208,7 @@ describe('StatusBarItemManager', () => {
             mediaLoadedInfo: { width: 640, height: 480, technology: ['hls'] },
           }),
         ).toContainEqual({
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'HLS',
         });
       });
@@ -236,7 +236,7 @@ describe('StatusBarItemManager', () => {
           view: createView({ view: 'live', camera: 'camera-1' }),
         }),
       ).toContainEqual({
-        type: 'custom:advanced-camera-card-status-bar-icon' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-icon' as const,
         icon: 'ENGINE_ICON',
       });
     });

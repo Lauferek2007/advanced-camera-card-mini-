@@ -30,7 +30,7 @@ const getDateEffect = (): EffectName | null => {
   return DATE_EFFECTS[`${month}-${day}`] ?? null;
 };
 
-@customElement('advanced-camera-card-loading')
+@customElement('advanced-camera-card-mini-loading')
 export class AdvancedCameraCardLoading extends LitElement {
   @property({ attribute: false })
   public effectsControllerAPI?: EffectsControllerAPI | null;
@@ -72,9 +72,9 @@ export class AdvancedCameraCardLoading extends LitElement {
   }
 
   protected render(): TemplateResult {
-    return html`<advanced-camera-card-icon
+    return html`<advanced-camera-card-mini-icon
         .icon=${{ icon: 'iris' }}
-      ></advanced-camera-card-icon
+      ></advanced-camera-card-mini-icon
       ><span>${getReleaseVersion()}</span>`;
   }
 
@@ -85,6 +85,6 @@ export class AdvancedCameraCardLoading extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-loading': AdvancedCameraCardLoading;
+    'advanced-camera-card-mini-loading': AdvancedCameraCardLoading;
   }
 }

@@ -22,7 +22,7 @@ interface BurstConfig {
   burstType: BurstType;
 }
 
-@customElement('advanced-camera-card-effect-fireworks')
+@customElement('advanced-camera-card-mini-effect-fireworks')
 export class AdvancedCameraCardEffectFireworks extends BaseEffectComponent {
   @state()
   private _bursts: BurstConfig[] = [];
@@ -95,13 +95,13 @@ export class AdvancedCameraCardEffectFireworks extends BaseEffectComponent {
         this._bursts,
         (burst) => burst.id,
         (burst) => html`
-          <advanced-camera-card-firework-burst
+          <advanced-camera-card-mini-firework-burst
             .posX=${burst.posX}
             .posY=${burst.posY}
             .delay=${burst.delay}
             .scale=${burst.scale}
             .burstType=${burst.burstType}
-          ></advanced-camera-card-firework-burst>
+          ></advanced-camera-card-mini-firework-burst>
         `,
       )}
     `;
@@ -110,6 +110,6 @@ export class AdvancedCameraCardEffectFireworks extends BaseEffectComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effect-fireworks': AdvancedCameraCardEffectFireworks;
+    'advanced-camera-card-mini-effect-fireworks': AdvancedCameraCardEffectFireworks;
   }
 }

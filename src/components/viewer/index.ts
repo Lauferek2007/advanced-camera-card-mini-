@@ -30,7 +30,7 @@ declare module 'view' {
   }
 }
 
-@customElement('advanced-camera-card-viewer')
+@customElement('advanced-camera-card-mini-viewer')
 export class AdvancedCameraCardViewer extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -89,7 +89,7 @@ export class AdvancedCameraCardViewer extends LitElement {
       });
     }
 
-    return html` <advanced-camera-card-viewer-grid
+    return html` <advanced-camera-card-mini-viewer-grid
       .hass=${this.hass}
       .viewManagerEpoch=${this.viewManagerEpoch}
       .viewerConfig=${this.viewerConfig}
@@ -97,7 +97,7 @@ export class AdvancedCameraCardViewer extends LitElement {
       .cameraManager=${this.cameraManager}
       .cardWideConfig=${this.cardWideConfig}
     >
-    </advanced-camera-card-viewer-grid>`;
+    </advanced-camera-card-mini-viewer-grid>`;
   }
 
   static get styles(): CSSResultGroup {
@@ -107,6 +107,6 @@ export class AdvancedCameraCardViewer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-viewer': AdvancedCameraCardViewer;
+    'advanced-camera-card-mini-viewer': AdvancedCameraCardViewer;
   }
 }

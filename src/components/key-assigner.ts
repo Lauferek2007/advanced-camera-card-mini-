@@ -13,7 +13,7 @@ import { localize } from '../localize/localize';
 import keyAssignerStyle from '../scss/key-assigner.scss';
 import './icon';
 
-@customElement('advanced-camera-card-key-assigner')
+@customElement('advanced-camera-card-mini-key-assigner')
 export class AdvancedCameraCardKeyAssigner extends LitElement {
   @property({ attribute: false })
   public label?: string;
@@ -50,9 +50,9 @@ export class AdvancedCameraCardKeyAssigner extends LitElement {
           this._controller.toggleAssigning();
         }}
       >
-        <advanced-camera-card-icon
+        <advanced-camera-card-mini-icon
           .icon=${{ icon: 'mdi:keyboard-settings' }}>
-        </advanced-camera-card-icon>
+        </advanced-camera-card-mini-icon>
       </ha-button>
       ${
         this._controller.hasValue()
@@ -63,9 +63,9 @@ export class AdvancedCameraCardKeyAssigner extends LitElement {
                 this._controller.setValue(null);
               }}
             >
-              <advanced-camera-card-icon
+              <advanced-camera-card-mini-icon
                 .icon=${{ icon: 'mdi:keyboard-off' }}
-              ></advanced-camera-card-icon>
+              ></advanced-camera-card-mini-icon>
             </ha-button>`
           : ''
       }
@@ -86,6 +86,6 @@ export class AdvancedCameraCardKeyAssigner extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-key-assigner': AdvancedCameraCardKeyAssigner;
+    'advanced-camera-card-mini-key-assigner': AdvancedCameraCardKeyAssigner;
   }
 }

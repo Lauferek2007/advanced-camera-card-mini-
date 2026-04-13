@@ -26,7 +26,7 @@ export class ViewFactory {
 
     // Neither options.baseView.camera nor options.baseView.view are respected
     // here, since this is the default view / camera.
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/1564
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1564
 
     let cameraID: string | null = null;
     const viewName = options?.params?.view ?? config.view.default;
@@ -142,7 +142,7 @@ export class ViewFactory {
     const configuredDisplayMode = this._getDefaultDisplayModeForView(viewName, config);
     const displayMode =
       // Prioritize the configured display mode (if present).
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1812
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1812
       (viewName !== options?.baseView?.view ? configuredDisplayMode : null) ??
       options?.params?.displayMode ??
       options?.baseView?.displayMode ??

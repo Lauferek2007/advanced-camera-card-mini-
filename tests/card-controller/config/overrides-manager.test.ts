@@ -342,7 +342,7 @@ describe('OverridesManager', () => {
     );
   });
 
-  // See: https://github.com/dermotduffy/advanced-camera-card/issues/1954
+  // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1954
   it('should handle overrides separately', () => {
     const config = createConfig({
       live: {

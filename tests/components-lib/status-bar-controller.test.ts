@@ -26,7 +26,7 @@ describe('StatusBarController', () => {
 
       expect(controller.getConfig()).toEqual(config);
       expect(
-        host.style.getPropertyValue('--advanced-camera-card-status-bar-height'),
+        host.style.getPropertyValue('--advanced-camera-card-mini-status-bar-height'),
       ).toBe('50px');
       expect(host.getAttribute('data-style')).toBe('hover');
       expect(host.getAttribute('data-position')).toBe('top');
@@ -82,7 +82,7 @@ describe('StatusBarController', () => {
       const controller = new StatusBarController(host);
       const items = [
         {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Test',
         },
       ];
@@ -95,22 +95,22 @@ describe('StatusBarController', () => {
       const host = createLitElement();
       const controller = new StatusBarController(host);
       const item1 = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 1',
         priority: 40,
       };
       const item2 = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 2',
         priority: 10,
       };
       const item3 = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 3',
         priority: 60,
       };
       const item4 = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 4',
         priority: undefined,
       };
@@ -123,12 +123,12 @@ describe('StatusBarController', () => {
       const host = createLitElement();
       const controller = new StatusBarController(host);
       const item1 = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 1',
         priority: 100,
       };
       const exclusiveItem = {
-        type: 'custom:advanced-camera-card-status-bar-string' as const,
+        type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
         string: 'Item 2',
         priority: 1,
         exclusive: true,
@@ -143,12 +143,12 @@ describe('StatusBarController', () => {
         const host = createLitElement();
         const controller = new StatusBarController(host);
         const insufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 1',
           sufficient: false,
         };
         const sufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 2',
           sufficient: true,
         };
@@ -162,12 +162,12 @@ describe('StatusBarController', () => {
         const host = createLitElement();
         const controller = new StatusBarController(host);
         const insufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 1',
           sufficient: false,
         };
         const sufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 2',
           sufficient: false,
         };
@@ -191,7 +191,7 @@ describe('StatusBarController', () => {
         );
 
         const sufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 1',
           priority: 100,
           sufficient: true,
@@ -213,7 +213,7 @@ describe('StatusBarController', () => {
         );
 
         const insufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 1',
           priority: 100,
           sufficient: false,
@@ -234,19 +234,19 @@ describe('StatusBarController', () => {
         );
 
         const sufficientString = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'String',
           priority: 100,
           sufficient: true,
         };
         const sufficientIcon = {
-          type: 'custom:advanced-camera-card-status-bar-icon' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-icon' as const,
           icon: 'Icon',
           priority: 100,
           sufficient: true,
         };
         const sufficientImage = {
-          type: 'custom:advanced-camera-card-status-bar-image' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-image' as const,
           image: 'Image',
           priority: 100,
           sufficient: true,
@@ -278,7 +278,7 @@ describe('StatusBarController', () => {
         );
 
         const sufficientItem = {
-          type: 'custom:advanced-camera-card-status-bar-string' as const,
+          type: 'custom:advanced-camera-card-mini-status-bar-string' as const,
           string: 'Item 1',
           priority: 100,
           sufficient: true,
@@ -300,7 +300,7 @@ describe('StatusBarController', () => {
     it('should bail without action', () => {
       const host = createLitElement();
       const handler = vi.fn();
-      host.addEventListener('advanced-camera-card:action:execution-request', handler);
+      host.addEventListener('advanced-camera-card-mini:action:execution-request', handler);
 
       const controller = new StatusBarController(host);
       controller.actionHandler(createInteractionActionEvent('tap'));
@@ -310,7 +310,7 @@ describe('StatusBarController', () => {
     it('should request action execution', () => {
       const host = createLitElement();
       const handler = vi.fn();
-      host.addEventListener('advanced-camera-card:action:execution-request', handler);
+      host.addEventListener('advanced-camera-card-mini:action:execution-request', handler);
 
       const controller = new StatusBarController(host);
 

@@ -76,7 +76,7 @@ export const createRawConfig = (
   config?: Partial<RawAdvancedCameraCardConfig>,
 ): RawAdvancedCameraCardConfig => {
   return {
-    type: 'advanced-camera-card',
+    type: 'advanced-camera-card-mini',
     cameras: [{}],
     ...config,
   };
@@ -290,7 +290,7 @@ export const createMediaLoadedInfo = (
 export const createMediaLoadedInfoEvent = (
   mediaLoadedInfo?: MediaLoadedInfo,
 ): CustomEvent<MediaLoadedInfo> => {
-  return new CustomEvent('advanced-camera-card:media:loaded', {
+  return new CustomEvent('advanced-camera-card-mini:media:loaded', {
     detail: mediaLoadedInfo ?? createMediaLoadedInfo(),
     composed: true,
     bubbles: true,

@@ -16,7 +16,7 @@ import { ViewItem } from '../../../view/item';
 import '../../icon.js';
 import './thumbnail.js';
 
-@customElement('advanced-camera-card-thumbnail-feature')
+@customElement('advanced-camera-card-mini-thumbnail-feature')
 export class AdvancedCameraCardThumbnailFeature extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -54,18 +54,18 @@ export class AdvancedCameraCardThumbnailFeature extends LitElement {
 
     return html`
       ${this._controller.getThumbnail()
-        ? html` <advanced-camera-card-thumbnail-feature-thumbnail
+        ? html` <advanced-camera-card-mini-thumbnail-feature-thumbnail
             class="${thumbnailClasses}"
             .hass=${this.hass}
             .thumbnail=${this._controller.getThumbnail()}
             aria-label=${this.item?.getTitle() ?? ''}
             title=${this.item?.getTitle() ?? ''}
-          ></advanced-camera-card-thumbnail-feature-thumbnail>`
+          ></advanced-camera-card-mini-thumbnail-feature-thumbnail>`
         : this._controller.getIcon()
-          ? html`<advanced-camera-card-icon
+          ? html`<advanced-camera-card-mini-icon
               class="${iconClasses}"
               .icon=${{ icon: this._controller.getIcon() }}
-            ></advanced-camera-card-icon>`
+            ></advanced-camera-card-mini-icon>`
           : ''}
       ${title || subtitles.length
         ? html`
@@ -89,6 +89,6 @@ export class AdvancedCameraCardThumbnailFeature extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-thumbnail-feature': AdvancedCameraCardThumbnailFeature;
+    'advanced-camera-card-mini-thumbnail-feature': AdvancedCameraCardThumbnailFeature;
   }
 }

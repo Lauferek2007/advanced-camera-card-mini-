@@ -101,15 +101,15 @@ export class AdvancedCameraCardLiveGrid extends LitElement {
     }
 
     return html`
-      <advanced-camera-card-media-grid
+      <advanced-camera-card-mini-media-grid
         .selected=${this.viewManagerEpoch?.manager.getView()?.camera}
         .displayConfig=${this.liveConfig?.display}
-        @advanced-camera-card:media-grid:selected=${(
+        @advanced-camera-card-mini:media-grid:selected=${(
           ev: CustomEvent<MediaGridSelected>,
         ) => this._gridSelectCamera(ev.detail.selected)}
       >
         ${[...cameraIDs].map((cameraID) => this._renderCarousel(cameraID))}
-      </advanced-camera-card-media-grid>
+      </advanced-camera-card-mini-media-grid>
     `;
   }
 

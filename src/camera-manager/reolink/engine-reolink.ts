@@ -94,8 +94,8 @@ export class ReolinkCameraManagerEngine extends BrowseMediaCameraManagerEngine {
 
     // Titles may be of the form:
     //  - "21:47:03 0:00:44"
-    //  - "21:47:03 0:00:44 Person" (https://github.com/dermotduffy/advanced-camera-card/issues/1870)
-    //  - "21:47:03 0:00:44 Vehicle Person" (https://github.com/dermotduffy/advanced-camera-card/issues/1870)
+    //  - "21:47:03 0:00:44 Person" (https://github.com/dermotduffy/advanced-camera-card-mini/issues/1870)
+    //  - "21:47:03 0:00:44 Vehicle Person" (https://github.com/dermotduffy/advanced-camera-card-mini/issues/1870)
     const parts = media.title.split(/ +/);
 
     const startDate = parse(parts[0], 'HH:mm:ss', parent._metadata.startDate);
@@ -198,7 +198,7 @@ export class ReolinkCameraManagerEngine extends BrowseMediaCameraManagerEngine {
     // First fetch all the Reolink cameras that show up under the media root,
     // that match the expected camera. Some Reolink cameras will not show up
     // here causing errors.
-    // https://github.com/dermotduffy/advanced-camera-card/issues/1723
+    // https://github.com/dermotduffy/advanced-camera-card-mini/issues/1723
     const camerasWithMedia = await this._browseMediaWalker.walk(
       hass,
       [

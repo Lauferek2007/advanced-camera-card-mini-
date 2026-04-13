@@ -22,7 +22,7 @@ export type EmblaCarouselPlugins = CreatePluginType<
   Record<string, unknown>
 >[];
 
-@customElement('advanced-camera-card-carousel')
+@customElement('advanced-camera-card-mini-carousel')
 export class AdvancedCameraCardCarousel extends LitElement {
   @property({ attribute: true, reflect: true })
   public direction: CarouselDirection = 'horizontal';
@@ -109,7 +109,7 @@ export class AdvancedCameraCardCarousel extends LitElement {
       // disconnect/connect callbacks, causing a carousel to potentially be
       // created after the node is disconnected. This could cause a dangling
       // carousel and hold open connections that should have been closed.
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1992
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1992
       this.isConnected
     ) {
       this._carousel = new CarouselController(
@@ -139,6 +139,6 @@ export class AdvancedCameraCardCarousel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-carousel': AdvancedCameraCardCarousel;
+    'advanced-camera-card-mini-carousel': AdvancedCameraCardCarousel;
   }
 }

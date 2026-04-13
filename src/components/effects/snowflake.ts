@@ -2,7 +2,7 @@ import { CSSResultGroup, html, LitElement, TemplateResult, unsafeCSS } from 'lit
 import { customElement, property } from 'lit/decorators.js';
 import snowflakeStyle from '../../scss/snowflake.scss';
 
-@customElement('advanced-camera-card-snowflake')
+@customElement('advanced-camera-card-mini-snowflake')
 export class AdvancedCameraCardSnowflake extends LitElement {
   @property({ type: String })
   public char = '❄';
@@ -45,6 +45,6 @@ export class AdvancedCameraCardSnowflake extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-snowflake': AdvancedCameraCardSnowflake;
+    'advanced-camera-card-mini-snowflake': AdvancedCameraCardSnowflake;
   }
 }

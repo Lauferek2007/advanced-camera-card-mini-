@@ -276,7 +276,7 @@ export const cameraConfigSchema = z
 
     proxy: proxyConfigSchema.default(cameraConfigDefault.proxy),
 
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/1650
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1650
     always_error_if_entity_unavailable: z
       .boolean()
       .default(cameraConfigDefault.always_error_if_entity_unavailable),

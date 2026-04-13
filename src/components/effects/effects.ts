@@ -5,7 +5,7 @@ import { EffectOptions } from '../../components-lib/effects/types';
 import effectsStyle from '../../scss/effects.scss';
 import { EffectName, EffectsControllerAPI } from '../../types';
 
-@customElement('advanced-camera-card-effects')
+@customElement('advanced-camera-card-mini-effects')
 export class AdvancedCameraCardEffects
   extends LitElement
   implements EffectsControllerAPI
@@ -35,6 +35,6 @@ export class AdvancedCameraCardEffects
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effects': AdvancedCameraCardEffects;
+    'advanced-camera-card-mini-effects': AdvancedCameraCardEffects;
   }
 }

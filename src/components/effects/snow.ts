@@ -18,7 +18,7 @@ interface SnowflakeConfig {
   endX: string;
 }
 
-@customElement('advanced-camera-card-effect-snow')
+@customElement('advanced-camera-card-mini-effect-snow')
 export class AdvancedCameraCardEffectSnow extends BaseEffectComponent {
   private _snowflakes: SnowflakeConfig[];
 
@@ -46,7 +46,7 @@ export class AdvancedCameraCardEffectSnow extends BaseEffectComponent {
         this._snowflakes,
         (snowflake) => snowflake.id,
         (snowflake) => html`
-          <advanced-camera-card-snowflake
+          <advanced-camera-card-mini-snowflake
             .char=${snowflake.char}
             .size=${snowflake.size}
             .maxOpacity=${snowflake.maxOpacity}
@@ -54,7 +54,7 @@ export class AdvancedCameraCardEffectSnow extends BaseEffectComponent {
             .fallDelay=${snowflake.fallDelay}
             .startX=${snowflake.startX}
             .endX=${snowflake.endX}
-          ></advanced-camera-card-snowflake>
+          ></advanced-camera-card-mini-snowflake>
         `,
       )}
     `;
@@ -63,6 +63,6 @@ export class AdvancedCameraCardEffectSnow extends BaseEffectComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effect-snow': AdvancedCameraCardEffectSnow;
+    'advanced-camera-card-mini-effect-snow': AdvancedCameraCardEffectSnow;
   }
 }

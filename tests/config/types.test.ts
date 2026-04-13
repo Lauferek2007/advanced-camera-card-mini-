@@ -348,7 +348,7 @@ describe('config defaults', () => {
         style: 'stack',
         window_seconds: 3600,
       },
-      type: 'advanced-camera-card',
+      type: 'advanced-camera-card-mini',
       view: {
         camera_select: 'current',
         default: 'live',
@@ -425,12 +425,12 @@ describe('config defaults', () => {
         aspect_ratio: '16 / 9',
       },
       {
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         icon: 'mdi:cat',
         entity: 'camera.kitchen',
       },
       {
-        type: 'custom:advanced-camera-card-menu-state-icon',
+        type: 'custom:advanced-camera-card-mini-menu-state-icon',
         entity: 'camera.kitchen',
         icon: 'mdi:sheep',
         state_color: false,
@@ -551,7 +551,7 @@ describe('config defaults', () => {
   it('should include all custom elements', () => {
     const customElements = [
       {
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         alignment: 'matching',
         enabled: true,
         entity: 'light.office_main_lights',
@@ -564,7 +564,7 @@ describe('config defaults', () => {
         title: 'Vroom',
       },
       {
-        type: 'custom:advanced-camera-card-menu-state-icon',
+        type: 'custom:advanced-camera-card-mini-menu-state-icon',
         alignment: 'matching',
         enabled: true,
         entity: 'light.office_main_lights',
@@ -578,7 +578,7 @@ describe('config defaults', () => {
         title: 'Office lights',
       },
       {
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         alignment: 'matching',
         enabled: true,
         entity: 'light.office_main_lights',
@@ -621,7 +621,7 @@ describe('config defaults', () => {
         title: 'Office lights',
       },
       {
-        type: 'custom:advanced-camera-card-menu-submenu-select',
+        type: 'custom:advanced-camera-card-mini-menu-submenu-select',
         alignment: 'matching',
         enabled: true,
         entity: 'input_select.kitchen_scene',
@@ -651,7 +651,7 @@ describe('config defaults', () => {
         title: 'Kitchen Scene',
       },
       {
-        type: 'custom:advanced-camera-card-conditional',
+        type: 'custom:advanced-camera-card-mini-conditional',
         elements: [
           {
             type: 'icon',
@@ -671,7 +671,7 @@ describe('config defaults', () => {
         ],
       },
       {
-        type: 'custom:advanced-camera-card-status-bar-string',
+        type: 'custom:advanced-camera-card-mini-status-bar-string',
         enabled: true,
         exclusive: false,
         expand: false,
@@ -680,7 +680,7 @@ describe('config defaults', () => {
         sufficient: false,
       },
       {
-        type: 'custom:advanced-camera-card-status-bar-icon',
+        type: 'custom:advanced-camera-card-mini-status-bar-icon',
         enabled: true,
         exclusive: false,
         expand: false,
@@ -689,7 +689,7 @@ describe('config defaults', () => {
         sufficient: false,
       },
       {
-        type: 'custom:advanced-camera-card-status-bar-image',
+        type: 'custom:advanced-camera-card-mini-status-bar-image',
         enabled: true,
         exclusive: false,
         expand: false,
@@ -756,7 +756,7 @@ describe('config defaults', () => {
 
     const elements = [
       {
-        type: 'custom:advanced-camera-card-conditional',
+        type: 'custom:advanced-camera-card-mini-conditional',
         elements: [
           {
             type: 'icon',
@@ -827,131 +827,131 @@ describe('config defaults', () => {
   it('should include all custom actions', () => {
     const customActions = [
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'camera_select',
         camera: 'camera.front_door',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'camera_ui',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'clip',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'clips',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'default',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'diagnostics',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'display_mode_select',
         display_mode: 'grid',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'download',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'expand',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'fullscreen',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'image',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'live',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'live_substream_off',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'live_substream_on',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'live_substream_select',
         camera: 'camera.front_door_hd',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'log',
         message: 'Hello, world!',
         level: 'debug',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'media_player',
         media_player: 'media_player.nesthub50be',
         media_player_action: 'play',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'media_player',
         media_player: 'media_player.nesthub',
         media_player_action: 'stop',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'menu_toggle',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'microphone_connect',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'microphone_disconnect',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'microphone_mute',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'microphone_unmute',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'mute',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'pause',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'play',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'ptz',
         ptz_action: 'preset',
         ptz_preset: 'doorway',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'ptz_controls',
         enabled: true,
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'ptz_digital',
         absolute: {
           zoom: 5,
@@ -962,24 +962,24 @@ describe('config defaults', () => {
         },
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'ptz_multi',
         ptz_action: 'left',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'recording',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'recordings',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'screenshot',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'sleep',
         duration: {
           h: 1,
@@ -989,29 +989,29 @@ describe('config defaults', () => {
         },
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'snapshot',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'snapshots',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'timeline',
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'unmute',
       },
 
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'status_bar',
         status_bar_action: 'add',
         items: [
           {
-            type: 'custom:advanced-camera-card-status-bar-string',
+            type: 'custom:advanced-camera-card-mini-status-bar-string',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1020,7 +1020,7 @@ describe('config defaults', () => {
             sufficient: false,
           },
           {
-            type: 'custom:advanced-camera-card-status-bar-icon',
+            type: 'custom:advanced-camera-card-mini-status-bar-icon',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1029,7 +1029,7 @@ describe('config defaults', () => {
             sufficient: false,
           },
           {
-            type: 'custom:advanced-camera-card-status-bar-image',
+            type: 'custom:advanced-camera-card-mini-status-bar-image',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1040,12 +1040,12 @@ describe('config defaults', () => {
         ],
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'status_bar',
         status_bar_action: 'remove',
         items: [
           {
-            type: 'custom:advanced-camera-card-status-bar-string',
+            type: 'custom:advanced-camera-card-mini-status-bar-string',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1054,7 +1054,7 @@ describe('config defaults', () => {
             sufficient: false,
           },
           {
-            type: 'custom:advanced-camera-card-status-bar-icon',
+            type: 'custom:advanced-camera-card-mini-status-bar-icon',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1063,7 +1063,7 @@ describe('config defaults', () => {
             sufficient: false,
           },
           {
-            type: 'custom:advanced-camera-card-status-bar-image',
+            type: 'custom:advanced-camera-card-mini-status-bar-image',
             enabled: true,
             exclusive: false,
             expand: false,
@@ -1074,7 +1074,7 @@ describe('config defaults', () => {
         ],
       },
       {
-        action: 'custom:advanced-camera-card-action',
+        action: 'custom:advanced-camera-card-mini-action',
         advanced_camera_card_action: 'status_bar',
         status_bar_action: 'reset',
       },
@@ -1141,7 +1141,7 @@ describe('should refine user_agent_re conditions', () => {
 it('should transform action', () => {
   expect(
     advancedCameraCardCustomActionsBaseSchema.parse({
-      action: 'custom:advanced-camera-card-action',
+      action: 'custom:advanced-camera-card-mini-action',
     }),
   ).toEqual({
     action: 'fire-dom-event',
@@ -1338,7 +1338,7 @@ describe('should lazy evaluate schemas', () => {
       status_bar_action: 'reset',
       items: [
         {
-          type: 'custom:advanced-camera-card-status-bar-string',
+          type: 'custom:advanced-camera-card-mini-status-bar-string',
           string: 'Item',
         },
       ],
@@ -1350,13 +1350,13 @@ describe('should lazy evaluate schemas', () => {
 describe('should handle custom advanced camera card elements', () => {
   it('should add custom error on advanced camera card element', () => {
     const result = customSchema.safeParse({
-      type: 'custom:advanced-camera-card-foo',
+      type: 'custom:advanced-camera-card-mini-foo',
     });
     expect(result.success).toBeFalsy();
     if (!result.success) {
       expect(result.error.errors[0]).toEqual({
         code: 'custom',
-        message: 'advanced-camera-card custom elements must match specific schemas',
+        message: 'advanced-camera-card-mini custom elements must match specific schemas',
         fatal: true,
         path: ['type'],
       });
@@ -1371,7 +1371,7 @@ describe('should handle custom advanced camera card elements', () => {
   });
 });
 
-// https://github.com/dermotduffy/advanced-camera-card/issues/1280
+// https://github.com/dermotduffy/advanced-camera-card-mini/issues/1280
 it('should not require title controls to specify all options', () => {
   expect(
     createConfig({

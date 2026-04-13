@@ -23,7 +23,7 @@ export class MenuController {
   public setMenuConfig(config: MenuConfig): void {
     this._config = config;
     this._host.style.setProperty(
-      '--advanced-camera-card-menu-button-size',
+      '--advanced-camera-card-mini-menu-button-size',
       `${config.button_size}px`,
     );
 

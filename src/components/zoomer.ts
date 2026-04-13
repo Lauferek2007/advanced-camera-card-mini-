@@ -11,7 +11,7 @@ import { ZoomController } from '../components-lib/zoom/zoom-controller.js';
 import { setOrRemoveAttribute } from '../utils/basic.js';
 import { PartialZoomSettings } from '../components-lib/zoom/types.js';
 
-@customElement('advanced-camera-card-zoomer')
+@customElement('advanced-camera-card-mini-zoomer')
 export class AdvancedCameraCardZoomer extends LitElement {
   protected _zoom: ZoomController | null = null;
 
@@ -29,8 +29,8 @@ export class AdvancedCameraCardZoomer extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener('advanced-camera-card:zoom:zoomed', this._zoomHandler);
-    this.addEventListener('advanced-camera-card:zoom:unzoomed', this._unzoomHandler);
+    this.addEventListener('advanced-camera-card-mini:zoom:zoomed', this._zoomHandler);
+    this.addEventListener('advanced-camera-card-mini:zoom:unzoomed', this._unzoomHandler);
 
     // Call for an update to activate.
     this.requestUpdate();
@@ -38,8 +38,8 @@ export class AdvancedCameraCardZoomer extends LitElement {
 
   disconnectedCallback(): void {
     this._zoom?.deactivate();
-    this.removeEventListener('advanced-camera-card:zoom:zoomed', this._zoomHandler);
-    this.removeEventListener('advanced-camera-card:zoom:unzoomed', this._unzoomHandler);
+    this.removeEventListener('advanced-camera-card-mini:zoom:zoomed', this._zoomHandler);
+    this.removeEventListener('advanced-camera-card-mini:zoom:unzoomed', this._unzoomHandler);
     super.disconnectedCallback();
   }
 
@@ -88,6 +88,6 @@ export class AdvancedCameraCardZoomer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-zoomer': AdvancedCameraCardZoomer;
+    'advanced-camera-card-mini-zoomer': AdvancedCameraCardZoomer;
   }
 }

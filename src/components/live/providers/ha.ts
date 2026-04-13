@@ -13,7 +13,7 @@ import {
   MediaPlayerElement,
 } from '../../../types.js';
 
-@customElement('advanced-camera-card-live-ha')
+@customElement('advanced-camera-card-mini-live-ha')
 export class AdvancedCameraCardLiveHA extends LitElement implements MediaPlayer {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -36,7 +36,7 @@ export class AdvancedCameraCardLiveHA extends LitElement implements MediaPlayer 
       return;
     }
 
-    return html` <advanced-camera-card-ha-camera-stream
+    return html` <advanced-camera-card-mini-ha-camera-stream
       ${ref(this._playerRef)}
       .hass=${this.hass}
       .stateObj=${this.cameraConfig?.camera_entity
@@ -45,7 +45,7 @@ export class AdvancedCameraCardLiveHA extends LitElement implements MediaPlayer 
       .controls=${this.controls}
       .muted=${true}
     >
-    </advanced-camera-card-ha-camera-stream>`;
+    </advanced-camera-card-mini-ha-camera-stream>`;
   }
 
   static get styles(): CSSResultGroup {
@@ -55,6 +55,6 @@ export class AdvancedCameraCardLiveHA extends LitElement implements MediaPlayer 
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-ha': AdvancedCameraCardLiveHA;
+    'advanced-camera-card-mini-live-ha': AdvancedCameraCardLiveHA;
   }
 }

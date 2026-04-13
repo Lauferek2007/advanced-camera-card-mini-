@@ -28,7 +28,7 @@ import '../surround-basic';
 import '../thumbnail/thumbnail.js';
 import './gallery-core.js';
 
-@customElement('advanced-camera-card-folder-gallery')
+@customElement('advanced-camera-card-mini-folder-gallery')
 export class AdvancedCameraCardFolderGallery extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -58,7 +58,7 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
     selected: boolean,
     clickCallback: (item: ViewItem, ev: Event) => void,
   ): TemplateResult | void {
-    return html`<advanced-camera-card-thumbnail
+    return html`<advanced-camera-card-mini-thumbnail
       class=${classMap({
         selected,
       })}
@@ -76,7 +76,7 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
         .show_download_control}
       @click=${(ev: Event) => clickCallback(item, ev)}
     >
-    </advanced-camera-card-thumbnail>`;
+    </advanced-camera-card-mini-thumbnail>`;
   }
 
   protected _renderThumbnails(): TemplateResult | void {
@@ -105,7 +105,7 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
     const upThumbnail = getUpFolderMediaItem(this.viewManagerEpoch?.manager.getView());
 
     return html`
-      <advanced-camera-card-surround-basic>
+      <advanced-camera-card-mini-surround-basic>
         ${!this.viewManagerEpoch?.manager.getView()?.queryResults?.hasResults() &&
         (folderIsLoading || !upThumbnail)
           ? renderMessage({
@@ -116,7 +116,7 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
               icon: 'mdi:folder-play',
               dotdotdot: folderIsLoading,
             })
-          : html`<advanced-camera-card-gallery-core
+          : html`<advanced-camera-card-mini-gallery-core
               .hass=${this.hass}
               .columnWidth=${this._controller.getColumnWidth(
                 this.galleryConfig?.controls.thumbnails,
@@ -134,8 +134,8 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
                   )
                 : ''}
               ${this._renderThumbnails()}
-            </advanced-camera-card-gallery-core>`}
-      </advanced-camera-card-surround-basic>
+            </advanced-camera-card-mini-gallery-core>`}
+      </advanced-camera-card-mini-surround-basic>
     `;
   }
 
@@ -146,6 +146,6 @@ export class AdvancedCameraCardFolderGallery extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-folder-gallery': AdvancedCameraCardFolderGallery;
+    'advanced-camera-card-mini-folder-gallery': AdvancedCameraCardFolderGallery;
   }
 }

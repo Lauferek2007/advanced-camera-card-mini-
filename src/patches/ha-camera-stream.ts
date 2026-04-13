@@ -34,7 +34,7 @@ customElements.whenDefined('ha-camera-stream').then(() => {
   const STREAM_TYPE_MJPEG = 'mjpeg';
   type StreamType = STREAM_TYPE_HLS | STREAM_TYPE_WEB_RTC | STREAM_TYPE_MJPEG;
 
-  @customElement('advanced-camera-card-ha-camera-stream')
+  @customElement('advanced-camera-card-mini-ha-camera-stream')
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   class AdvancedCameraCardHaCameraStream
     extends customElements.get('ha-camera-stream')
@@ -80,8 +80,8 @@ customElements.whenDefined('ha-camera-stream').then(() => {
       }
       if (stream.type === STREAM_TYPE_MJPEG) {
         return html`
-          <advanced-camera-card-image-player
-            @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+          <advanced-camera-card-mini-image-player
+            @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
               this._storeMediaLoadedInfo(STREAM_TYPE_MJPEG, ev.detail);
               ev.stopPropagation();
             }}
@@ -90,12 +90,12 @@ customElements.whenDefined('ha-camera-stream').then(() => {
               : this._posterUrl || ''}
             technology="mjpeg"
             class="player"
-          ></advanced-camera-card-image-player>
+          ></advanced-camera-card-mini-image-player>
         `;
       }
 
       if (stream.type === STREAM_TYPE_HLS) {
-        return html` <advanced-camera-card-ha-hls-player
+        return html` <advanced-camera-card-mini-ha-hls-player
           ?autoplay=${false}
           playsinline
           .allowExoPlayer=${this.allowExoPlayer}
@@ -104,17 +104,17 @@ customElements.whenDefined('ha-camera-stream').then(() => {
           .hass=${this.hass}
           .entityid=${this.stateObj.entity_id}
           .posterUrl=${this._posterUrl}
-          @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+          @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
             this._storeMediaLoadedInfoHandler(STREAM_TYPE_HLS, ev);
             ev.stopPropagation();
           }}
           @streams=${this._handleHlsStreams}
           class="player ${stream.visible ? '' : 'hidden'}"
-        ></advanced-camera-card-ha-hls-player>`;
+        ></advanced-camera-card-mini-ha-hls-player>`;
       }
 
       if (stream.type === STREAM_TYPE_WEB_RTC) {
-        return html`<advanced-camera-card-ha-web-rtc-player
+        return html`<advanced-camera-card-mini-ha-web-rtc-player
           ?autoplay=${false}
           playsinline
           .muted=${this.muted}
@@ -122,13 +122,13 @@ customElements.whenDefined('ha-camera-stream').then(() => {
           .hass=${this.hass}
           .entityid=${this.stateObj.entity_id}
           .posterUrl=${this._posterUrl}
-          @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+          @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
             this._storeMediaLoadedInfoHandler(STREAM_TYPE_WEB_RTC, ev);
             ev.stopPropagation();
           }}
           @streams=${this._handleWebRtcStreams}
           class="player ${stream.visible ? '' : 'hidden'}"
-        ></advanced-camera-card-ha-web-rtc-player>`;
+        ></advanced-camera-card-mini-ha-web-rtc-player>`;
       }
 
       return nothing;
@@ -175,6 +175,6 @@ customElements.whenDefined('ha-camera-stream').then(() => {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-ha-camera-stream': AdvancedCameraCardHaCameraStream;
+    'advanced-camera-card-mini-ha-camera-stream': AdvancedCameraCardHaCameraStream;
   }
 }

@@ -35,7 +35,7 @@ import '../ptz.js';
 import { AdvancedCameraCardPTZ } from '../ptz.js';
 import './provider.js';
 
-const ADVANCED_CAMERA_CARD_LIVE_PROVIDER = 'advanced-camera-card-live-provider';
+const ADVANCED_CAMERA_CARD_LIVE_PROVIDER = 'advanced-camera-card-mini-live-provider';
 
 interface CameraNeighbor {
   id: string;
@@ -208,7 +208,7 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
 
     return html`
       <div class="embla__slide">
-        <advanced-camera-card-live-provider
+        <advanced-camera-card-mini-live-provider
           .microphoneState=${view?.camera === cameraID
             ? this.microphoneState
             : undefined}
@@ -222,14 +222,14 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
           .hass=${this.hass}
           .cardWideConfig=${this.cardWideConfig}
           .zoomSettings=${view?.context?.zoom?.[cameraID]?.requested}
-          @advanced-camera-card:zoom:change=${(ev: CustomEvent<ZoomSettingsObserved>) =>
+          @advanced-camera-card-mini:zoom:change=${(ev: CustomEvent<ZoomSettingsObserved>) =>
             handleZoomSettingsObservedEvent(
               ev,
               this.viewManagerEpoch?.manager,
               cameraID,
             )}
         >
-        </advanced-camera-card-live-provider>
+        </advanced-camera-card-mini-live-provider>
       </div>
     `;
   }
@@ -288,7 +288,7 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
         ? neighbors?.previous
         : neighbors?.next;
 
-    return html`<advanced-camera-card-next-previous-control
+    return html`<advanced-camera-card-mini-next-previous-control
       slot=${side}
       .hass=${this.hass}
       .side=${side}
@@ -301,7 +301,7 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
         stopEventFromActivatingCardWideActions(ev);
       }}
     >
-    </advanced-camera-card-next-previous-control>`;
+    </advanced-camera-card-mini-next-previous-control>`;
   }
 
   protected render(): TemplateResult | void {
@@ -340,19 +340,19 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
         <div
           ${ref(this._refSingle)}
           class="single-live"
-          @advanced-camera-card:media:loaded=${mediaLoadedHandler}
-          @advanced-camera-card:media:unloaded=${mediaUnloadedHandler}
+          @advanced-camera-card-mini:media:loaded=${mediaLoadedHandler}
+          @advanced-camera-card-mini:media:unloaded=${mediaUnloadedHandler}
         >
           ${slides[0]}
         </div>
-        <advanced-camera-card-ptz
+        <advanced-camera-card-mini-ptz
           .hass=${this.hass}
           .config=${this.liveConfig.controls.ptz}
           .cameraManager=${this.cameraManager}
           .cameraID=${getStreamCameraID(view, this.viewFilterCameraID)}
           .forceVisibility=${forcePTZVisibility}
         >
-        </advanced-camera-card-ptz>
+        </advanced-camera-card-mini-ptz>
       `;
     }
 
@@ -361,7 +361,7 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
     //   options/plugins actually change.
 
     return html`
-      <advanced-camera-card-carousel
+      <advanced-camera-card-mini-carousel
         ${ref(this._refCarousel)}
         .loop=${hasMultipleCameras}
         .dragEnabled=${hasMultipleCameras && this.liveConfig?.draggable}
@@ -372,24 +372,24 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
         .selected=${this._getSelectedCameraIndex()}
         .wheelScrolling=${this.liveConfig?.controls.wheel}
         transitionEffect=${this._getTransitionEffect()}
-        @advanced-camera-card:carousel:select=${this._setViewHandler.bind(this)}
-        @advanced-camera-card:media:loaded=${mediaLoadedHandler}
-        @advanced-camera-card:media:unloaded=${mediaUnloadedHandler}
+        @advanced-camera-card-mini:carousel:select=${this._setViewHandler.bind(this)}
+        @advanced-camera-card-mini:media:loaded=${mediaLoadedHandler}
+        @advanced-camera-card-mini:media:unloaded=${mediaUnloadedHandler}
       >
         ${this._renderNextPrevious('left', neighbors)}
         <!-- -->
         ${slides}
         <!-- -->
         ${this._renderNextPrevious('right', neighbors)}
-      </advanced-camera-card-carousel>
-      <advanced-camera-card-ptz
+      </advanced-camera-card-mini-carousel>
+      <advanced-camera-card-mini-ptz
         .hass=${this.hass}
         .config=${this.liveConfig.controls.ptz}
         .cameraManager=${this.cameraManager}
         .cameraID=${getStreamCameraID(view, this.viewFilterCameraID)}
         .forceVisibility=${forcePTZVisibility}
       >
-      </advanced-camera-card-ptz>
+      </advanced-camera-card-mini-ptz>
     `;
   }
 
@@ -420,7 +420,7 @@ export class AdvancedCameraCardLiveCarousel extends LitElement {
 
     // If the view has changed, or if the media actions controller has just been
     // initialized, then call the necessary media action.
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/1626
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1626
     if (rootChanged || changedProperties.has('viewManagerEpoch')) {
       this._setMediaTarget();
     }

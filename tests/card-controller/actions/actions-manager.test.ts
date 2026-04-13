@@ -277,7 +277,7 @@ describe('ActionsManager', () => {
 
       const consoleSpy = vi.spyOn(global.console, 'info').mockReturnValue(undefined);
       await manager.handleActionExecutionRequestEvent(
-        new CustomEvent('advanced-camera-card:action:execution-request', {
+        new CustomEvent('advanced-camera-card-mini:action:execution-request', {
           detail: { actions: createLogAction('Hello, world!') },
         }),
       );

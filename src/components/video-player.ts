@@ -17,7 +17,7 @@ import {
   dispatchMediaVolumeChangeEvent,
 } from '../utils/media-info';
 
-@customElement('advanced-camera-card-video-player')
+@customElement('advanced-camera-card-mini-video-player')
 export class AdvancedCameraCardVideoPlayer extends LitElement implements MediaPlayer {
   @property()
   public url?: string;
@@ -81,6 +81,6 @@ export class AdvancedCameraCardVideoPlayer extends LitElement implements MediaPl
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-video-player': AdvancedCameraCardVideoPlayer;
+    'advanced-camera-card-mini-video-player': AdvancedCameraCardVideoPlayer;
   }
 }

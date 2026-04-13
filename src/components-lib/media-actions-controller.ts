@@ -194,7 +194,7 @@ export class MediaActionsController {
 
   protected _removeChildHandlers(): void {
     for (const [child, callback] of this._eventListeners.entries()) {
-      child.removeEventListener('advanced-camera-card:media:loaded', callback);
+      child.removeEventListener('advanced-camera-card-mini:media:loaded', callback);
     }
     this._eventListeners.clear();
   }
@@ -230,7 +230,7 @@ export class MediaActionsController {
     for (const [index, child] of this._children.entries()) {
       const eventListener = () => this._mediaLoadedHandler(index);
       this._eventListeners.set(child, eventListener);
-      child.addEventListener('advanced-camera-card:media:loaded', eventListener);
+      child.addEventListener('advanced-camera-card-mini:media:loaded', eventListener);
     }
   }
 

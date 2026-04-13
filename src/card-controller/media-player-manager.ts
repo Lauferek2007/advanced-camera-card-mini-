@@ -81,7 +81,7 @@ export class MediaPlayerManager {
     // available in the HA state, only in the registry).
     this._mediaPlayers = mediaPlayers.filter((entityID) => {
       // Specifically allow for media players that are not found in the entity registry:
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1016
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1016
       const entity = mediaPlayerEntities?.get(entityID);
       return !entity || !entity.hidden_by;
     });

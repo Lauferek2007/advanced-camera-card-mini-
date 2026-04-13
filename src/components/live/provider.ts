@@ -34,7 +34,7 @@ import '../icon.js';
 import { renderMessage } from '../message.js';
 import './../media-dimensions-container';
 
-@customElement('advanced-camera-card-live-provider')
+@customElement('advanced-camera-card-mini-live-provider')
 export class AdvancedCameraCardLiveProvider extends LitElement implements MediaPlayer {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -82,7 +82,7 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
   // underlying code is not yet loaded.
   //
   // Test case: A card with a non-live view, but live pre-loaded, attempts to
-  // call mute() when the <advanced-camera-card-live> element first renders in
+  // call mute() when the <advanced-camera-card-mini-live> element first renders in
   // the background. These calls fail without waiting for loading here.
   protected _importPromises: Promise<unknown>[] = [];
 
@@ -179,9 +179,9 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
 
   protected _renderContainer(template: TemplateResult): TemplateResult {
     const config = this.camera?.getConfig();
-    const intermediateTemplate = html` <advanced-camera-card-media-dimensions-container
+    const intermediateTemplate = html` <advanced-camera-card-mini-media-dimensions-container
       .dimensionsConfig=${config?.dimensions}
-      @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+      @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
         if (ev.detail.placeholder) {
           ev.stopPropagation();
         } else {
@@ -190,10 +190,10 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
       }}
     >
       ${template}
-    </advanced-camera-card-media-dimensions-container>`;
+    </advanced-camera-card-mini-media-dimensions-container>`;
 
     return html` ${this.liveConfig?.zoomable
-      ? html` <advanced-camera-card-zoomer
+      ? html` <advanced-camera-card-mini-zoomer
           .defaultSettings=${guard([config?.dimensions?.layout], () =>
             config?.dimensions?.layout
               ? {
@@ -203,13 +203,13 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
               : undefined,
           )}
           .settings=${this.zoomSettings}
-          @advanced-camera-card:zoom:zoomed=${async () =>
+          @advanced-camera-card-mini:zoom:zoomed=${async () =>
             (await this.getMediaPlayerController())?.setControls(false)}
-          @advanced-camera-card:zoom:unzoomed=${async () =>
+          @advanced-camera-card-mini:zoom:unzoomed=${async () =>
             (await this.getMediaPlayerController())?.setControls()}
         >
           ${intermediateTemplate}
-        </advanced-camera-card-zoomer>`
+        </advanced-camera-card-mini-zoomer>`
       : intermediateTemplate}`;
   }
 
@@ -280,7 +280,7 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
 
     return html`${this._renderContainer(html`
       ${showImageDuringLoading || provider === 'image'
-        ? html` <advanced-camera-card-live-image
+        ? html` <advanced-camera-card-mini-live-image
             ${ref(this._refProvider)}
             .hass=${this.hass}
             .cameraConfig=${cameraConfig}
@@ -290,25 +290,25 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
               // so it should not be hidden.
               hidden: false,
             })}
-            @advanced-camera-card:live:error=${() => this._providerErrorHandler()}
-            @advanced-camera-card:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
+            @advanced-camera-card-mini:live:error=${() => this._providerErrorHandler()}
+            @advanced-camera-card-mini:media:loaded=${(ev: CustomEvent<MediaLoadedInfo>) => {
               ev.detail.placeholder = provider !== 'image';
             }}
           >
-          </advanced-camera-card-live-image>`
+          </advanced-camera-card-mini-live-image>`
         : html``}
       ${provider === 'ha'
-        ? html` <advanced-camera-card-live-ha
+        ? html` <advanced-camera-card-mini-live-ha
             ${ref(this._refProvider)}
             class=${classMap(classes)}
             .hass=${this.hass}
             .cameraConfig=${cameraConfig}
             ?controls=${this.liveConfig.controls.builtin}
-            @advanced-camera-card:live:error=${() => this._providerErrorHandler()}
+            @advanced-camera-card-mini:live:error=${() => this._providerErrorHandler()}
           >
-          </advanced-camera-card-live-ha>`
+          </advanced-camera-card-mini-live-ha>`
         : provider === 'go2rtc'
-          ? html`<advanced-camera-card-live-go2rtc
+          ? html`<advanced-camera-card-mini-live-go2rtc
               ${ref(this._refProvider)}
               class=${classMap(classes)}
               .hass=${this.hass}
@@ -317,11 +317,11 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
               .microphoneState=${this.microphoneState}
               .microphoneConfig=${this.liveConfig.microphone}
               ?controls=${this.liveConfig.controls.builtin}
-              @advanced-camera-card:live:error=${() => this._providerErrorHandler()}
+              @advanced-camera-card-mini:live:error=${() => this._providerErrorHandler()}
             >
-            </advanced-camera-card-live-go2rtc>`
+            </advanced-camera-card-mini-live-go2rtc>`
           : provider === 'webrtc-card'
-            ? html`<advanced-camera-card-live-webrtc-card
+            ? html`<advanced-camera-card-mini-live-webrtc-card
                 ${ref(this._refProvider)}
                 class=${classMap(classes)}
                 .hass=${this.hass}
@@ -329,30 +329,30 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
                 .cameraEndpoints=${this.cameraEndpoints}
                 .cardWideConfig=${this.cardWideConfig}
                 ?controls=${this.liveConfig.controls.builtin}
-                @advanced-camera-card:live:error=${() => this._providerErrorHandler()}
+                @advanced-camera-card-mini:live:error=${() => this._providerErrorHandler()}
               >
-              </advanced-camera-card-live-webrtc-card>`
+              </advanced-camera-card-mini-live-webrtc-card>`
             : provider === 'jsmpeg'
-              ? html` <advanced-camera-card-live-jsmpeg
+              ? html` <advanced-camera-card-mini-live-jsmpeg
                   ${ref(this._refProvider)}
                   class=${classMap(classes)}
                   .hass=${this.hass}
                   .cameraConfig=${cameraConfig}
                   .cameraEndpoints=${this.cameraEndpoints}
                   .cardWideConfig=${this.cardWideConfig}
-                  @advanced-camera-card:live:error=${() => this._providerErrorHandler()}
+                  @advanced-camera-card-mini:live:error=${() => this._providerErrorHandler()}
                 >
-                </advanced-camera-card-live-jsmpeg>`
+                </advanced-camera-card-mini-live-jsmpeg>`
               : html``}
     `)}
     ${showLoadingIcon
-      ? html`<advanced-camera-card-icon
+      ? html`<advanced-camera-card-mini-icon
           title=${localize('error.awaiting_live')}
           .icon=${{ icon: 'mdi:progress-helper' }}
           @click=${() => {
             this._showStreamTroubleshooting = !this._showStreamTroubleshooting;
           }}
-        ></advanced-camera-card-icon>`
+        ></advanced-camera-card-mini-icon>`
       : ''}
     ${this._showStreamTroubleshooting
       ? renderMessage(
@@ -377,6 +377,6 @@ export class AdvancedCameraCardLiveProvider extends LitElement implements MediaP
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-provider': AdvancedCameraCardLiveProvider;
+    'advanced-camera-card-mini-live-provider': AdvancedCameraCardLiveProvider;
   }
 }

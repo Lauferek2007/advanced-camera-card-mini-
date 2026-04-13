@@ -4,7 +4,7 @@ import {
   MediaPlayerController,
   MediaTechnology,
 } from '../types.js';
-import { fireAdvancedCameraCardEvent } from './fire-advanced-camera-card-event.js';
+import { fireAdvancedCameraCardEvent } from './fire-advanced-camera-card-mini-event.js';
 
 const MEDIA_INFO_HEIGHT_CUTOFF = 50;
 const MEDIA_INFO_WIDTH_CUTOFF = MEDIA_INFO_HEIGHT_CUTOFF;
@@ -118,7 +118,7 @@ export function isValidMediaLoadedInfo(info: MediaLoadedInfo): boolean {
 // Facilitates correct typing of event handlers.
 export interface AdvancedCameraCardMediaLoadedEventTarget extends EventTarget {
   addEventListener(
-    event: 'advanced-camera-card:media:loaded',
+    event: 'advanced-camera-card-mini:media:loaded',
     listener: (
       this: AdvancedCameraCardMediaLoadedEventTarget,
       ev: CustomEvent<MediaLoadedInfo>,
@@ -126,7 +126,7 @@ export interface AdvancedCameraCardMediaLoadedEventTarget extends EventTarget {
     options?: AddEventListenerOptions | boolean,
   ): void;
   addEventListener(
-    event: 'advanced-camera-card:media:unloaded',
+    event: 'advanced-camera-card-mini:media:unloaded',
     listener: (this: AdvancedCameraCardMediaLoadedEventTarget, ev: CustomEvent) => void,
     options?: AddEventListenerOptions | boolean,
   ): void;
@@ -136,7 +136,7 @@ export interface AdvancedCameraCardMediaLoadedEventTarget extends EventTarget {
     options?: AddEventListenerOptions | boolean,
   ): void;
   removeEventListener(
-    event: 'advanced-camera-card:media:loaded',
+    event: 'advanced-camera-card-mini:media:loaded',
     listener: (
       this: AdvancedCameraCardMediaLoadedEventTarget,
       ev: CustomEvent<MediaLoadedInfo>,
@@ -144,7 +144,7 @@ export interface AdvancedCameraCardMediaLoadedEventTarget extends EventTarget {
     options?: boolean | EventListenerOptions,
   ): void;
   removeEventListener(
-    event: 'advanced-camera-card:media:unloaded',
+    event: 'advanced-camera-card-mini:media:unloaded',
     listener: (this: AdvancedCameraCardMediaLoadedEventTarget, ev: CustomEvent) => void,
     options?: boolean | EventListenerOptions,
   ): void;

@@ -38,7 +38,7 @@ export const getRecordingsSummary = async (
       camera: camera_name,
 
       // Ask for the summary relative to HA timezone
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1267
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1267
       timezone: hass.config.time_zone,
     },
     true,
@@ -153,7 +153,7 @@ export const getEventSummary = async (
       instance_id: clientID,
 
       // Ask for the summary relative to HA timezone
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1267
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1267
       timezone: hass.config.time_zone,
     },
     true,

@@ -59,14 +59,14 @@ describe('StyleManager', () => {
       manager.setExpandedMode();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-aspect-ratio'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-aspect-ratio'),
       ).toBe('unset');
-      expect(element.style.getPropertyValue('--advanced-camera-card-expand-width')).toBe(
-        'var(--advanced-camera-card-expand-max-width)',
+      expect(element.style.getPropertyValue('--advanced-camera-card-mini-expand-width')).toBe(
+        'var(--advanced-camera-card-mini-expand-max-width)',
       );
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-height'),
-      ).toBe('var(--advanced-camera-card-expand-max-height)');
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-height'),
+      ).toBe('var(--advanced-camera-card-mini-expand-max-height)');
     });
 
     it('with view but without media', () => {
@@ -81,13 +81,13 @@ describe('StyleManager', () => {
       manager.setExpandedMode();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-aspect-ratio'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-aspect-ratio'),
       ).toBe('unset');
-      expect(element.style.getPropertyValue('--advanced-camera-card-expand-width')).toBe(
+      expect(element.style.getPropertyValue('--advanced-camera-card-mini-expand-width')).toBe(
         'none',
       );
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-height'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-height'),
       ).toBe('none');
     });
 
@@ -106,13 +106,13 @@ describe('StyleManager', () => {
       manager.setExpandedMode();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-aspect-ratio'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-aspect-ratio'),
       ).toBe('800 / 600');
-      expect(element.style.getPropertyValue('--advanced-camera-card-expand-width')).toBe(
+      expect(element.style.getPropertyValue('--advanced-camera-card-mini-expand-width')).toBe(
         'none',
       );
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-height'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-height'),
       ).toBe('none');
     });
 
@@ -131,14 +131,14 @@ describe('StyleManager', () => {
       manager.setExpandedMode();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-aspect-ratio'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-aspect-ratio'),
       ).toBe('800 / 600');
-      expect(element.style.getPropertyValue('--advanced-camera-card-expand-width')).toBe(
-        'var(--advanced-camera-card-expand-max-width)',
+      expect(element.style.getPropertyValue('--advanced-camera-card-mini-expand-width')).toBe(
+        'var(--advanced-camera-card-mini-expand-max-width)',
       );
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-height'),
-      ).toBe('var(--advanced-camera-card-expand-max-height)');
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-height'),
+      ).toBe('var(--advanced-camera-card-mini-expand-max-height)');
     });
   });
 
@@ -152,10 +152,10 @@ describe('StyleManager', () => {
       manager.updateFromConfig();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-max-height'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-max-height'),
       ).toBeFalsy();
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-expand-height'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-expand-height'),
       ).toBeFalsy();
     });
 
@@ -174,7 +174,7 @@ describe('StyleManager', () => {
 
       manager.updateFromConfig();
 
-      expect(element.style.getPropertyValue('--advanced-camera-card-height')).toBe(
+      expect(element.style.getPropertyValue('--advanced-camera-card-mini-height')).toBe(
         '800px',
       );
     });
@@ -191,10 +191,10 @@ describe('StyleManager', () => {
       manager.updateFromConfig();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-box-shadow-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-box-shadow-override'),
       ).toBeFalsy();
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-border-radius-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-border-radius-override'),
       ).toBeFalsy();
     });
 
@@ -217,10 +217,10 @@ describe('StyleManager', () => {
       manager.updateFromConfig();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-box-shadow-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-box-shadow-override'),
       ).toEqual('none');
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-border-radius-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-border-radius-override'),
       ).toBeFalsy();
     });
 
@@ -242,7 +242,7 @@ describe('StyleManager', () => {
       manager.updateFromConfig();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-box-shadow-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-box-shadow-override'),
       ).toEqual('none');
     });
 
@@ -264,7 +264,7 @@ describe('StyleManager', () => {
       manager.updateFromConfig();
 
       expect(
-        element.style.getPropertyValue('--advanced-camera-card-border-radius-override'),
+        element.style.getPropertyValue('--advanced-camera-card-mini-border-radius-override'),
       ).toEqual('0px');
     });
   });

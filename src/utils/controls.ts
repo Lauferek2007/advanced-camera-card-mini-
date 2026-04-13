@@ -2,7 +2,7 @@ import { Timer } from './timer';
 
 // The number of seconds to hide the video controls for after loading (in order
 // to give a cleaner UI appearance, see:
-// https://github.com/dermotduffy/advanced-camera-card/issues/856
+// https://github.com/dermotduffy/advanced-camera-card-mini/issues/856
 export const MEDIA_LOAD_CONTROLS_HIDE_SECONDS = 2;
 const MEDIA_SEEK_CONTROLS_HIDE_SECONDS = 1;
 
@@ -47,7 +47,7 @@ export const hideMediaControlsTemporarily = (
   // LitElement may change the src attribute of the video element during
   // rendering, so we need to ensure that the controls are reset on the 'old'
   // video. See:
-  // https://github.com/dermotduffy/advanced-camera-card/issues/1310
+  // https://github.com/dermotduffy/advanced-camera-card-mini/issues/1310
   const resetIfReloaded = () => {
     setControlsOnVideo(video, oldValue);
     video.removeEventListener('loadstart', resetIfReloaded);

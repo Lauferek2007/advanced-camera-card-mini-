@@ -1,7 +1,7 @@
 import Panzoom, { PanzoomEventDetail, PanzoomObject } from '@dermotduffy/panzoom';
 import { round, throttle } from 'lodash-es';
 import { arefloatsApproximatelyEqual, isHoverableDevice } from '../../utils/basic';
-import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-mini-event';
 import {
   PartialZoomSettings,
   ZOOM_DEFAULT_PAN_X,
@@ -129,7 +129,7 @@ export class ZoomController {
 
       // Disable automatic touchAction setting from Panzoom() as otherwise it
       // effectively disables dashboard scrolling. See:
-      // https://github.com/dermotduffy/advanced-camera-card/issues/1181
+      // https://github.com/dermotduffy/advanced-camera-card-mini/issues/1181
       touchAction: '',
 
       // Set the initial pan/zoom values to avoid an initial unzoomed view.
@@ -311,7 +311,7 @@ export class ZoomController {
       // painted by the time this callback runs. Panzoom's contain logic would
       // then clip the pan to incorrect bounds. Temporarily disable containment
       // for this programmatic pan, then restore it.
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/2223
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2223
       this._panzoom?.setOptions({ contain: undefined });
       this._panzoom?.pan(x, y, {
         animate: true,
@@ -442,7 +442,7 @@ export class ZoomController {
     return (
       !this._isUnzoomed(this._panzoom?.getScale()) ||
       // TouchEvent does not exist on Firefox on non-touch events. See:
-      // https://github.com/dermotduffy/advanced-camera-card/issues/1174
+      // https://github.com/dermotduffy/advanced-camera-card-mini/issues/1174
       (window.TouchEvent && ev instanceof TouchEvent && ev.touches.length > 1) ||
       (ev instanceof WheelEvent && ev.ctrlKey)
     );

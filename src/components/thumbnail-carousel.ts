@@ -21,7 +21,7 @@ import { HomeAssistant } from '../ha/types.js';
 import thumbnailCarouselStyle from '../scss/thumbnail-carousel.scss';
 import { stopEventFromActivatingCardWideActions } from '../utils/action.js';
 import { CarouselDirection } from '../utils/embla/carousel-controller.js';
-import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-event.js';
+import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-mini-event.js';
 import { ViewItemClassifier } from '../view/item-classifier.js';
 import { ViewItem, ViewMedia } from '../view/item.js';
 import { QueryClassifier } from '../view/query-classifier.js';
@@ -32,7 +32,7 @@ export interface ThumbnailMediaSelect {
   media: ViewMedia;
 }
 
-@customElement('advanced-camera-card-thumbnail-carousel')
+@customElement('advanced-camera-card-mini-thumbnail-carousel')
 export class AdvancedCameraCardThumbnailCarousel extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -58,7 +58,7 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
     if (changedProps.has('config')) {
       if (this.config?.size) {
         this.style.setProperty(
-          '--advanced-camera-card-thumbnail-size',
+          '--advanced-camera-card-mini-thumbnail-size',
           `${this.config.size}px`,
         );
       }
@@ -82,7 +82,7 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
 
     if (changedProps.has('viewManagerEpoch')) {
       this.style.setProperty(
-        '--advanced-camera-card-carousel-thumbnail-opacity',
+        '--advanced-camera-card-mini-carousel-thumbnail-opacity',
         !this.fadeThumbnails || this._getSelectedSlide() === null ? '1.0' : '0.4',
       );
     }
@@ -155,7 +155,7 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
       'slide-selected': selected,
     };
 
-    return html` <advanced-camera-card-thumbnail
+    return html` <advanced-camera-card-mini-thumbnail
       class="${classMap(classes)}"
       .cameraManager=${this.cameraManager}
       .hass=${this.hass}
@@ -173,7 +173,7 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
       ?show_download_control=${this.config?.show_download_control}
       @click=${(ev: Event) => clickCallback(item, ev)}
     >
-    </advanced-camera-card-thumbnail>`;
+    </advanced-camera-card-mini-thumbnail>`;
   }
 
   protected _renderThumbnails(): TemplateResult[] {
@@ -219,13 +219,13 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
       return;
     }
 
-    return html`<advanced-camera-card-carousel
+    return html`<advanced-camera-card-mini-carousel
       direction=${direction}
       .selected=${this._getSelectedSlide() ?? 0}
       .dragFree=${true}
     >
       ${this._thumbnails}
-    </advanced-camera-card-carousel>`;
+    </advanced-camera-card-mini-carousel>`;
   }
 
   static get styles(): CSSResultGroup {
@@ -235,6 +235,6 @@ export class AdvancedCameraCardThumbnailCarousel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-thumbnail-carousel': AdvancedCameraCardThumbnailCarousel;
+    'advanced-camera-card-mini-thumbnail-carousel': AdvancedCameraCardThumbnailCarousel;
   }
 }

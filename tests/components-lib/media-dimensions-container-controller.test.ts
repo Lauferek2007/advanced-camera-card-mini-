@@ -113,36 +113,36 @@ describe('MediaDimensionsContainerController', () => {
       controller.setContainers(container);
 
       expect(
-        container.style.getPropertyValue('--advanced-camera-card-media-layout-fit'),
+        container.style.getPropertyValue('--advanced-camera-card-mini-media-layout-fit'),
       ).toBe('contain');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-position-x',
+          '--advanced-camera-card-mini-media-layout-position-x',
         ),
       ).toBe('1%');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-position-y',
+          '--advanced-camera-card-mini-media-layout-position-y',
         ),
       ).toBe('2%');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-view-box-top',
+          '--advanced-camera-card-mini-media-layout-view-box-top',
         ),
       ).toBe('3%');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-view-box-bottom',
+          '--advanced-camera-card-mini-media-layout-view-box-bottom',
         ),
       ).toBe('4%');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-view-box-left',
+          '--advanced-camera-card-mini-media-layout-view-box-left',
         ),
       ).toBe('5%');
       expect(
         container.style.getPropertyValue(
-          '--advanced-camera-card-media-layout-view-box-right',
+          '--advanced-camera-card-mini-media-layout-view-box-right',
         ),
       ).toBe('6%');
     });
@@ -467,7 +467,7 @@ describe('MediaDimensionsContainerController', () => {
 
           expect(
             innerContainer.style.getPropertyValue(
-              '--advanced-camera-card-media-rotation',
+              '--advanced-camera-card-mini-media-rotation',
             ),
           ).toBe(shouldRotate ? `${degrees}deg` : '');
         },
@@ -676,7 +676,7 @@ describe('MediaDimensionsContainerController', () => {
         height: 160,
       };
       innerContainer.dispatchEvent(
-        new CustomEvent<MediaLoadedInfo>('advanced-camera-card:media:loaded', {
+        new CustomEvent<MediaLoadedInfo>('advanced-camera-card-mini:media:loaded', {
           detail: mediaLoadedInfo,
         }),
       );
@@ -713,7 +713,7 @@ describe('MediaDimensionsContainerController', () => {
         height: 160,
       };
       innerContainer.dispatchEvent(
-        new CustomEvent<MediaLoadedInfo>('advanced-camera-card:media:loaded', {
+        new CustomEvent<MediaLoadedInfo>('advanced-camera-card-mini:media:loaded', {
           detail: mediaLoadedInfo,
         }),
       );
@@ -722,7 +722,7 @@ describe('MediaDimensionsContainerController', () => {
       host.removeAttribute('rotated');
 
       innerContainer.dispatchEvent(
-        new CustomEvent<MediaLoadedInfo>('advanced-camera-card:media:loaded', {
+        new CustomEvent<MediaLoadedInfo>('advanced-camera-card-mini:media:loaded', {
           detail: mediaLoadedInfo,
         }),
       );

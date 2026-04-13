@@ -12,7 +12,7 @@ import { MediaDimensionsContainerController } from '../components-lib/media-dime
 import { CameraDimensionsConfig } from '../config/schema/cameras';
 import mediaDimensionsContainerStyle from '../scss/media-dimensions-container.scss';
 
-@customElement('advanced-camera-card-media-dimensions-container')
+@customElement('advanced-camera-card-mini-media-dimensions-container')
 export class AdvancedCameraCardMediaDimensionsContainer extends LitElement {
   @property({ attribute: false })
   public dimensionsConfig?: CameraDimensionsConfig;
@@ -52,6 +52,6 @@ export class AdvancedCameraCardMediaDimensionsContainer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-media-dimensions-container': AdvancedCameraCardMediaDimensionsContainer;
+    'advanced-camera-card-mini-media-dimensions-container': AdvancedCameraCardMediaDimensionsContainer;
   }
 }

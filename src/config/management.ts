@@ -458,7 +458,7 @@ const callServiceToPerformActionTransform = (data: unknown): boolean => {
 
 /**
  * Transform service_data -> data
- * See: https://github.com/dermotduffy/advanced-camera-card/issues/1103
+ * See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1103
  * @param data Input data.
  * @returns `true` if the configuration was modified.
  */
@@ -511,11 +511,11 @@ const upgradePTZElementsToLive = function (): (data: unknown) => boolean {
     ): RawAdvancedCameraCardConfigArray => {
       const newElements: RawAdvancedCameraCardConfigArray = [];
       for (const element of elements) {
-        if (element['type'] === 'custom:advanced-camera-card-ptz') {
+        if (element['type'] === 'custom:advanced-camera-card-mini-ptz') {
           movePTZ(element);
         } else if (
           (element['type'] === 'conditional' ||
-            element['type'] === 'custom:advanced-camera-card-conditional') &&
+            element['type'] === 'custom:advanced-camera-card-mini-conditional') &&
           Array.isArray(element['elements'])
         ) {
           const newConditionalElements = processElements(element['elements']);
@@ -703,52 +703,52 @@ const frigateCardToAdvancedCameraCardTransform = (
     {
       oldKey: 'action',
       oldValue: 'custom:frigate-card-action',
-      newValue: 'custom:advanced-camera-card-action',
+      newValue: 'custom:advanced-camera-card-mini-action',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-menu-icon',
-      newValue: 'custom:advanced-camera-card-menu-icon',
+      newValue: 'custom:advanced-camera-card-mini-menu-icon',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-menu-state-icon',
-      newValue: 'custom:advanced-camera-card-menu-state-icon',
+      newValue: 'custom:advanced-camera-card-mini-menu-state-icon',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-menu-submenu',
-      newValue: 'custom:advanced-camera-card-menu-submenu',
+      newValue: 'custom:advanced-camera-card-mini-menu-submenu',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-menu-submenu-select',
-      newValue: 'custom:advanced-camera-card-menu-submenu-select',
+      newValue: 'custom:advanced-camera-card-mini-menu-submenu-select',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-status-bar-icon',
-      newValue: 'custom:advanced-camera-card-status-bar-icon',
+      newValue: 'custom:advanced-camera-card-mini-status-bar-icon',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-status-bar-image',
-      newValue: 'custom:advanced-camera-card-status-bar-image',
+      newValue: 'custom:advanced-camera-card-mini-status-bar-image',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-status-bar-string',
-      newValue: 'custom:advanced-camera-card-status-bar-string',
+      newValue: 'custom:advanced-camera-card-mini-status-bar-string',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-conditional',
-      newValue: 'custom:advanced-camera-card-conditional',
+      newValue: 'custom:advanced-camera-card-mini-conditional',
     },
     {
       oldKey: 'type',
       oldValue: 'custom:frigate-card-conditional',
-      newValue: 'custom:advanced-camera-card-conditional',
+      newValue: 'custom:advanced-camera-card-mini-conditional',
     },
     {
       oldKey: 'frigate_card_action',
@@ -785,7 +785,7 @@ const frigateCardToAdvancedCameraCardStyleTransform = (data: unknown): unknown =
 
   for (const key of Object.keys(data)) {
     if (key.match(frigateCardStyleRegexp)) {
-      const newKey = key.replace(frigateCardStyleRegexp, '--advanced-camera-card-');
+      const newKey = key.replace(frigateCardStyleRegexp, '--advanced-camera-card-mini-');
 
       newStyleOverrides[newKey] = data[key];
       delete newStyleOverrides[key];

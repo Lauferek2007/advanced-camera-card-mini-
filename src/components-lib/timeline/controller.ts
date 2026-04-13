@@ -38,7 +38,7 @@ import {
   setOrRemoveAttribute,
 } from '../../utils/basic';
 import { findBestMediaTimeIndex } from '../../utils/find-best-media-time-index';
-import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-mini-event';
 import { ViewMedia } from '../../view/item';
 import { ViewItemClassifier } from '../../view/item-classifier';
 import {
@@ -161,11 +161,11 @@ export class TimelineController {
     if (this._thumbnailConfig !== (options.thumbnailConfig ?? null)) {
       if (options.thumbnailConfig) {
         this._host.style.setProperty(
-          '--advanced-camera-card-thumbnail-size',
+          '--advanced-camera-card-mini-thumbnail-size',
           `${options?.thumbnailConfig.size}px`,
         );
       } else {
-        this._host.style.removeProperty('--advanced-camera-card-thumbnail-size');
+        this._host.style.removeProperty('--advanced-camera-card-mini-thumbnail-size');
       }
     }
 
@@ -1047,7 +1047,7 @@ export class TimelineController {
         disabled: false,
         filterOptions: {
           whiteList: {
-            'advanced-camera-card-timeline-thumbnail': ['details', 'item'],
+            'advanced-camera-card-mini-timeline-thumbnail': ['details', 'item'],
             div: ['title'],
             span: ['style'],
           },
@@ -1072,10 +1072,10 @@ export class TimelineController {
     // Note that changes to attributes here must be mirrored in the xss
     // whitelist in `_getOptions()` .
     return `
-        <advanced-camera-card-timeline-thumbnail
+        <advanced-camera-card-mini-timeline-thumbnail
           item='${item.id}'
           ${this._thumbnailConfig?.show_details ? 'details' : ''}
         >
-        </advanced-camera-card-timeline-thumbnail>`;
+        </advanced-camera-card-mini-timeline-thumbnail>`;
   }
 }

@@ -106,7 +106,7 @@ export class ActionsManager implements ActionsExecutor {
 
     // If the received action is not a custom action specifically for this card
     // to handle, ignore it. Otherwise, we can get action "loops". See:
-    // https://github.com/dermotduffy/advanced-camera-card/issues/1969
+    // https://github.com/dermotduffy/advanced-camera-card-mini/issues/1969
     if (!isAdvancedCameraCardCustomAction(action)) {
       return;
     }

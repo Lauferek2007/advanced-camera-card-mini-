@@ -80,7 +80,7 @@ const calculateButtons = (
 describe('MenuButtonController', () => {
   let controller: MenuButtonController;
   const dynamicButton: MenuItem = {
-    type: 'custom:advanced-camera-card-menu-icon',
+    type: 'custom:advanced-camera-card-mini-menu-icon',
     icon: 'mdi:alpha-a-circle',
     title: 'Dynamic button',
   };
@@ -99,7 +99,7 @@ describe('MenuButtonController', () => {
         enabled: true,
         permanent: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Iris / Default View / Unhide menu',
         tap_action: createGeneralAction('menu_toggle'),
         hold_action: createViewAction('diagnostics'),
@@ -116,7 +116,7 @@ describe('MenuButtonController', () => {
         enabled: true,
         permanent: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Iris / Default View / Unhide menu',
         tap_action: createGeneralAction('default'),
         hold_action: createViewAction('diagnostics'),
@@ -146,7 +146,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:video-switch',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         title: 'Cameras',
         items: [
           {
@@ -260,7 +260,7 @@ describe('MenuButtonController', () => {
         title: 'Substream(s)',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'live_substream_on',
@@ -297,11 +297,11 @@ describe('MenuButtonController', () => {
 
       expect(buttons).toContainEqual({
         icon: 'mdi:video-input-component',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         title: 'Substream(s)',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'live_substream_off',
@@ -362,7 +362,7 @@ describe('MenuButtonController', () => {
         style: {},
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         items: [
           {
             enabled: true,
@@ -451,10 +451,10 @@ describe('MenuButtonController', () => {
       expect(buttons).toContainEqual({
         icon: 'mdi:video-input-component',
         title: 'Substream(s)',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         items: [
           {
             enabled: true,
@@ -515,9 +515,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:cctv',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Live view',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'live' },
       });
     });
@@ -534,7 +534,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:cctv',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Live view',
         style: {},
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'live' },
@@ -569,9 +569,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:filmstrip',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Clips gallery',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'clips' },
         hold_action: { action: 'fire-dom-event', advanced_camera_card_action: 'clip' },
       });
@@ -588,7 +588,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:filmstrip',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Clips gallery',
         style: {},
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'clips' },
@@ -622,9 +622,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:camera',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Snapshots gallery',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'snapshots',
@@ -647,7 +647,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:camera',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Snapshots gallery',
         style: {},
         tap_action: {
@@ -689,9 +689,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:album',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Recordings gallery',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'recordings',
@@ -714,7 +714,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:album',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Recordings gallery',
         style: {},
         tap_action: {
@@ -757,9 +757,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:image',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Static image',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'image' },
       });
     });
@@ -777,7 +777,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:image',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Static image',
         style: {},
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'image' },
@@ -812,9 +812,9 @@ describe('MenuButtonController', () => {
         icon: 'mdi:chart-gantt',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Timeline view',
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'timeline',
@@ -834,7 +834,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:chart-gantt',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Timeline view',
         style: {},
         tap_action: {
@@ -886,7 +886,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:download',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Download',
         tap_action: {
           action: 'fire-dom-event',
@@ -954,7 +954,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:web',
       enabled: true,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Camera user interface',
       tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'camera_ui' },
     });
@@ -984,11 +984,11 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {
           animation: 'pulse 3s infinite',
-          color: 'var(--advanced-camera-card-menu-button-critical-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-critical-color)',
         },
         start_tap_action: {
           action: 'fire-dom-event',
@@ -1041,7 +1041,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone-message-off',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {},
       });
@@ -1070,7 +1070,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone-off',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {},
         start_tap_action: {
@@ -1107,7 +1107,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone-message-off',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {},
       });
@@ -1139,7 +1139,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone-off',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {},
         tap_action: {
@@ -1175,11 +1175,11 @@ describe('MenuButtonController', () => {
         icon: 'mdi:microphone',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Microphone',
         style: {
           animation: 'pulse 3s infinite',
-          color: 'var(--advanced-camera-card-menu-button-critical-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-critical-color)',
         },
         tap_action: {
           action: 'fire-dom-event',
@@ -1208,7 +1208,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:fullscreen',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Fullscreen',
         tap_action: {
           action: 'fire-dom-event',
@@ -1230,13 +1230,13 @@ describe('MenuButtonController', () => {
         icon: 'mdi:fullscreen-exit',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Fullscreen',
         tap_action: {
           action: 'fire-dom-event',
           advanced_camera_card_action: 'fullscreen',
         },
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
 
@@ -1262,7 +1262,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:arrow-expand-all',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Expand',
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'expand' },
         style: {},
@@ -1276,10 +1276,10 @@ describe('MenuButtonController', () => {
         icon: 'mdi:arrow-collapse-all',
         enabled: false,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Expand',
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'expand' },
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
   });
@@ -1314,7 +1314,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:cast',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         title: 'Send to media player',
         items: [
           {
@@ -1367,7 +1367,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:cast',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         title: 'Send to media player',
         items: [
           {
@@ -1398,7 +1398,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:pause',
       enabled: false,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Play / Pause',
       tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'pause' },
     });
@@ -1420,7 +1420,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:play',
       enabled: false,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Play / Pause',
       tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'play' },
     });
@@ -1441,7 +1441,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:volume-high',
       enabled: false,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Mute / Unmute',
       tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'mute' },
     });
@@ -1463,7 +1463,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:volume-off',
       enabled: false,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Mute / Unmute',
       tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'unmute' },
     });
@@ -1480,7 +1480,7 @@ describe('MenuButtonController', () => {
       icon: 'mdi:monitor-screenshot',
       enabled: false,
       priority: 50,
-      type: 'custom:advanced-camera-card-menu-icon',
+      type: 'custom:advanced-camera-card-mini-menu-icon',
       title: 'Screenshot',
       tap_action: {
         action: 'fire-dom-event',
@@ -1516,14 +1516,14 @@ describe('MenuButtonController', () => {
           icon: displayMode === 'single' ? 'mdi:grid' : 'mdi:grid-off',
           enabled: true,
           priority: 50,
-          type: 'custom:advanced-camera-card-menu-icon',
+          type: 'custom:advanced-camera-card-mini-menu-icon',
           title:
             displayMode === 'grid'
               ? 'Show single media viewer'
               : 'Show media viewer for each camera in a grid',
           style:
             displayMode === 'grid'
-              ? { color: 'var(--advanced-camera-card-menu-button-active-color)' }
+              ? { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' }
               : {},
           tap_action: {
             action: 'fire-dom-event',
@@ -1598,7 +1598,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:pan',
         priority: 50,
         style: {
-          color: 'var(--advanced-camera-card-menu-button-active-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
         },
         tap_action: {
           action: 'fire-dom-event',
@@ -1606,7 +1606,7 @@ describe('MenuButtonController', () => {
           enabled: false,
         },
         title: 'Show PTZ controls',
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
       });
     });
 
@@ -1638,7 +1638,7 @@ describe('MenuButtonController', () => {
           enabled: true,
         },
         title: 'Show PTZ controls',
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
       });
     });
 
@@ -1664,7 +1664,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:pan',
         priority: 50,
         style: {
-          color: 'var(--advanced-camera-card-menu-button-active-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
         },
         tap_action: {
           action: 'fire-dom-event',
@@ -1672,7 +1672,7 @@ describe('MenuButtonController', () => {
           enabled: false,
         },
         title: 'Show PTZ controls',
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
       });
     });
 
@@ -1705,7 +1705,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:pan',
         priority: 50,
         style: {
-          color: 'var(--advanced-camera-card-menu-button-active-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
         },
         tap_action: {
           action: 'fire-dom-event',
@@ -1713,7 +1713,7 @@ describe('MenuButtonController', () => {
           enabled: false,
         },
         title: 'Show PTZ controls',
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
       });
     });
   });
@@ -1780,7 +1780,7 @@ describe('MenuButtonController', () => {
               target_id: targetID,
             },
             title: 'PTZ Home',
-            type: 'custom:advanced-camera-card-menu-icon',
+            type: 'custom:advanced-camera-card-mini-menu-icon',
           });
         } else {
           expect(buttons).not.toContainEqual(
@@ -1824,7 +1824,7 @@ describe('MenuButtonController', () => {
         enabled: true,
         priority: 50,
         style: {},
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Folders',
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'folders' },
         hold_action: { action: 'fire-dom-event', advanced_camera_card_action: 'folder' },
@@ -1851,9 +1851,9 @@ describe('MenuButtonController', () => {
         enabled: true,
         priority: 50,
         style: {
-          color: 'var(--advanced-camera-card-menu-button-active-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
         },
-        type: 'custom:advanced-camera-card-menu-icon',
+        type: 'custom:advanced-camera-card-mini-menu-icon',
         title: 'Folders',
         tap_action: { action: 'fire-dom-event', advanced_camera_card_action: 'folders' },
         hold_action: { action: 'fire-dom-event', advanced_camera_card_action: 'folder' },
@@ -1886,10 +1886,10 @@ describe('MenuButtonController', () => {
         icon: 'mdi:folder-multiple',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         title: 'Folders',
         style: {
-          color: 'var(--advanced-camera-card-menu-button-active-color)',
+          color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
         },
         items: [
           {
@@ -1919,7 +1919,7 @@ describe('MenuButtonController', () => {
             icon: 'mdi:folder',
             selected: true,
             style: {
-              color: 'var(--advanced-camera-card-menu-button-active-color)',
+              color: 'var(--advanced-camera-card-mini-menu-button-active-color)',
             },
             tap_action: {
               action: 'fire-dom-event',
@@ -1948,7 +1948,7 @@ describe('MenuButtonController', () => {
         icon: 'mdi:folder-multiple',
         enabled: true,
         priority: 50,
-        type: 'custom:advanced-camera-card-menu-submenu',
+        type: 'custom:advanced-camera-card-mini-menu-submenu',
         title: 'Folders',
         style: {},
         items: [
@@ -2028,7 +2028,7 @@ describe('MenuButtonController', () => {
       });
     });
 
-    it('with non-advanced-camera-card fire-dom-event action', () => {
+    it('with non-advanced-camera-card-mini fire-dom-event action', () => {
       const button: MenuItem = {
         ...dynamicButton,
         tap_action: { action: 'fire-dom-event' },
@@ -2052,7 +2052,7 @@ describe('MenuButtonController', () => {
 
       expect(calculateButtons(controller, { view: view })).toContainEqual({
         ...button,
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
 
@@ -2065,7 +2065,7 @@ describe('MenuButtonController', () => {
 
       expect(calculateButtons(controller)).toContainEqual({
         ...button,
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
 
@@ -2084,7 +2084,7 @@ describe('MenuButtonController', () => {
 
       expect(calculateButtons(controller, { fullscreenManager })).toContainEqual({
         ...button,
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
 
@@ -2102,7 +2102,7 @@ describe('MenuButtonController', () => {
 
       expect(calculateButtons(controller, { view: view })).toContainEqual({
         ...button,
-        style: { color: 'var(--advanced-camera-card-menu-button-active-color)' },
+        style: { color: 'var(--advanced-camera-card-mini-menu-button-active-color)' },
       });
     });
 

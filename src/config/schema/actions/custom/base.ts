@@ -6,7 +6,7 @@ export const advancedCameraCardCustomActionsBaseSchema = actionBaseSchema.extend
     .literal('fire-dom-event')
     .or(
       z
-        .literal('custom:advanced-camera-card-action')
+        .literal('custom:advanced-camera-card-mini-action')
         .transform((): 'fire-dom-event' => 'fire-dom-event'),
     ),
 });

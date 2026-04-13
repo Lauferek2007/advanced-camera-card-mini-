@@ -37,7 +37,7 @@ const JSMPEG_URL_SIGN_EXPIRY_SECONDS = 24 * 60 * 60;
 // Number of seconds before the expiry to trigger a refresh.
 const JSMPEG_URL_SIGN_REFRESH_THRESHOLD_SECONDS = 1 * 60 * 60;
 
-@customElement('advanced-camera-card-live-jsmpeg')
+@customElement('advanced-camera-card-mini-live-jsmpeg')
 export class AdvancedCameraCardLiveJSMPEG extends LitElement implements MediaPlayer {
   protected hass?: HomeAssistant;
 
@@ -249,6 +249,6 @@ export class AdvancedCameraCardLiveJSMPEG extends LitElement implements MediaPla
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-jsmpeg': AdvancedCameraCardLiveJSMPEG;
+    'advanced-camera-card-mini-live-jsmpeg': AdvancedCameraCardLiveJSMPEG;
   }
 }

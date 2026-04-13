@@ -96,7 +96,7 @@ describe('upgrade functions', () => {
     expect(
       // Upgrade example: rename of service_data to data.
       isConfigUpgradeable({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -407,7 +407,7 @@ describe('should handle version specific upgrades', () => {
     describe('should rename service_data to data', () => {
       it('positive case', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
@@ -456,7 +456,7 @@ describe('should handle version specific upgrades', () => {
         };
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
@@ -509,7 +509,7 @@ describe('should handle version specific upgrades', () => {
       });
       it('negative case', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             default: 'live',
@@ -517,7 +517,7 @@ describe('should handle version specific upgrades', () => {
         };
         expect(upgradeConfig(config)).toBeFalsy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             default: 'live',
@@ -530,11 +530,11 @@ describe('should handle version specific upgrades', () => {
     describe('should move PTZ elements to live', () => {
       it('case with 1 element', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
-              type: 'custom:advanced-camera-card-ptz',
+              type: 'custom:advanced-camera-card-mini-ptz',
               orientation: 'vertical',
               style: {
                 right: '20px',
@@ -579,18 +579,18 @@ describe('should handle version specific upgrades', () => {
               },
             },
           },
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
 
       it('case with >1 element', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
-              type: 'custom:advanced-camera-card-ptz',
+              type: 'custom:advanced-camera-card-mini-ptz',
               orientation: 'vertical',
               style: {
                 right: '20px',
@@ -653,25 +653,25 @@ describe('should handle version specific upgrades', () => {
               },
             },
           },
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
 
       it('case with custom conditional element with 2 PTZ but nothing else', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
-              type: 'custom:advanced-camera-card-conditional',
+              type: 'custom:advanced-camera-card-mini-conditional',
               conditions: {
                 fullscreen: true,
                 media_loaded: true,
               },
               elements: [
                 {
-                  type: 'custom:advanced-camera-card-ptz',
+                  type: 'custom:advanced-camera-card-mini-ptz',
                   orientation: 'vertical',
                   style: {
                     right: '20px',
@@ -689,7 +689,7 @@ describe('should handle version specific upgrades', () => {
                   },
                 },
                 {
-                  type: 'custom:advanced-camera-card-ptz',
+                  type: 'custom:advanced-camera-card-mini-ptz',
                   orientation: 'vertical',
                   style: {
                     right: '20px',
@@ -736,18 +736,18 @@ describe('should handle version specific upgrades', () => {
               },
             },
           },
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
 
       it('case with custom conditional element with 1 PTZ and another element', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
-              type: 'custom:advanced-camera-card-conditional',
+              type: 'custom:advanced-camera-card-mini-conditional',
               conditions: {
                 fullscreen: true,
                 media_loaded: true,
@@ -762,7 +762,7 @@ describe('should handle version specific upgrades', () => {
                   },
                 },
                 {
-                  type: 'custom:advanced-camera-card-ptz',
+                  type: 'custom:advanced-camera-card-mini-ptz',
                   orientation: 'vertical',
                   style: {
                     right: '20px',
@@ -811,7 +811,7 @@ describe('should handle version specific upgrades', () => {
           },
           elements: [
             {
-              type: 'custom:advanced-camera-card-conditional',
+              type: 'custom:advanced-camera-card-mini-conditional',
               conditions: [
                 {
                   condition: 'fullscreen' as const,
@@ -834,14 +834,14 @@ describe('should handle version specific upgrades', () => {
               ],
             },
           ],
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
 
       it('case with stock conditional element with 1 PTZ', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           elements: [
             {
@@ -849,7 +849,7 @@ describe('should handle version specific upgrades', () => {
               conditions: [{ entity: 'light.office', state: 'on' }],
               elements: [
                 {
-                  type: 'custom:advanced-camera-card-ptz',
+                  type: 'custom:advanced-camera-card-mini-ptz',
                   orientation: 'vertical',
                   style: {
                     right: '20px',
@@ -896,14 +896,14 @@ describe('should handle version specific upgrades', () => {
               },
             },
           },
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
 
       it('case when live.controls.ptz already exists', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           live: {
             controls: {
@@ -928,7 +928,7 @@ describe('should handle version specific upgrades', () => {
           },
           elements: [
             {
-              type: 'custom:advanced-camera-card-ptz',
+              type: 'custom:advanced-camera-card-mini-ptz',
               orientation: 'vertical',
               style: {
                 right: '20px',
@@ -973,7 +973,7 @@ describe('should handle version specific upgrades', () => {
               },
             },
           },
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
         });
         postUpgradeChecks(config);
       });
@@ -981,7 +981,7 @@ describe('should handle version specific upgrades', () => {
 
     it('should move view.timeout_seconds', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         view: {
           timeout_seconds: 200,
@@ -989,7 +989,7 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         view: {
           interaction_seconds: 200,
@@ -1003,7 +1003,7 @@ describe('should handle version specific upgrades', () => {
         describe('lazy_unload', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 lazy_unload: 'all',
@@ -1011,7 +1011,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 lazy_unload: ['unselected', 'hidden'],
@@ -1021,7 +1021,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 lazy_unload: 'never',
@@ -1029,7 +1029,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {},
             });
@@ -1037,7 +1037,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 lazy_unload: 'unselected',
@@ -1045,7 +1045,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 lazy_unload: ['unselected'],
@@ -1058,7 +1058,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_play', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_play: 'all',
@@ -1066,7 +1066,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {},
             });
@@ -1074,7 +1074,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_play: 'never',
@@ -1082,7 +1082,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_play: [],
@@ -1092,7 +1092,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_play: 'selected',
@@ -1100,7 +1100,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_play: ['selected'],
@@ -1112,7 +1112,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_pause', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_pause: 'all',
@@ -1120,7 +1120,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_pause: ['unselected', 'hidden'],
@@ -1130,7 +1130,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_pause: 'never',
@@ -1138,7 +1138,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {},
             });
@@ -1146,7 +1146,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_pause: 'unselected',
@@ -1154,7 +1154,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_pause: ['unselected'],
@@ -1166,7 +1166,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_mute', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_mute: 'all',
@@ -1174,7 +1174,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {},
             });
@@ -1182,7 +1182,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_mute: 'never',
@@ -1190,7 +1190,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_mute: [],
@@ -1200,7 +1200,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_mute: 'unselected',
@@ -1208,7 +1208,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_mute: ['unselected'],
@@ -1220,7 +1220,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_unmute', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_unmute: 'all',
@@ -1228,7 +1228,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_unmute: ['selected', 'visible', 'microphone'],
@@ -1238,7 +1238,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_unmute: 'never',
@@ -1246,7 +1246,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {},
             });
@@ -1254,7 +1254,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_unmute: 'selected',
@@ -1262,7 +1262,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 auto_unmute: ['selected'],
@@ -1277,7 +1277,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_play', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_play: 'all',
@@ -1285,7 +1285,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {},
             });
@@ -1293,7 +1293,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_play: 'never',
@@ -1301,7 +1301,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_play: [],
@@ -1311,7 +1311,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_play: 'selected',
@@ -1319,7 +1319,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_play: ['selected'],
@@ -1331,7 +1331,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_pause', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_pause: 'all',
@@ -1339,7 +1339,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {},
             });
@@ -1347,7 +1347,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_pause: 'never',
@@ -1355,7 +1355,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_pause: [],
@@ -1365,7 +1365,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_pause: 'unselected',
@@ -1373,7 +1373,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_pause: ['unselected'],
@@ -1385,7 +1385,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_mute', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_mute: 'all',
@@ -1393,7 +1393,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {},
             });
@@ -1401,7 +1401,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_mute: 'never',
@@ -1409,7 +1409,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_mute: [],
@@ -1419,7 +1419,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_mute: 'unselected',
@@ -1427,7 +1427,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_mute: ['unselected'],
@@ -1439,7 +1439,7 @@ describe('should handle version specific upgrades', () => {
         describe('auto_unmute', () => {
           it('all', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_unmute: 'all',
@@ -1447,7 +1447,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_unmute: ['selected', 'visible'],
@@ -1457,7 +1457,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('never', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_unmute: 'never',
@@ -1465,7 +1465,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {},
             });
@@ -1473,7 +1473,7 @@ describe('should handle version specific upgrades', () => {
           });
           it('other value', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_unmute: 'selected',
@@ -1481,7 +1481,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               media_viewer: {
                 auto_unmute: ['selected'],
@@ -1498,7 +1498,7 @@ describe('should handle version specific upgrades', () => {
         '%s',
         (mediaEventType: string) => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: {
               controls: {
@@ -1510,7 +1510,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: {
               controls: {
@@ -1530,7 +1530,7 @@ describe('should handle version specific upgrades', () => {
         '%s',
         (mediaEventType: string) => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             timeline: {
               media: mediaEventType,
@@ -1538,7 +1538,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             timeline: {
               events_media_type: mediaEventType,
@@ -1554,7 +1554,7 @@ describe('should handle version specific upgrades', () => {
         '%s',
         (mediaEventType: string) => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: {
               controls: {
@@ -1566,7 +1566,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: {
               controls: {
@@ -1586,7 +1586,7 @@ describe('should handle version specific upgrades', () => {
         '%s',
         (mediaEventType: string) => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             media_viewer: {
               controls: {
@@ -1598,7 +1598,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             media_viewer: {
               controls: {
@@ -1617,7 +1617,7 @@ describe('should handle version specific upgrades', () => {
       describe('should move and transform untrigger_reset', () => {
         it('when true', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             view: {
               scan: {
@@ -1627,7 +1627,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             view: {
               triggers: {
@@ -1642,7 +1642,7 @@ describe('should handle version specific upgrades', () => {
 
         it('when false', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             view: {
               scan: {
@@ -1652,7 +1652,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             view: {
               triggers: {},
@@ -1665,7 +1665,7 @@ describe('should handle version specific upgrades', () => {
       describe('should rename view.scan.enabled to a trigger action', () => {
         it('when true', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             view: {
               scan: {
@@ -1675,7 +1675,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             view: {
               triggers: {
@@ -1691,7 +1691,7 @@ describe('should handle version specific upgrades', () => {
 
         it('when false', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             view: {
               scan: {
@@ -1701,7 +1701,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             view: {
               triggers: {},
@@ -1715,7 +1715,7 @@ describe('should handle version specific upgrades', () => {
     describe('should handle media layout changes', () => {
       it('from live.layout to camera_global.dimensions', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             layout: {
@@ -1729,7 +1729,7 @@ describe('should handle version specific upgrades', () => {
         };
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {},
           cameras_global: {
@@ -1752,7 +1752,7 @@ describe('should handle version specific upgrades', () => {
           '%s',
           (section: string) => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               [section]: {
                 layout: {
@@ -1766,7 +1766,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               [section]: {},
             });
@@ -1780,7 +1780,7 @@ describe('should handle version specific upgrades', () => {
       describe('with view condition', () => {
         it('elements', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -1797,7 +1797,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -1820,7 +1820,7 @@ describe('should handle version specific upgrades', () => {
 
         it('overrides', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -1838,7 +1838,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -1861,7 +1861,7 @@ describe('should handle version specific upgrades', () => {
 
         it('automations', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -1870,7 +1870,7 @@ describe('should handle version specific upgrades', () => {
                 },
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -1880,7 +1880,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -1892,7 +1892,7 @@ describe('should handle version specific upgrades', () => {
                 ],
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -1906,7 +1906,7 @@ describe('should handle version specific upgrades', () => {
       describe('with camera condition', () => {
         it('elements', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -1923,7 +1923,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -1946,7 +1946,7 @@ describe('should handle version specific upgrades', () => {
 
         it('overrides', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -1964,7 +1964,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -1987,7 +1987,7 @@ describe('should handle version specific upgrades', () => {
 
         it('automations', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -1996,7 +1996,7 @@ describe('should handle version specific upgrades', () => {
                 },
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2006,7 +2006,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -2018,7 +2018,7 @@ describe('should handle version specific upgrades', () => {
                 ],
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2037,7 +2037,7 @@ describe('should handle version specific upgrades', () => {
         ])('%s', (condition: string) => {
           it('elements', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               elements: [
                 {
@@ -2054,7 +2054,7 @@ describe('should handle version specific upgrades', () => {
             };
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               elements: [
                 {
@@ -2077,7 +2077,7 @@ describe('should handle version specific upgrades', () => {
 
           it('overrides', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               overrides: [
                 {
@@ -2095,7 +2095,7 @@ describe('should handle version specific upgrades', () => {
 
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               overrides: [
                 {
@@ -2118,7 +2118,7 @@ describe('should handle version specific upgrades', () => {
 
           it('automations', () => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               automations: [
                 {
@@ -2127,7 +2127,7 @@ describe('should handle version specific upgrades', () => {
                   },
                   actions: [
                     {
-                      action: 'custom:advanced-camera-card-action' as const,
+                      action: 'custom:advanced-camera-card-mini-action' as const,
                       advanced_camera_card_action: 'live_substream_on' as const,
                     },
                   ],
@@ -2137,7 +2137,7 @@ describe('should handle version specific upgrades', () => {
 
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{ camera_entity: 'camera.office' }],
               automations: [
                 {
@@ -2149,7 +2149,7 @@ describe('should handle version specific upgrades', () => {
                   ],
                   actions: [
                     {
-                      action: 'custom:advanced-camera-card-action' as const,
+                      action: 'custom:advanced-camera-card-mini-action' as const,
                       advanced_camera_card_action: 'live_substream_on' as const,
                     },
                   ],
@@ -2164,7 +2164,7 @@ describe('should handle version specific upgrades', () => {
       describe('with state condition', () => {
         it('elements', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -2191,7 +2191,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -2220,7 +2220,7 @@ describe('should handle version specific upgrades', () => {
 
         it('overrides', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -2248,7 +2248,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -2277,7 +2277,7 @@ describe('should handle version specific upgrades', () => {
 
         it('automations', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -2296,7 +2296,7 @@ describe('should handle version specific upgrades', () => {
                 },
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2306,7 +2306,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -2324,7 +2324,7 @@ describe('should handle version specific upgrades', () => {
                 ],
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2338,7 +2338,7 @@ describe('should handle version specific upgrades', () => {
       describe('with media query condition', () => {
         it('elements', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -2355,7 +2355,7 @@ describe('should handle version specific upgrades', () => {
           };
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             elements: [
               {
@@ -2378,7 +2378,7 @@ describe('should handle version specific upgrades', () => {
 
         it('overrides', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -2396,7 +2396,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             overrides: [
               {
@@ -2419,7 +2419,7 @@ describe('should handle version specific upgrades', () => {
 
         it('automations', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -2428,7 +2428,7 @@ describe('should handle version specific upgrades', () => {
                 },
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2438,7 +2438,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{ camera_entity: 'camera.office' }],
             automations: [
               {
@@ -2450,7 +2450,7 @@ describe('should handle version specific upgrades', () => {
                 ],
                 actions: [
                   {
-                    action: 'custom:advanced-camera-card-action' as const,
+                    action: 'custom:advanced-camera-card-mini-action' as const,
                     advanced_camera_card_action: 'live_substream_on' as const,
                   },
                 ],
@@ -2465,7 +2465,7 @@ describe('should handle version specific upgrades', () => {
     describe('from hide to substream capability disable', () => {
       it('overrides', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [
             { camera_entity: 'camera.office', hide: true },
             { camera_entity: 'camera.sitting_room', hide: false },
@@ -2474,7 +2474,7 @@ describe('should handle version specific upgrades', () => {
 
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [
             {
               camera_entity: 'camera.office',
@@ -2489,7 +2489,7 @@ describe('should handle version specific upgrades', () => {
       describe('from performance profile to generic profile', () => {
         it('low performance', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             performance: {
               profile: 'low',
@@ -2498,7 +2498,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             profiles: ['low-performance'],
             performance: {},
@@ -2508,7 +2508,7 @@ describe('should handle version specific upgrades', () => {
 
         it('high performance', () => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             performance: {
               profile: 'high',
@@ -2517,7 +2517,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             performance: {},
           });
@@ -2528,7 +2528,7 @@ describe('should handle version specific upgrades', () => {
 
     it('from overrides to merge', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
         overrides: [
           {
@@ -2549,7 +2549,7 @@ describe('should handle version specific upgrades', () => {
 
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
         overrides: [
           {
@@ -2593,7 +2593,7 @@ describe('should handle version specific upgrades', () => {
 
       it('with action_ format', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2627,7 +2627,7 @@ describe('should handle version specific upgrades', () => {
 
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           cameras_global: {
             ptz: {
@@ -2670,7 +2670,7 @@ describe('should handle version specific upgrades', () => {
         });
 
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2702,7 +2702,7 @@ describe('should handle version specific upgrades', () => {
 
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           cameras_global: {
             ptz: {
@@ -2740,7 +2740,7 @@ describe('should handle version specific upgrades', () => {
 
       it('with invalid ptz type', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2754,7 +2754,7 @@ describe('should handle version specific upgrades', () => {
 
       it('with nothing to transform', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2770,7 +2770,7 @@ describe('should handle version specific upgrades', () => {
 
       it('without tap_action', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2799,7 +2799,7 @@ describe('should handle version specific upgrades', () => {
 
       it('without pre-existing presets', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2833,7 +2833,7 @@ describe('should handle version specific upgrades', () => {
 
     it('view.update_cycle_camera -> view.default_cycle_camera', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
         view: {
           update_cycle_camera: true,
@@ -2850,7 +2850,7 @@ describe('should handle version specific upgrades', () => {
     describe('view.update_force -> view.default_reset.interaction_mode', () => {
       it('should convert to all when true', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           view: {
             update_force: true,
@@ -2868,7 +2868,7 @@ describe('should handle version specific upgrades', () => {
 
       it('should remove when false', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           view: {
             update_force: false,
@@ -2883,7 +2883,7 @@ describe('should handle version specific upgrades', () => {
 
     it('view.update_seconds', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
         view: {
           update_seconds: 42,
@@ -2901,7 +2901,7 @@ describe('should handle version specific upgrades', () => {
 
     it('view.update_entities', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
         view: {
           update_entities: ['binary_sensor.foo', 'camera.bar'],
@@ -2920,7 +2920,7 @@ describe('should handle version specific upgrades', () => {
     describe('title controls to status bar', () => {
       it('when mode is none', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: {
             controls: {
@@ -2940,7 +2940,7 @@ describe('should handle version specific upgrades', () => {
 
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{}],
           live: { controls: {} },
           media_viewer: { controls: {} },
@@ -2957,7 +2957,7 @@ describe('should handle version specific upgrades', () => {
           '%s',
           (mode: unknown) => {
             const config = {
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: {
                 controls: {
@@ -2977,7 +2977,7 @@ describe('should handle version specific upgrades', () => {
 
             expect(upgradeConfig(config)).toBeTruthy();
             expect(config).toEqual({
-              type: 'custom:advanced-camera-card',
+              type: 'custom:advanced-camera-card-mini',
               cameras: [{}],
               live: { controls: {} },
               media_viewer: { controls: {} },
@@ -2994,7 +2994,7 @@ describe('should handle version specific upgrades', () => {
           [`popup-${position}-right` as const],
         ])('%s', (mode: string) => {
           const config = {
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: {
               controls: {
@@ -3014,7 +3014,7 @@ describe('should handle version specific upgrades', () => {
 
           expect(upgradeConfig(config)).toBeTruthy();
           expect(config).toEqual({
-            type: 'custom:advanced-camera-card',
+            type: 'custom:advanced-camera-card-mini',
             cameras: [{}],
             live: { controls: {} },
             media_viewer: { controls: {} },
@@ -3030,7 +3030,7 @@ describe('should handle version specific upgrades', () => {
 
     it('rename call-service -> perform-action', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3056,7 +3056,7 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3085,7 +3085,7 @@ describe('should handle version specific upgrades', () => {
 
     it('rename dimensions.max_height -> dimensions.height', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         dimensions: {
           max_height: '500px',
@@ -3093,7 +3093,7 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         dimensions: {
           height: '500px',
@@ -3104,7 +3104,7 @@ describe('should handle version specific upgrades', () => {
 
     it('delete dimensions.min_height', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         dimensions: {
           min_height: '100px',
@@ -3112,7 +3112,7 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         dimensions: {},
       });
@@ -3128,7 +3128,7 @@ describe('should handle version specific upgrades', () => {
         ['off' as const, false],
       ])('%s', (darkMode: 'on' | 'off' | 'auto', expected: boolean) => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             dark_mode: darkMode,
@@ -3136,7 +3136,7 @@ describe('should handle version specific upgrades', () => {
         };
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             dim: expected,
@@ -3148,22 +3148,22 @@ describe('should handle version specific upgrades', () => {
   });
 
   describe('v7.0.0+', () => {
-    it('custom:frigate-card -> custom:advanced-camera-card', () => {
+    it('custom:frigate-card -> custom:advanced-camera-card-mini', () => {
       const config = {
         type: 'custom:frigate-card',
         cameras: [{}],
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{}],
       });
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-action -> custom:advanced-camera-card-action', () => {
+    it('custom:frigate-card-action -> custom:advanced-camera-card-mini-action', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3186,14 +3186,14 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
             type: 'icon',
             icon: 'mdi:cow',
             tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               advanced_camera_card_action: 'camera_ui',
             },
           },
@@ -3201,7 +3201,7 @@ describe('should handle version specific upgrades', () => {
         view: {
           actions: {
             double_tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               advanced_camera_card_action: 'camera_ui',
             },
           },
@@ -3210,9 +3210,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-menu-icon -> custom:advanced-camera-card-menu-icon', () => {
+    it('custom:frigate-card-menu-icon -> custom:advanced-camera-card-mini-menu-icon', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3223,11 +3223,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-menu-icon',
+            type: 'custom:advanced-camera-card-mini-menu-icon',
             icon: 'mdi:cow',
           },
         ],
@@ -3235,9 +3235,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-menu-state-icon -> custom:advanced-camera-card-menu-state-icon', () => {
+    it('custom:frigate-card-menu-state-icon -> custom:advanced-camera-card-mini-menu-state-icon', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3249,11 +3249,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-menu-state-icon',
+            type: 'custom:advanced-camera-card-mini-menu-state-icon',
             entity: 'binary_sensor.office',
             icon: 'mdi:cow',
           },
@@ -3262,9 +3262,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-menu-submenu -> custom:advanced-camera-card-menu-submenu', () => {
+    it('custom:frigate-card-menu-submenu -> custom:advanced-camera-card-mini-menu-submenu', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3276,11 +3276,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-menu-submenu',
+            type: 'custom:advanced-camera-card-mini-menu-submenu',
             icon: 'mdi:cow',
             items: [],
           },
@@ -3289,9 +3289,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-status-bar-icon -> custom:advanced-camera-card-status-bar-icon', () => {
+    it('custom:frigate-card-status-bar-icon -> custom:advanced-camera-card-mini-status-bar-icon', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3302,11 +3302,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-status-bar-icon',
+            type: 'custom:advanced-camera-card-mini-status-bar-icon',
             icon: 'mdi:cow',
           },
         ],
@@ -3314,9 +3314,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-status-bar-image -> custom:advanced-camera-card-status-bar-image', () => {
+    it('custom:frigate-card-status-bar-image -> custom:advanced-camera-card-mini-status-bar-image', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3327,11 +3327,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-status-bar-image',
+            type: 'custom:advanced-camera-card-mini-status-bar-image',
             image: 'image',
           },
         ],
@@ -3339,9 +3339,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-status-bar-string -> custom:advanced-camera-card-status-bar-string', () => {
+    it('custom:frigate-card-status-bar-string -> custom:advanced-camera-card-mini-status-bar-string', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3352,11 +3352,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-status-bar-string',
+            type: 'custom:advanced-camera-card-mini-status-bar-string',
             string: 'string',
           },
         ],
@@ -3364,9 +3364,9 @@ describe('should handle version specific upgrades', () => {
       postUpgradeChecks(config);
     });
 
-    it('custom:frigate-card-conditional -> custom:advanced-camera-card-conditional', () => {
+    it('custom:frigate-card-conditional -> custom:advanced-camera-card-mini-conditional', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
@@ -3378,11 +3378,11 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
-            type: 'custom:advanced-camera-card-conditional',
+            type: 'custom:advanced-camera-card-mini-conditional',
             conditions: [],
             elements: [],
           },
@@ -3393,14 +3393,14 @@ describe('should handle version specific upgrades', () => {
 
     it('frigate_card_action -> advanced_camera_card_action', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
             type: 'icon',
             icon: 'mdi:cow',
             tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               frigate_card_action: 'camera_ui',
             },
           },
@@ -3408,7 +3408,7 @@ describe('should handle version specific upgrades', () => {
         view: {
           actions: {
             double_tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               frigate_card_action: 'camera_ui',
             },
           },
@@ -3416,14 +3416,14 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         elements: [
           {
             type: 'icon',
             icon: 'mdi:cow',
             tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               advanced_camera_card_action: 'camera_ui',
             },
           },
@@ -3431,7 +3431,7 @@ describe('should handle version specific upgrades', () => {
         view: {
           actions: {
             double_tap_action: {
-              action: 'custom:advanced-camera-card-action',
+              action: 'custom:advanced-camera-card-mini-action',
               advanced_camera_card_action: 'camera_ui',
             },
           },
@@ -3443,7 +3443,7 @@ describe('should handle version specific upgrades', () => {
     describe('frigate card style overrides -> advanced camera card style overrides', () => {
       it('valid style overrides', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             theme: {
@@ -3475,14 +3475,30 @@ describe('should handle version specific upgrades', () => {
         };
         expect(upgradeConfig(config)).toBeTruthy();
         expect(config).toEqual({
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             theme: {
               overrides: {
                 '--zero': 'zero',
-                '--advanced-camera-card-one': 'one',
+                '--advanced-camera-card-mini-one': 'one',
               },
+            },
+          },
+        },
+        {
+          conditions: [
+            {
+              condition: 'media_loaded',
+              media_loaded: true,
+            },
+          ],
+          merge: {
+            view: {
+              theme: {
+                overrides: {
+                  '--advanced-camera-card-mini-two': 'two',
+                },
             },
           },
           overrides: [
@@ -3497,7 +3513,7 @@ describe('should handle version specific upgrades', () => {
                 view: {
                   theme: {
                     overrides: {
-                      '--advanced-camera-card-two': 'two',
+                      '--advanced-camera-card-mini-two': 'two',
                     },
                   },
                 },
@@ -3510,7 +3526,7 @@ describe('should handle version specific upgrades', () => {
 
       it('invalid style overrides', () => {
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [{ camera_entity: 'camera.office' }],
           view: {
             theme: {
@@ -3524,7 +3540,7 @@ describe('should handle version specific upgrades', () => {
 
     it('frigate card button -> iris button', () => {
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         menu: {
           buttons: {
@@ -3555,7 +3571,7 @@ describe('should handle version specific upgrades', () => {
       };
       expect(upgradeConfig(config)).toBeTruthy();
       expect(config).toEqual({
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [{ camera_entity: 'camera.office' }],
         menu: {
           buttons: {

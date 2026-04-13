@@ -5,7 +5,7 @@ import { HomeAssistant } from './types';
 export const HASS_WEB_PROXY_DOMAIN = 'hass_web_proxy';
 
 const hasWebProxyAvailable = (hass: HomeAssistant): boolean => {
-  return hass.config.components.includes(HASS_WEB_PROXY_DOMAIN);
+  return hass?.config?.components?.includes(HASS_WEB_PROXY_DOMAIN) ?? false;
 };
 
 interface ProxiedURLOptions {

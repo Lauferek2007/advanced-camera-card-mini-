@@ -21,12 +21,12 @@ import { CardWideConfig } from '../config/schema/types.js';
 import { HomeAssistant } from '../ha/types.js';
 import basicBlockStyle from '../scss/basic-block.scss';
 import { contentsChanged } from '../utils/basic.js';
-import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-event.js';
+import { fireAdvancedCameraCardEvent } from '../utils/fire-advanced-camera-card-mini-event.js';
 import { QueryClassifier } from '../view/query-classifier.js';
 import './surround-basic.js';
 import './thumbnail-carousel';
 
-@customElement('advanced-camera-card-surround')
+@customElement('advanced-camera-card-mini-surround')
 export class AdvancedCameraCardSurround extends LitElement {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -154,7 +154,7 @@ export class AdvancedCameraCardSurround extends LitElement {
       // request to view thumbnails and re-dispatches a request to open the drawer
       // (if the thumbnails are in a drawer). The new event needs to be dispatched
       // from the origin of the inbound event, so it can be handled by
-      // <advanced-camera-card-surround> .
+      // <advanced-camera-card-mini-surround> .
       if (this.thumbnailConfig && this._hasDrawer()) {
         fireAdvancedCameraCardEvent(ev.composedPath()[0], 'drawer:' + action, {
           drawer: this.thumbnailConfig.mode,
@@ -162,12 +162,12 @@ export class AdvancedCameraCardSurround extends LitElement {
       }
     };
 
-    return html` <advanced-camera-card-surround-basic
-      @advanced-camera-card:thumbnails-carousel:media-select=${(ev: CustomEvent) =>
+    return html` <advanced-camera-card-mini-surround-basic
+      @advanced-camera-card-mini:thumbnails-carousel:media-select=${(ev: CustomEvent) =>
         changeDrawer(ev, 'close')}
     >
       ${this.thumbnailConfig && this.thumbnailConfig.mode !== 'none'
-        ? html` <advanced-camera-card-thumbnail-carousel
+        ? html` <advanced-camera-card-mini-thumbnail-carousel
             slot=${this.thumbnailConfig.mode}
             .hass=${this.hass}
             .config=${this.thumbnailConfig}
@@ -177,10 +177,10 @@ export class AdvancedCameraCardSurround extends LitElement {
             .viewManagerEpoch=${this.viewManagerEpoch}
             .selected=${view.queryResults?.getSelectedIndex() ?? undefined}
           >
-          </advanced-camera-card-thumbnail-carousel>`
+          </advanced-camera-card-mini-thumbnail-carousel>`
         : ''}
       ${this.timelineConfig && this.timelineConfig.mode !== 'none'
-        ? html` <advanced-camera-card-timeline-core
+        ? html` <advanced-camera-card-mini-timeline-core
             slot=${this.timelineConfig.mode}
             .hass=${this.hass}
             .viewManagerEpoch=${this.viewManagerEpoch}
@@ -199,10 +199,10 @@ export class AdvancedCameraCardSurround extends LitElement {
             .viewItemManager=${this.viewItemManager}
             .cardWideConfig=${this.cardWideConfig}
           >
-          </advanced-camera-card-timeline-core>`
+          </advanced-camera-card-mini-timeline-core>`
         : ''}
       <slot></slot>
-    </advanced-camera-card-surround-basic>`;
+    </advanced-camera-card-mini-surround-basic>`;
   }
 
   static get styles(): CSSResultGroup {
@@ -212,6 +212,6 @@ export class AdvancedCameraCardSurround extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-surround': AdvancedCameraCardSurround;
+    'advanced-camera-card-mini-surround': AdvancedCameraCardSurround;
   }
 }

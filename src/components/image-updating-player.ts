@@ -66,7 +66,7 @@ export const resolveImageMode = (options?: {
 /**
  * A media player to wrap an image that updates continuously.
  */
-@customElement('advanced-camera-card-image-updating-player')
+@customElement('advanced-camera-card-mini-image-updating-player')
 export class AdvancedCameraCardImageUpdatingPlayer
   extends LitElement
   implements MediaPlayer
@@ -192,7 +192,7 @@ export class AdvancedCameraCardImageUpdatingPlayer
    * (detects old or disconnected states). Using an old state is problematic as
    * it runs the risk that the JS has an old access token for the camera, and
    * that results in a notification on the HA UI about a failed login. See:
-   * https://github.com/dermotduffy/advanced-camera-card/issues/398 .
+   * https://github.com/dermotduffy/advanced-camera-card-mini/issues/398 .
    * @param entity The entity.
    * @returns The state or null if not acceptable.
    */
@@ -240,7 +240,7 @@ export class AdvancedCameraCardImageUpdatingPlayer
       // image may be using an old-expired token and re-use prior to
       // re-generation of a new URL would generate an unauthorized request
       // (401), see:
-      // https://github.com/dermotduffy/advanced-camera-card/issues/398
+      // https://github.com/dermotduffy/advanced-camera-card-mini/issues/398
       this._cachedValueController?.stopTimer();
       this._cachedValueController?.clearValue();
       this._forceSafeImage();
@@ -386,6 +386,6 @@ export class AdvancedCameraCardImageUpdatingPlayer
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-image-updating-player': AdvancedCameraCardImageUpdatingPlayer;
+    'advanced-camera-card-mini-image-updating-player': AdvancedCameraCardImageUpdatingPlayer;
   }
 }

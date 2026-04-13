@@ -46,7 +46,7 @@ export const setRemoteControlEntityFromConfig = (api: CardConfigLoaderAPI) => {
       actions: [
         // When the camera changes, update the entity to match (only if different
         // to avoid race conditions when multiple cards share the same entity).
-        // See: https://github.com/dermotduffy/advanced-camera-card/issues/2244
+        // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2244
         createInternalCallbackAction((api: CardActionsAPI) =>
           selectOptionOnEntityIfDifferent(
             cameraControlEntity,
@@ -117,7 +117,7 @@ const selectOptionOnEntityIfDifferent = async (
 
   // Only update if the option is defined and different from current state.
   // This prevents race conditions when multiple cards share the same entity.
-  // See: https://github.com/dermotduffy/advanced-camera-card/issues/2244
+  // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2244
   if (!option || option === currentState) {
     return;
   }

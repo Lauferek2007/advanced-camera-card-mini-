@@ -32,7 +32,7 @@ interface ParticleConfig {
   gravity: number;
 }
 
-@customElement('advanced-camera-card-firework-burst')
+@customElement('advanced-camera-card-mini-firework-burst')
 export class AdvancedCameraCardFireworkBurst extends LitElement {
   @property({ type: String })
   public posX = '50%';
@@ -140,7 +140,7 @@ export class AdvancedCameraCardFireworkBurst extends LitElement {
         this._particles,
         (p) => p.id,
         (p) => html`
-          <advanced-camera-card-firework-particle
+          <advanced-camera-card-mini-firework-particle
             .angle=${p.angle}
             .distance=${p.distance}
             .color=${p.color}
@@ -148,7 +148,7 @@ export class AdvancedCameraCardFireworkBurst extends LitElement {
             .duration=${p.duration}
             .delay=${p.delay}
             .gravity=${p.gravity}
-          ></advanced-camera-card-firework-particle>
+          ></advanced-camera-card-mini-firework-particle>
         `,
       )}
     `;
@@ -167,6 +167,6 @@ export class AdvancedCameraCardFireworkBurst extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-firework-burst': AdvancedCameraCardFireworkBurst;
+    'advanced-camera-card-mini-firework-burst': AdvancedCameraCardFireworkBurst;
   }
 }

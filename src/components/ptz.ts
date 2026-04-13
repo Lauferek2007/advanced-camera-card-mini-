@@ -24,7 +24,7 @@ import './icon.js';
 import './submenu';
 import { SubmenuInteraction, SubmenuItem } from './submenu/types.js';
 
-@customElement('advanced-camera-card-ptz')
+@customElement('advanced-camera-card-mini-ptz')
 export class AdvancedCameraCardPTZ extends LitElement {
   public hass?: HomeAssistant;
 
@@ -77,7 +77,7 @@ export class AdvancedCameraCardPTZ extends LitElement {
       };
 
       return options?.actions || options?.renderWithoutAction
-        ? html`<advanced-camera-card-icon
+        ? html`<advanced-camera-card-mini-icon
             class=${classMap(classes)}
             .icon=${{ icon: icon }}
             .title=${localize(`elements.ptz.${name}`)}
@@ -89,7 +89,7 @@ export class AdvancedCameraCardPTZ extends LitElement {
               : undefined}
             @action=${(ev: CustomEvent<Interaction>) =>
               options.actions && this._controller.handleAction(ev, options.actions)}
-          ></advanced-camera-card-icon>`
+          ></advanced-camera-card-mini-icon>`
         : html``;
     };
 
@@ -129,7 +129,7 @@ export class AdvancedCameraCardPTZ extends LitElement {
         ? html`<div class="ptz-presets">
             ${renderIcon('home', 'mdi:home', { actions: this._actions?.home })}
             ${presetSubmenuItems?.length
-              ? html`<advanced-camera-card-submenu
+              ? html`<advanced-camera-card-mini-submenu
                   class="presets"
                   .hass=${this.hass}
                   .items=${presetSubmenuItems}
@@ -145,7 +145,7 @@ export class AdvancedCameraCardPTZ extends LitElement {
                       renderWithoutAction: true,
                     },
                   )}
-                </advanced-camera-card-submenu>`
+                </advanced-camera-card-mini-submenu>`
               : ''}
           </div>`
         : ''}
@@ -159,6 +159,6 @@ export class AdvancedCameraCardPTZ extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-ptz': AdvancedCameraCardPTZ;
+    'advanced-camera-card-mini-ptz': AdvancedCameraCardPTZ;
   }
 }

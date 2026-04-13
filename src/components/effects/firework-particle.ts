@@ -2,7 +2,7 @@ import { CSSResultGroup, html, LitElement, TemplateResult, unsafeCSS } from 'lit
 import { customElement, property } from 'lit/decorators.js';
 import fireworkParticleStyle from '../../scss/firework-particle.scss';
 
-@customElement('advanced-camera-card-firework-particle')
+@customElement('advanced-camera-card-mini-firework-particle')
 export class AdvancedCameraCardFireworkParticle extends LitElement {
   @property({ type: Number })
   public angle = 0;
@@ -49,6 +49,6 @@ export class AdvancedCameraCardFireworkParticle extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-firework-particle': AdvancedCameraCardFireworkParticle;
+    'advanced-camera-card-mini-firework-particle': AdvancedCameraCardFireworkParticle;
   }
 }

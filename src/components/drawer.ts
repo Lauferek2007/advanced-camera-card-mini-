@@ -21,7 +21,7 @@ export interface DrawerIcons {
   closed?: string;
 }
 
-@customElement('advanced-camera-card-drawer')
+@customElement('advanced-camera-card-mini-drawer')
 export class AdvancedCameraCardDrawer extends LitElement {
   @property({ attribute: true, reflect: true })
   public location: 'left' | 'right' = 'left';
@@ -113,7 +113,7 @@ export class AdvancedCameraCardDrawer extends LitElement {
                   this.open = !this.open;
                 }}
               >
-                <advanced-camera-card-icon
+                <advanced-camera-card-mini-icon
                   class="control"
                   .icon="${{
                     icon: this.open
@@ -124,13 +124,13 @@ export class AdvancedCameraCardDrawer extends LitElement {
                     // Only open the drawer on mousenter when the device
                     // supports hover (otherwise iOS may end up passing on
                     // subsequent click events to a different element, see:
-                    // https://github.com/dermotduffy/advanced-camera-card/issues/801
+                    // https://github.com/dermotduffy/advanced-camera-card-mini/issues/801
                     if (this._isHoverableDevice && !this.open) {
                       this.open = true;
                     }
                   }}
                 >
-                </advanced-camera-card-icon>
+                </advanced-camera-card-mini-icon>
               </div>
             `
           : ''}
@@ -146,7 +146,7 @@ export class AdvancedCameraCardDrawer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-drawer': AdvancedCameraCardDrawer;
+    'advanced-camera-card-mini-drawer': AdvancedCameraCardDrawer;
     'side-drawer': SideDrawer;
   }
 }

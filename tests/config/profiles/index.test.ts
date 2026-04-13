@@ -24,7 +24,7 @@ describe('setProfiles', () => {
 
   it('should handle profiles', () => {
     const input = {
-      type: 'custom:advanced-camera-card',
+      type: 'custom:advanced-camera-card-mini',
       cameras: [{}],
       live: {
         controls: {

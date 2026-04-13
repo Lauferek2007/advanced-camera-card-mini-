@@ -50,7 +50,7 @@ export class CameraManagerStore implements CameraManagerReadOnlyConfigStore {
     // In setting the store cameras, take great care to replace/add first before
     // remove. Otherwise, there may be race conditions where the card attempts
     // to render a view with (momentarily) no camera.
-    // See: https://github.com/dermotduffy/advanced-camera-card/issues/1533
+    // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1533
 
     // Replace/Add the new cameras.
     for (const camera of cameras) {
@@ -131,7 +131,7 @@ export class CameraManagerStore implements CameraManagerReadOnlyConfigStore {
     for (const camera of this._cameras.values()) {
       // Must use getAllDependentCameras() to recursively get all relevant
       // cameras respecting the capabilitiy.
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/2122
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/2122
 
       this.getAllDependentCameras(camera.getID(), capability, options).forEach(
         (cameraID) => {

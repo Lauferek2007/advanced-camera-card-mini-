@@ -35,7 +35,7 @@ import { renderProgressIndicator } from '../progress-indicator.js';
 import '../video-player.js';
 import './../media-dimensions-container';
 
-@customElement('advanced-camera-card-viewer-provider')
+@customElement('advanced-camera-card-mini-viewer-provider')
 export class AdvancedCameraCardViewerProvider extends LitElement implements MediaPlayer {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -218,15 +218,15 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
       : null;
     const view = this.viewManagerEpoch?.manager.getView();
 
-    const intermediateTemplate = html` <advanced-camera-card-media-dimensions-container
+    const intermediateTemplate = html` <advanced-camera-card-mini-media-dimensions-container
       .dimensionsConfig=${this._getRelevantCameraConfig()?.dimensions}
     >
       ${template}
-    </advanced-camera-card-media-dimensions-container>`;
+    </advanced-camera-card-mini-media-dimensions-container>`;
 
     return html`
       ${this.viewerConfig?.zoomable
-        ? html`<advanced-camera-card-zoomer
+        ? html`<advanced-camera-card-mini-zoomer
             .defaultSettings=${guard([cameraConfig?.dimensions?.layout], () =>
               cameraConfig?.dimensions?.layout
                 ? {
@@ -236,11 +236,11 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
                 : undefined,
             )}
             .settings=${mediaID ? view?.context?.zoom?.[mediaID]?.requested : undefined}
-            @advanced-camera-card:zoom:zoomed=${async () =>
+            @advanced-camera-card-mini:zoom:zoomed=${async () =>
               (await this.getMediaPlayerController())?.setControls(false)}
-            @advanced-camera-card:zoom:unzoomed=${async () =>
+            @advanced-camera-card-mini:zoom:unzoomed=${async () =>
               (await this.getMediaPlayerController())?.setControls()}
-            @advanced-camera-card:zoom:change=${(
+            @advanced-camera-card-mini:zoom:change=${(
               ev: CustomEvent<ZoomSettingsObserved>,
             ) =>
               handleZoomSettingsObservedEvent(
@@ -250,7 +250,7 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
               )}
           >
             ${intermediateTemplate}
-          </advanced-camera-card-zoomer>`
+          </advanced-camera-card-mini-zoomer>`
         : intermediateTemplate}
     `;
   }
@@ -276,7 +276,7 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
     return this._renderContainer(html`
       ${ViewItemClassifier.isVideo(this.media)
         ? this.media.getVideoContentType() === VideoContentType.HLS
-          ? html`<advanced-camera-card-ha-hls-player
+          ? html`<advanced-camera-card-mini-ha-hls-player
               ${ref(this._refProvider)}
               allow-exoplayer
               aria-label="${this.media.getTitle() ?? ''}"
@@ -289,18 +289,18 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
               .hass=${this.hass}
               ?controls=${this.viewerConfig.controls.builtin}
             >
-            </advanced-camera-card-ha-hls-player>`
+            </advanced-camera-card-mini-ha-hls-player>`
           : html`
-              <advanced-camera-card-video-player
+              <advanced-camera-card-mini-video-player
                 ${ref(this._refProvider)}
                 url=${this._url}
                 aria-label="${this.media.getTitle() ?? ''}"
                 title="${this.media.getTitle() ?? ''}"
                 ?controls=${this.viewerConfig.controls.builtin}
               >
-              </advanced-camera-card-video-player>
+              </advanced-camera-card-mini-video-player>
             `
-        : html`<advanced-camera-card-image-player
+        : html`<advanced-camera-card-mini-image-player
             ${ref(this._refProvider)}
             url="${this._url}"
             aria-label="${this.media.getTitle() ?? ''}"
@@ -310,7 +310,7 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
                 this._switchToRelatedClipView();
               }
             }}
-          ></advanced-camera-card-image-player>`}
+          ></advanced-camera-card-mini-image-player>`}
     `);
   }
 
@@ -321,6 +321,6 @@ export class AdvancedCameraCardViewerProvider extends LitElement implements Medi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-viewer-provider': AdvancedCameraCardViewerProvider;
+    'advanced-camera-card-mini-viewer-provider': AdvancedCameraCardViewerProvider;
   }
 }

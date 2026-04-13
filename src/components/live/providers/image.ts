@@ -11,7 +11,7 @@ import {
 } from '../../../types.js';
 import '../../image-updating-player.js';
 
-@customElement('advanced-camera-card-live-image')
+@customElement('advanced-camera-card-mini-live-image')
 export class AdvancedCameraCardLiveImage extends LitElement implements MediaPlayer {
   @property({ attribute: false })
   public hass?: HomeAssistant;
@@ -32,13 +32,13 @@ export class AdvancedCameraCardLiveImage extends LitElement implements MediaPlay
     }
 
     return html`
-      <advanced-camera-card-image-updating-player
+      <advanced-camera-card-mini-image-updating-player
         ${ref(this._refImage)}
         .hass=${this.hass}
         .imageConfig=${this.cameraConfig.image}
         .cameraConfig=${this.cameraConfig}
       >
-      </advanced-camera-card-image-updating-player>
+      </advanced-camera-card-mini-image-updating-player>
     `;
   }
 
@@ -49,6 +49,6 @@ export class AdvancedCameraCardLiveImage extends LitElement implements MediaPlay
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-live-image': AdvancedCameraCardLiveImage;
+    'advanced-camera-card-mini-live-image': AdvancedCameraCardLiveImage;
   }
 }

@@ -13,7 +13,7 @@ export const updateElementStyleFromMediaLayoutConfig = (
   setOrRemoveStyleProperty(
     element,
     !!mediaLayoutConfig?.fit,
-    '--advanced-camera-card-media-layout-fit',
+    '--advanced-camera-card-mini-media-layout-fit',
     mediaLayoutConfig?.fit,
   );
 
@@ -21,7 +21,7 @@ export const updateElementStyleFromMediaLayoutConfig = (
     setOrRemoveStyleProperty(
       element,
       !!mediaLayoutConfig?.position?.[dimension],
-      `--advanced-camera-card-media-layout-position-${dimension}`,
+      `--advanced-camera-card-mini-media-layout-position-${dimension}`,
       `${mediaLayoutConfig?.position?.[dimension]}%`,
     );
   }
@@ -30,7 +30,7 @@ export const updateElementStyleFromMediaLayoutConfig = (
     setOrRemoveStyleProperty(
       element,
       !!mediaLayoutConfig?.view_box?.[dimension],
-      `--advanced-camera-card-media-layout-view-box-${dimension}`,
+      `--advanced-camera-card-mini-media-layout-view-box-${dimension}`,
       `${mediaLayoutConfig?.view_box?.[dimension]}%`,
     );
   }

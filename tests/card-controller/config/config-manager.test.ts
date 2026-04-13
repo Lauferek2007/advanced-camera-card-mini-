@@ -124,7 +124,7 @@ describe('ConfigManager', () => {
     const api = createCardAPI();
     const manager = new ConfigManager(api);
     const config = {
-      type: 'custom:advanced-camera-card',
+      type: 'custom:advanced-camera-card-mini',
       cameras: [TEST_CAMERAS.OFFICE],
     };
 
@@ -156,7 +156,7 @@ describe('ConfigManager', () => {
   it('should apply profiles', () => {
     const manager = new ConfigManager(createCardAPI());
     const config = {
-      type: 'custom:advanced-camera-card',
+      type: 'custom:advanced-camera-card-mini',
       cameras: [TEST_CAMERAS.OFFICE],
       profiles: [TEST_PROFILES.LOW_PERFORMANCE],
     };
@@ -171,7 +171,7 @@ describe('ConfigManager', () => {
     const api = createCardAPI();
     const manager = new ConfigManager(api);
     const config = {
-      type: 'custom:advanced-camera-card',
+      type: 'custom:advanced-camera-card-mini',
       cameras: [TEST_CAMERAS.OFFICE],
     };
 
@@ -188,7 +188,7 @@ describe('ConfigManager', () => {
     const api = createCardAPI();
     const manager = new ConfigManager(api);
     const config = {
-      type: 'custom:advanced-camera-card',
+      type: 'custom:advanced-camera-card-mini',
       cameras: [TEST_CAMERAS.OFFICE],
       debug: {
         logging: true,
@@ -230,7 +230,7 @@ describe('ConfigManager', () => {
       const manager = new ConfigManager(api);
       const cameras = [TEST_CAMERAS.OFFICE];
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: cameras,
         overrides: [
           {
@@ -285,7 +285,7 @@ describe('ConfigManager', () => {
 
       const manager = new ConfigManager(api);
       const config = {
-        type: 'custom:advanced-camera-card',
+        type: 'custom:advanced-camera-card-mini',
         cameras: [TEST_CAMERAS.OFFICE],
         overrides: [
           {
@@ -313,7 +313,7 @@ describe('ConfigManager', () => {
 
         const manager = new ConfigManager(api);
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [TEST_CAMERAS.OFFICE],
           overrides: [
             {
@@ -345,7 +345,7 @@ describe('ConfigManager', () => {
 
         const manager = new ConfigManager(api);
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [TEST_CAMERAS.OFFICE],
           overrides: [
             {
@@ -377,7 +377,7 @@ describe('ConfigManager', () => {
 
         const manager = new ConfigManager(api);
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [TEST_CAMERAS.OFFICE],
           overrides: [
             {
@@ -413,7 +413,7 @@ describe('ConfigManager', () => {
 
         const manager = new ConfigManager(api);
         const config = {
-          type: 'custom:advanced-camera-card',
+          type: 'custom:advanced-camera-card-mini',
           cameras: [TEST_CAMERAS.OFFICE],
           overrides: [
             {

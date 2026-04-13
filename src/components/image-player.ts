@@ -15,7 +15,7 @@ import { dispatchMediaLoadedEvent } from '../utils/media-info';
 /**
  * A simple media player to wrap a single static image.
  */
-@customElement('advanced-camera-card-image-player')
+@customElement('advanced-camera-card-mini-image-player')
 export class AdvancedCameraCardImagePlayer extends LitElement implements MediaPlayer {
   @property()
   public url?: string;
@@ -55,6 +55,6 @@ export class AdvancedCameraCardImagePlayer extends LitElement implements MediaPl
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-image-player': AdvancedCameraCardImagePlayer;
+    'advanced-camera-card-mini-image-player': AdvancedCameraCardImagePlayer;
   }
 }

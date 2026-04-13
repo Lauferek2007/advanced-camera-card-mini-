@@ -376,7 +376,7 @@ describe('PTZController', () => {
 
       const element = document.createElement('div');
       const handler = vi.fn();
-      element.addEventListener('advanced-camera-card:action:execution-request', handler);
+      element.addEventListener('advanced-camera-card-mini:action:execution-request', handler);
 
       const controller = new PTZController(element);
       controller.setCamera();
@@ -398,7 +398,7 @@ describe('PTZController', () => {
     it('should not call action without actions config', () => {
       const element = document.createElement('div');
       const handler = vi.fn();
-      element.addEventListener('advanced-camera-card:action:execution-request', handler);
+      element.addEventListener('advanced-camera-card-mini:action:execution-request', handler);
 
       const controller = new PTZController(element);
       controller.setCamera();
@@ -412,7 +412,7 @@ describe('PTZController', () => {
     it('should not call action without hass', () => {
       const element = document.createElement('div');
       const handler = vi.fn();
-      element.addEventListener('advanced-camera-card:action:execution-request', handler);
+      element.addEventListener('advanced-camera-card-mini:action:execution-request', handler);
 
       const controller = new PTZController(element);
       controller.setCamera();

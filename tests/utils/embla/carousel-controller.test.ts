@@ -113,7 +113,7 @@ describe('CarouselController', () => {
 
     const forceSelectListener = vi.fn();
     parent.addEventListener(
-      'advanced-camera-card:carousel:force-select',
+      'advanced-camera-card-mini:carousel:force-select',
       forceSelectListener,
     );
 
@@ -135,7 +135,7 @@ describe('CarouselController', () => {
 
     const forceSelectListener = vi.fn();
     parent.addEventListener(
-      'advanced-camera-card:carousel:force-select',
+      'advanced-camera-card-mini:carousel:force-select',
       forceSelectListener,
     );
 
@@ -153,7 +153,7 @@ describe('CarouselController', () => {
     new CarouselController(createRoot(), parent);
 
     const selectHandler = vi.fn();
-    parent.addEventListener('advanced-camera-card:carousel:select', selectHandler);
+    parent.addEventListener('advanced-camera-card-mini:carousel:select', selectHandler);
 
     getEmblaApi()?.selectedScrollSnap.mockReturnValue(6);
     getEmblaApi()?.slideNodes.mockReturnValue(children);
@@ -175,7 +175,7 @@ describe('CarouselController', () => {
     new CarouselController(createRoot(), parent);
 
     const selectHandler = vi.fn();
-    parent.addEventListener('advanced-camera-card:carousel:select', selectHandler);
+    parent.addEventListener('advanced-camera-card-mini:carousel:select', selectHandler);
 
     getEmblaApi()?.selectedScrollSnap.mockReturnValue(1000);
     getEmblaApi()?.slideNodes.mockReturnValue(children);

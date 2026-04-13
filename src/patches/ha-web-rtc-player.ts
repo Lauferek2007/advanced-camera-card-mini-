@@ -39,7 +39,7 @@ customElements.whenDefined('ha-web-rtc-player').then(() => {
     'ha-web-rtc-player',
   ) as ConstructableLitElement;
 
-  @customElement('advanced-camera-card-ha-web-rtc-player')
+  @customElement('advanced-camera-card-mini-ha-web-rtc-player')
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   class AdvancedCameraCardHaWebRtcPlayer extends HaWebRtcPlayer implements MediaPlayer {
     protected _mediaPlayerController = new VideoMediaPlayerController(
@@ -62,7 +62,7 @@ customElements.whenDefined('ha-web-rtc-player').then(() => {
       // this workaround), watch the number of open connections on the go2rtc
       // UI, then edit and rapidly save a dashboard with this card -- the number
       // of open connections will not return to 1.
-      // See: https://github.com/dermotduffy/advanced-camera-card/issues/1992
+      // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/1992
       await super._startWebRtc();
 
       // Workaround: After attempting to start a WebRTC session, check if the
@@ -81,7 +81,7 @@ customElements.whenDefined('ha-web-rtc-player').then(() => {
       // the player is muted. It does not currently respond to unmuting to
       // re-add the audio track, or perhaps assumes that situation would not
       // arise. As such, this code is kept commented out. See:
-      // https://github.com/dermotduffy/advanced-camera-card/issues/2235
+      // https://github.com/dermotduffy/advanced-camera-card-mini/issues/2235
       // if (event.track.kind === 'audio' && this.muted) {
       //   return;
       // }
@@ -187,6 +187,6 @@ customElements.whenDefined('ha-web-rtc-player').then(() => {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-ha-web-rtc-player': AdvancedCameraCardHaWebRtcPlayer;
+    'advanced-camera-card-mini-ha-web-rtc-player': AdvancedCameraCardHaWebRtcPlayer;
   }
 }

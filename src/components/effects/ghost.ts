@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import { BaseEffectComponent } from './base';
 import ghostStyle from '../../scss/ghost.scss';
 
-@customElement('advanced-camera-card-effect-ghost')
+@customElement('advanced-camera-card-mini-effect-ghost')
 export class AdvancedCameraCardEffectGhost extends BaseEffectComponent {
   protected render(): TemplateResult {
     return html`<span class="ghost">👻</span>`;
@@ -16,6 +16,6 @@ export class AdvancedCameraCardEffectGhost extends BaseEffectComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'advanced-camera-card-effect-ghost': AdvancedCameraCardEffectGhost;
+    'advanced-camera-card-mini-effect-ghost': AdvancedCameraCardEffectGhost;
   }
 }

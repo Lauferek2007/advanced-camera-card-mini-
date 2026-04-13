@@ -1,7 +1,7 @@
 import { LitElement, ReactiveController } from 'lit';
 import { throttle } from 'lodash-es';
 import { GalleryExtendEvent } from '../../components/gallery/types';
-import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-event';
+import { fireAdvancedCameraCardEvent } from '../../utils/fire-advanced-camera-card-mini-event';
 import { scrollIntoView } from '../../utils/scroll';
 import { sleep } from '../../utils/sleep';
 
@@ -122,7 +122,7 @@ export class GalleryCoreController implements ReactiveController {
       roundFunc(this._host.clientWidth / this._options.columnWidth),
     );
     this._host.style.setProperty(
-      '--advanced-camera-card-gallery-columns',
+      '--advanced-camera-card-mini-gallery-columns',
       String(columns),
     );
   }
@@ -233,7 +233,7 @@ export class GalleryCoreController implements ReactiveController {
         // only done on the first setting, as subsequent gallery extensions
         // should not cause the gallery to rescroll to the item that happens to
         // be selected.
-        // See: https://github.com/dermotduffy/advanced-camera-card/issues/885
+        // See: https://github.com/dermotduffy/advanced-camera-card-mini/issues/885
         scrollIntoView(firstSelected, {
           boundary: this._host,
           block: 'center',
