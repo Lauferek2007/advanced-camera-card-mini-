@@ -161,7 +161,7 @@ export class AdvancedCameraCardElementsCore extends LitElement {
 
   protected willUpdate(changedProps: PropertyValues): void {
     if (changedProps.has('conditionStateManager') && this.conditionStateManager) {
-      changedProps.get('conditionStateManager')?.removeEventListener(this._setNewRoot);
+      changedProps.get('conditionStateManager')?.removeListener(this._setNewRoot);
       this.conditionStateManager.addListener(this._setNewRoot);
     }
 
@@ -271,7 +271,7 @@ export class AdvancedCameraCardElements extends LitElement {
 
   disconnectedCallback(): void {
     this.removeEventListener('advanced-camera-card-mini:menu:add', this._menuAddHandler);
-    this.addEventListener(
+    this.removeEventListener(
       'advanced-camera-card-mini:status-bar:add',
       this._statusBarAddHandler,
     );

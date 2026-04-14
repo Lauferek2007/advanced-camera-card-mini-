@@ -122,6 +122,7 @@ const CIRCULAR_DEPENDENCY_IGNORE_REGEXP = /(ha-nunjucks|ts-py-datetime)/;
  */
 const config = {
   input: {
+    'advanced-camera-card-mini-': 'src/card-hacs.ts',
     'advanced-camera-card-mini': 'src/card.ts',
     'advanced-camera-card-mini-ultra': 'src/card-ultra.ts',
   },
