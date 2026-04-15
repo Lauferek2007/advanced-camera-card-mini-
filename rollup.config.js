@@ -115,24 +115,25 @@ const outputEntryTemplate = {
   sourcemap: dev,
 };
 
+const hacsOutput = {
+  file: 'dist/advanced-camera-card-mini-.js',
+  format: 'es',
+  sourcemap: dev,
+  inlineDynamicImports: true,
+};
+
 const CIRCULAR_DEPENDENCY_IGNORE_REGEXP = /(ha-nunjucks|ts-py-datetime)/;
 
 /**
  * @type {import('rollup').RollupOptions}
  */
-const config = {
-  input: {
-    'advanced-camera-card-mini-': 'src/card-hacs.ts',
-    'advanced-camera-card-mini': 'src/card.ts',
-    'advanced-camera-card-mini-ultra': 'src/card-ultra.ts',
-  },
+const configBase = {
   // Specifically want a facade created as HACS will attach a hacstag
   // queryparameter to the resource. Without a facade when chunks re-import the
   // card chunk, they'll refer to a 'different' copy of the card chunk without
   // the hacstag, causing a re-download of the same content and functionality
   // problems.
   preserveEntrySignatures: 'strict',
-  output: [outputEntryTemplate],
   plugins: plugins,
   // These files use `this` at the toplevel, which causes rollup warning spam on
   // build: `this` has been rewritten to `undefined`.
@@ -152,4 +153,19 @@ const config = {
   },
 };
 
-export default config;
+const hacsConfig = {
+  ...configBase,
+  input: 'src/card-hacs.ts',
+  output: [hacsOutput],
+};
+
+const standardConfig = {
+  ...configBase,
+  input: {
+    'advanced-camera-card-mini': 'src/card.ts',
+    'advanced-camera-card-mini-ultra': 'src/card-ultra.ts',
+  },
+  output: [outputEntryTemplate],
+};
+
+export default [hacsConfig, standardConfig];
